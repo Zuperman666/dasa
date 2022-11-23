@@ -1,0 +1,3 @@
+{
+    "/usuallyOrder/userid/:userId": "/usuallyOrder?userId=:userId"
+}

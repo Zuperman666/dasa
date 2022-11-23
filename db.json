@@ -1,0 +1,333 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "tizio",
+      "via": "via grosseto 30",
+      "isActive": true,
+      "daPagare": 0,
+      "girino": 1
+    },
+    {
+      "id": 2,
+      "name": "Caio",
+      "via": "via grosseto 31",
+      "isActive": true,
+      "daPagare": 0,
+      "girino": 2
+    }
+  ],
+  "girini": [
+    {
+      "id": 1,
+      "name": "ditta",
+      "isActive": true
+    },
+    {
+      "name": "sergio",
+      "isActive": true,
+      "id": 2
+    }
+  ],
+  "tipiProdotti": [
+    {
+      "id": 1,
+      "name": "Cornetti",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "name": "CornettiMini",
+      "isActive": true
+    }
+  ],
+  "item": [
+    {
+      "id": 1,
+      "name": "ciambelle",
+      "price": "3",
+      "tipoProdotto": 1,
+      "iva": 0,
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "name": "ciambelleNutella",
+      "price": "1.5",
+      "tipoProdotto": 2,
+      "iva": "1",
+      "isActive": true
+    },
+    {
+      "name": "Pizza",
+      "price": "3.5",
+      "iva": "0",
+      "isActive": true,
+      "tipoProdotto": 2,
+      "id": 3
+    },
+    {
+      "name": "Banana",
+      "price": "2",
+      "iva": "20",
+      "tipoProdotto": 2,
+      "isActive": true,
+      "id": 4
+    },
+    {
+      "name": "Mamma",
+      "price": "20",
+      "iva": "19",
+      "tipoProdotto": {
+        "id": 1,
+        "name": "Cornetti",
+        "isActive": true
+      },
+      "isActive": true,
+      "id": 5
+    }
+  ],
+  "usuallyOrder": [
+    {
+      "id": 1,
+      "userId": 1,
+      "body": [
+        {
+          "day": "Monday",
+          "stato": "chiuso",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 1
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Tuesday",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 3
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ],
+          "stato": "aperto"
+        },
+        {
+          "day": "Wednesday",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 2
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ],
+          "stato": "aperto"
+        },
+        {
+          "day": "Thursday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 1
+            },
+            {
+              "itemId": 2,
+              "quantità": 3
+            },
+            {
+              "itemId": 3,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Friday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 6
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            },
+            {
+              "itemId": 3,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Saturday",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 4
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            },
+            {
+              "itemId": 3,
+              "quantità": 1
+            },
+            {
+              "itemId": 4,
+              "quantità": 3
+            },
+            {
+              "itemId": 8,
+              "quantità": 1
+            },
+            {
+              "itemId": 5,
+              "quantità": 2
+            }
+          ],
+          "stato": "aperto"
+        },
+        {
+          "day": "Sunday",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 1
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ],
+          "stato": "chiuso"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "body": [
+        {
+          "day": "Monday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 1
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Tuesday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 2
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Wednesday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 3
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Thursday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 4
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Friday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 5
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        },
+        {
+          "day": "Saturday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 6
+            },
+            {
+              "itemId": 2,
+              "quantità": 3
+            },
+            {
+              "itemId": 3,
+              "quantità": 1
+            },
+            {
+              "itemId": 3,
+              "quantità": 2
+            }
+          ]
+        },
+        {
+          "day": "Sunday",
+          "stato": "aperto",
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 7
+            },
+            {
+              "itemId": 2,
+              "quantità": 1
+            }
+          ]
+        }
+      ],
+      "userId": 2
+    }
+  ],
+  "history": []
+}

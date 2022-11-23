@@ -1,0 +1,30 @@
+export const HeaderTableConfigDays = [
+    {
+        text:'Lunedì',
+        value:'Monday'
+    },
+    {
+        text:'Martedì',
+        value:'Tuesday'
+    },
+    {
+        text:'Mercoledì',
+        value:'Wednesday'
+    },
+    {
+        text:'Giovedì',
+        value:'Thursday'
+    },
+    {
+        text:'Venerdì',
+        value:'Friday'
+    },
+    {
+        text:'Sabato',
+        value:'Saturday'
+    },
+    {
+        text:'Domenica',
+        value:'Sunday'
+    },
+]
