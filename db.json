@@ -37,7 +37,7 @@
     },
     {
       "id": 2,
-      "name": "CornettiMini",
+      "name": "Cornetti-Mini",
       "isActive": true
     }
   ],
@@ -46,17 +46,17 @@
       "id": 1,
       "name": "ciambelle",
       "price": "3",
-      "tipoProdotto": 1,
+      "tipoProdotto": 2,
       "iva": 0,
       "isActive": true
     },
     {
       "id": 2,
-      "name": "ciambelleNutella",
-      "price": "1.5",
+      "name": "Ciambella",
+      "price": "1",
       "tipoProdotto": 2,
       "iva": "1",
-      "isActive": true
+      "isActive": false
     },
     {
       "name": "Pizza",
@@ -69,21 +69,17 @@
     {
       "name": "Banana",
       "price": "2",
-      "iva": "20",
+      "iva": "22",
       "tipoProdotto": 2,
-      "isActive": true,
+      "isActive": false,
       "id": 4
     },
     {
       "name": "Mamma",
       "price": "20",
       "iva": "19",
-      "tipoProdotto": {
-        "id": 1,
-        "name": "Cornetti",
-        "isActive": true
-      },
-      "isActive": true,
+      "tipoProdotto": 1,
+      "isActive": false,
       "id": 5
     }
   ],

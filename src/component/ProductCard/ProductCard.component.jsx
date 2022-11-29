@@ -1,6 +1,6 @@
 import React from 'react';
 import { useStore } from 'store/store';
-import { InputCustomNumber, TextProductCard } from './style/ProductCard.style';
+import { ContainerProductCard, InputCustomNumber, TextProductCard } from './style/ProductCard.style';
 
 
 export const ProductCard = (props) => {
@@ -14,7 +14,7 @@ export const ProductCard = (props) => {
     let result;
     let modify = { itemId: props.itemId, quantità: Number(e.target.value) }
     let alreadyInside = array.ordine.filter(
-      (obj) =>  props.itemId === obj.itemId)
+      (obj) => props.itemId === obj.itemId)
     if (!props.isPresent && alreadyInside.length === 0) {
       array.ordine.push(modify);
       result = array
@@ -28,11 +28,11 @@ export const ProductCard = (props) => {
   }
 
   return (
-    <>
-        <TextProductCard> {props.name}</TextProductCard>
-        <InputCustomNumber onChange={(e) => (modifyItem({ itemId: props.itemId, quantità: Number(e.target.value) }), ModifyItemFunction(e))}
-          defaultValue={props.quantità} type={'number'} min={"0"} />
-    </>
+    <ContainerProductCard>
+      <TextProductCard> {props.name}</TextProductCard>
+      <InputCustomNumber onChange={(e) => (modifyItem({ itemId: props.itemId, quantità: Number(e.target.value) }), ModifyItemFunction(e))}
+        defaultValue={props.quantità} type={'number'} min={"0"} />
+    </ContainerProductCard>
   );
 };
 
