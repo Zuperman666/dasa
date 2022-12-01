@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStore } from 'store/store';
 import { ModalAlert } from 'component/ModalAlert/ModalAlert.component';
-import { ContainerPage } from './style/TipiProdotti.style';
 import { TipiProdotti } from 'component/TipiProdotti/TipiProdotti.component';
 
 export const TipiProdottiPage = () => {
@@ -9,9 +8,7 @@ export const TipiProdottiPage = () => {
 
   return (
     <>
-      <ContainerPage>
-        <TipiProdotti />
-      </ContainerPage>
+      <TipiProdotti />
       {isModalOpen && <ModalAlert />}
     </>
   );

@@ -1,30 +1,34 @@
 import React from 'react';
 import { useStore } from 'store/store';
 import { LateralColumn } from './partial/LateralColumn/LateralColumn.component';
-import {FlexContainer, HeaderContainer} from './style/Header.style'
+import { BurgerDiv, HeaderContainer, Wrapper } from './style/Header.style'
+import { ReactComponent as BurgerIcon } from 'images/icons/hamburger-menu.svg';
+import { ReactComponent as LogOutIcon } from 'images/icons/exit.svg';
+import Sidebar from './partial/Sidebar/Sidebar.component';
 
 export const Header = () => {
-    const selectUser = useStore((state) => state.selectUser)
-    const isLogged = useStore((state) => state.isLogged)
+  const selectUser = useStore((state) => state.selectUser)
+  const isLogged = useStore((state) => state.isLogged)
+  const [sidebarOpen, setSidebarOpen] = React.useState(false)
 
-    
   return (
-  <>
-      <HeaderContainer > 
-        <FlexContainer>
-            {'Logo'}
-        </FlexContainer>
+    <>
+      <HeaderContainer >
+        <Wrapper>
+          {'Logo'}
+        </Wrapper>
         <LateralColumn />
-        { isLogged &&
-        <FlexContainer>
-        {'Ciao '+ selectUser?.name} 
-        <div>
-             <button> 
-                {'LOGOUT'}
-            </button>
+        <Sidebar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          {isLogged &&
+            <Wrapper>
+              {'Ciao ' + selectUser?.name}
+              <LogOutIcon stroke='#000000' />
+            </Wrapper>}
+          <BurgerDiv>
+            <BurgerIcon stroke='black' onClick={() => setSidebarOpen(true)} />
+          </BurgerDiv>
         </div>
-        </FlexContainer>
-        }
       </HeaderContainer>
     </>
   );

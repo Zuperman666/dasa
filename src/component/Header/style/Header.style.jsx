@@ -8,8 +8,12 @@ display: flex;
 align-items: center;
 justify-content:space-between;
 `
-export const FlexContainer = styled.div`
+export const Wrapper = styled.div`
+display: flex;
 padding:10px;
+gap: 24px;  
+>*{cursor:pointer}
+ 
 `
 export const ContainerPage = styled.div`
 margin-right: auto;
@@ -26,4 +30,10 @@ flex: 1 0 auto;
 position: relative;
 height: auto;
 background: transparent;
+`
+export const BurgerDiv = styled.div`
+cursor: pointer;
+ @media screen and (min-width: 575px){
+    display: none;
+ }
 `

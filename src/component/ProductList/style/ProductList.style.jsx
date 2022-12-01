@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerTableInside = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-`
+
 
 export const InsideTableContainer = styled.div`
     width: 100%;
@@ -16,12 +9,17 @@ export const InsideTableContainer = styled.div`
     flex-direction: column;
 `
 export const Column = styled.div`
-  overflow: hidden;
-  white-space: nowrap; /* Don't forget this one */
-  text-overflow: ellipsis;
-  float: left;
-  width: 50%;
- `
+  width: 100%;
+  float:left;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 0 15px;
+  @media screen and (min-width : 575px) {
+   width:50%;
+  }
+   `
 
 
 export const Row = styled.div`

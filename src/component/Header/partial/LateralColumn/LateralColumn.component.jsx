@@ -3,10 +3,11 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from 'store/store';
+import { CustomSelect } from 'style/Select.style';
 import { ModalStamp } from '../ModalStamp/ModalStamp.component';
 import { ButtonSelect, ContainerLateral } from './style/LateralColumn.style';
 
-export const LateralColumn = () => {
+export const LateralColumn = (props) => {
   const [isSending, setIsSending] = useState(false)
   const [isModalStamp, setIsModalStamp] = useState(false)
   const [money, setMoney] = useState('')
@@ -34,11 +35,12 @@ export const LateralColumn = () => {
   const girini = useStore((state) => state.girini)
   const navigate = useNavigate();
 
+
   const SendToDbProduct = async () => {
     await axios.patch(`http://localhost:3001/usuallyOrder/${idStore.id}`, { body: userProduct })
   }
   const PrintTotal = async () => {
-    
+
     const resp = await axios.get('http://localhost:3001/usuallyOrder').then((resp) => resp)
     const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === selectedDay) })).filter((obj) => obj.body.length > 0)
     const money = filteredData.map((obj) => ({
@@ -46,13 +48,13 @@ export const LateralColumn = () => {
         return previous + next;
       })
     }))
-    const moneyName = money.map((obj) => ({'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totale': obj.totale}))
+    const moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totale': obj.totale }))
     /* await axios.post(`http://localhost:3001/history`, { 
        ordini: money,
        data: moment(new Date()).format()
      })*/
-     setMoney(moneyName)
-     setIsModalStamp(true)
+    setMoney(moneyName)
+    setIsModalStamp(true)
   }
 
 
@@ -71,9 +73,9 @@ export const LateralColumn = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
- 
 
-  
+
+
 
   useEffect(() => {
     item.length === 0 && setItem()
@@ -96,30 +98,30 @@ export const LateralColumn = () => {
 
   useEffect(() => {
     if (selectedGirino)
-    setAllUserGirino()
+      setAllUserGirino()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGirino]);
-  
+
   return (
     <>
       <ContainerLateral>
-          <select onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectedGirino', [Number(e.target.value)]) : setValue('isModalOpen', true) }}>
-            {girini && girini?.map((val, key) => {
-              return (
-                <option key={key} value={val.id}>{val.name}</option>
-              )
-            }
-            )}
-          </select> 
+        <CustomSelect onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectedGirino', [Number(e.target.value)]) : setValue('isModalOpen', true) }}>
+          {girini && girini?.map((val, key) => {
+            return (
+              <option key={key} value={val.id}>{val.name}</option>
+            )
+          }
+          )}
+        </CustomSelect>
         {isAdmin ?
-          <select onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectUser', allUser[e.target.value]) : setValue('isModalOpen', true) }}>
+          <CustomSelect onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectUser', allUser[e.target.value]) : setValue('isModalOpen', true) }}>
             {allUserGirino.map((val, key) => {
               return (
                 <option key={key} value={key}>{val.name}</option>
               )
             }
             )}
-          </select> :
+          </CustomSelect> :
           <></>}
         <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/Order') : setValue('isModalOpen', true) }}>{'Ordinazioni'}</ButtonSelect>
         <ButtonSelect onClick={() => {
@@ -133,7 +135,7 @@ export const LateralColumn = () => {
         <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/TipiProdotti') : setValue('isModalOpen', true) }}>{'TipiProdotti'}</ButtonSelect>
         <ButtonSelect disabled={modifiedItem.length === 0 && !changeday} onClick={async () => { await save(); await resetModify(); setIsSending(true) }}>{'Salva'}</ButtonSelect>
       </ContainerLateral>
-      {isModalStamp && <ModalStamp setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney}/>}
+      {isModalStamp && <ModalStamp setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney} />}
     </>
   );
 };

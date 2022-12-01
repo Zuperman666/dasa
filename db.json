@@ -56,7 +56,7 @@
       "price": "1",
       "tipoProdotto": 2,
       "iva": "1",
-      "isActive": false
+      "isActive": true
     },
     {
       "name": "Pizza",
@@ -71,7 +71,7 @@
       "price": "2",
       "iva": "22",
       "tipoProdotto": 2,
-      "isActive": false,
+      "isActive": true,
       "id": 4
     },
     {
@@ -79,8 +79,16 @@
       "price": "20",
       "iva": "19",
       "tipoProdotto": 1,
-      "isActive": false,
+      "isActive": true,
       "id": 5
+    },
+    {
+      "name": "Luca",
+      "price": "3",
+      "iva": "3",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 6
     }
   ],
   "usuallyOrder": [

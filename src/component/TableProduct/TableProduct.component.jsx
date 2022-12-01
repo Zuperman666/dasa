@@ -1,7 +1,7 @@
 import { ProductCard } from 'component/ProductCard/ProductCard.component';
 import React, { useEffect } from 'react';
 import { useStore } from 'store/store';
-import { Column, ContainerDoubleTable, ContainerTableInside, ContainerToggle, Row } from './style/TableProduct.style';
+import { Column, ContainerDoubleTable, ContainerToggle, Row } from './style/TableProduct.style';
 import Toggle from 'react-toggle'
 import { HeaderTable } from './partials/HeaderTable/HeaderTable.component';
 
@@ -26,28 +26,27 @@ export const TableProduct = () => {
 
   return (
     <>
-      <ContainerTableInside>
-        <HeaderTable />
-        <ContainerToggle> <div>Abilita/Disabilita giorno</div>
-          <Toggle
-            checked={selectedDayOrder && selectedDayOrder?.stato === 'aperto'}
-            onChange={() => { changeOpen(); setValue('changeday', !changeday) }} /></ContainerToggle>
+      <HeaderTable />
+      <ContainerToggle> <div>Abilita/Disabilita giorno</div>
+        <Toggle
+          icons={false}
+          checked={selectedDayOrder && selectedDayOrder?.stato === 'aperto'}
+          onChange={() => { changeOpen(); setValue('changeday', !changeday) }} /></ContainerToggle>
 
-        <ContainerDoubleTable>
-          <Row>
-            {selectedDayOrder.stato === 'aperto' && item.map((val, key) => {
-              if (val.isActive) {
-                const isPresent = selectedDayOrder.ordine.find((obj) => obj.itemId === val.id)
-                return (
-                  <Column>
-                    <ProductCard key={Math.random()} name={val.name} isPresent={isPresent} itemId={val.id} quantità={isPresent ? isPresent.quantità : 0} />
-                  </Column>
-                )
-              } else return<></>
-            })}
-          </Row>
-        </ContainerDoubleTable>
-      </ContainerTableInside>
+      <ContainerDoubleTable>
+        <Row>
+          {selectedDayOrder.stato === 'aperto' && item.map((val, key) => {
+            if (val.isActive) {
+              const isPresent = selectedDayOrder.ordine.find((obj) => obj.itemId === val.id)
+              return (
+                <Column>
+                  <ProductCard key={Math.random()} name={val.name} isPresent={isPresent} itemId={val.id} quantità={isPresent ? isPresent.quantità : 0} />
+                </Column>
+              )
+            } else return <></>
+          })}
+        </Row>
+      </ContainerDoubleTable>
     </>
   );
 };

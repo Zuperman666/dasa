@@ -4,7 +4,7 @@ import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
 import { ProductCardPrice } from './partial/ProductCardPrice.component';
 import "react-toggle/style.css";
-import { Column, ContainerDoubleTable, ContainerTableInside, ContainerToggle, Row } from './style/ProductList.style';
+import { Column, ContainerDoubleTable, ContainerToggle, Row } from './style/ProductList.style';
 import AddNewProductCard from 'component/AddNewProductCard/AddNewProductCard.component';
 
 
@@ -35,7 +35,7 @@ export const ProductList = () => {
   }
 
   return (
-    <ContainerTableInside>
+    <>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
         <Toggle
           icons={false}
@@ -75,7 +75,7 @@ export const ProductList = () => {
         tipiProdotti={tipiProdotti}
         sendToDbItem={sendToDbItem}
       />
-    </ContainerTableInside>
+    </>
   );
 };
 

@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
-import { Column, ContainerDoubleTable, ContainerNewProduct, ContainerTableInside, ContainerToggle, ContainerUsers, Row } from './style/TipiProdotti.style';
+import { ContainerNewProduct, ContainerPadding } from 'style/Container.style';
+import { Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row } from './style/TipiProdotti.style';
 
 
 export const TipiProdotti = (props) => {
@@ -27,17 +28,17 @@ export const TipiProdotti = (props) => {
     setTipiProdotti()
   }
 
-  
+
   return (
-    <ContainerTableInside>
+    <ContainerPadding>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
-      <Toggle
+        <Toggle
           checked={active}
           onChange={() => setActive(!active)} />
       </ContainerToggle>
       <ContainerDoubleTable>
         <Row>
-          {tipiProdotti.map((val, key) => {
+          {tipiProdotti && tipiProdotti.map((val, key) => {
             if (val.isActive === active) {
               return (
                 <Column>
@@ -62,7 +63,7 @@ export const TipiProdotti = (props) => {
         <input placeholder={'nome'} onChange={(e) => setNome(e.target.value)} type={'text'}></input>
         <button onClick={() => sendToDbUser()} disabled={!(nome.length > 0)}>{'Conferma'}</button>
       </ContainerNewProduct>
-    </ContainerTableInside>
+    </ContainerPadding>
   );
 };
 
