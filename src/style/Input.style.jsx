@@ -13,6 +13,8 @@ appearance: none;
 font-weight: 400;
 transition: all 0.3s ease-in-out;
 outline: 0;
+max-width: 200px;
+
 &:hover {
   opacity: 0.8;
   }
@@ -20,5 +22,8 @@ outline: 0;
     background-color: transparent;
     border: solid 1px;
 
+  }
+  @media screen and (min-width: 575px) {
+    max-width: 200px;
   }
 `

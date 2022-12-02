@@ -18,15 +18,15 @@ export const Header = () => {
           {'Logo'}
         </Wrapper>
         <LateralColumn />
-        <Sidebar sidebarOpen={sidebarOpen} setSideBarOpen={setSidebarOpen} />
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {isLogged &&
             <Wrapper>
               {'Ciao ' + selectUser?.name}
               <LogOutIcon stroke='#000000' />
             </Wrapper>}
-          <BurgerDiv>
-            <BurgerIcon stroke='black' onClick={() => setSidebarOpen(true)} />
+          <BurgerDiv onClick={() => setSidebarOpen(true)} >
+            <BurgerIcon stroke='black' />
           </BurgerDiv>
         </div>
       </HeaderContainer>

@@ -5,7 +5,7 @@ export const SidebarContainer = styled.div`
 background-color:#ffff;
 position: fixed;
 top: 0;
-width: 38rem;
+width: 50%;
 bottom: 0;
 right: -45rem;
 z-index: 10;
@@ -14,6 +14,7 @@ display: flex;
 flex-direction: column;
 justify-content: space-between;
 transition: all 0.5s;
+border-left: solid 1px;
 
 &.open {
   opacity: 1;
@@ -28,4 +29,12 @@ export const SHEader = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
+`
+export const Overlay = styled.div`
+position: absolute;
+right: 0;
+top: 0;
+z-index:9;
+background: #ddd;
+opacity: 0.8;
 `

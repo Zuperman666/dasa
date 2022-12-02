@@ -13,7 +13,6 @@ export const CustomSelect = styled.select`
     outline: 0;
     display: inline-block;
     padding: 5px 1.5em 5px 1em;
-    margin: 0 auto;
     -webkit-appearance: none;
     transition: all 0.3s ease-in-out;
     background-image: linear-gradient(45deg,transparent 50%,gray 50%), linear-gradient(135deg,gray 50%,transparent 50%), linear-gradient(to right,#ccc,#ccc);
@@ -21,7 +20,8 @@ export const CustomSelect = styled.select`
     background-size: 5px 5px,5px 5px,1px 1.5em;
     background-repeat: no-repeat;
     width: 100%;
-  &:focus{
+    max-width: 200px;
+   &:focus{
     background-color: transparent;
     border: solid 1px;
     background-image:

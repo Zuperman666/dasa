@@ -17,7 +17,7 @@ import { CustomInput } from 'style/Input.style';
 export const ProductCardPrice = (props) => {
     const tipiProdotti = useStore((state) => state.tipiProdotti)
     const setItem = useStore((state) => state.setItem)
-
+    const ref = useRef(null);
 
     const [edit, setEdit] = useState({
         isEditing: false,
@@ -52,16 +52,26 @@ export const ProductCardPrice = (props) => {
     }
 
 
-
+    const handleClick = () => {
+        setTimeout(() => ref.current.focus())
+        setEdit({
+            isEditing: true,
+            name: props.name,
+            price: props.price,
+            iva: props.iva,
+            tipoProdotto: props.tipoProdotto
+        })
+    }
 
     return (
         <>
             <ContainerProdctCardPrice >
                 <TextProductCard >
                     <InputText
-                        placeholder={firstToCapitalLetter(props.name)}
+                        ref={ref}
                         disabled={edit.isEditing === false}
-                        value={firstToCapitalLetter(edit.name)} onChange={(e) => setEdit({
+                        value={firstToCapitalLetter(edit.name)}
+                        onChange={(e) => setEdit({
                             isEditing: true,
                             name: e.target.value,
                             price: edit.price,
@@ -128,13 +138,7 @@ export const ProductCardPrice = (props) => {
                 </ContainerInputs>
                 <ButtonContainer>
                     <ControlIcons>
-                        {!edit.isEditing && <IconWrapper onClick={() => setEdit({
-                            isEditing: true,
-                            name: props.name,
-                            price: props.price,
-                            iva: props.iva,
-                            tipoProdotto: props.tipoProdotto
-                        })} >
+                        {!edit.isEditing && <IconWrapper onClick={() => handleClick()} >
                             <EditIcon />
                         </IconWrapper>}
                         {edit.isEditing && <IconWrapper onClick={() => patchToDbItem()} >

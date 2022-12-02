@@ -2,11 +2,10 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from 'store/store';
-import { SHEader, SidebarContainer } from './style/Sidebar.style';
+import { Overlay, SHEader, SidebarContainer } from './style/Sidebar.style';
 import { ReactComponent as CloseIcon } from 'images/icons/circled_X.svg';
-import { isNull } from 'lodash-es';
 
-const Sidebar = ({ sidebarOpen, /* setSidebarOpen */ }) => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     const navigate = useNavigate();
     const [isSending, setIsSending] = useState(false);
     const [isModalStamp, setIsModalStamp] = useState(false);
@@ -102,12 +101,15 @@ const Sidebar = ({ sidebarOpen, /* setSidebarOpen */ }) => {
     }, [selectedGirino]);
 
     return (
-        <SidebarContainer className={sidebarOpen && 'open'}>
-            <SHEader>
-                <div>{'Logo'}</div>
-                <CloseIcon onClick={() => null} />
-            </SHEader>
-        </SidebarContainer>
+        <>
+            <SidebarContainer className={sidebarOpen && 'open'}>
+                <SHEader>
+                    <div>{'Logo'}</div>
+                    <CloseIcon onClick={() => setSidebarOpen(false)} />
+                </SHEader>
+            </SidebarContainer>
+            <Overlay onClick={() => setSidebarOpen(false)} />
+        </>
     )
 }
 
