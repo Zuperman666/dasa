@@ -46,7 +46,6 @@ export const Users = (props) => {
   }
 
   const patchToDbItem = async () => {
-    console.log(edit)
     await axios.patch(`http://localhost:3001/user/${edit.id}`, {
       "name": edit.name,
       "via": edit.via,

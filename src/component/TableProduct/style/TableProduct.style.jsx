@@ -2,6 +2,24 @@ import styled from 'styled-components';
 
 
 
+export const DayH1 = styled.h1`
+display: block;
+cursor: pointer;
+text-decoration: underline;
+padding:10px 15px;
+border-radius: 12px;
+border: solid 1px ;
+:hover{
+    border:solid 1px transparent;
+    background-color: red;
+    color:#fff;
+}
+@media screen and (min-width:575px) {
+display: none;
+}
+`
+    
+
 export const InsideTableContainer = styled.div`
     width: 100%;
     height: 100%;

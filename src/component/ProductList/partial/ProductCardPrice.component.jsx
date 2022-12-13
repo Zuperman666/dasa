@@ -63,22 +63,25 @@ export const ProductCardPrice = (props) => {
         })
     }
 
+    
+    
     return (
         <>
             <ContainerProdctCardPrice >
                 <TextProductCard >
-                    <InputText
-                        ref={ref}
-                        disabled={edit.isEditing === false}
-                        value={firstToCapitalLetter(edit.name)}
-                        onChange={(e) => setEdit({
-                            isEditing: true,
-                            name: e.target.value,
-                            price: edit.price,
-                            iva: edit.iva,
-                            tipoProdotto: edit.tipoProdotto
-                        })} type={'text'}
-                    ></InputText>
+                    {edit.isEditing
+                        ? <InputText
+                            ref={ref}
+                            value={firstToCapitalLetter(edit.name)}
+                            onChange={(e) => setEdit({
+                                isEditing: true,
+                                name: e.target.value,
+                                price: edit.price,
+                                iva: edit.iva,
+                                tipoProdotto: edit.tipoProdotto
+                            })} type={'text'}
+                        />
+                        : <span style={{ minWidth: 'fit-content' }}> {props.name}</span>}
                 </TextProductCard>
 
                 <ContainerInputs>
@@ -131,7 +134,7 @@ export const ProductCardPrice = (props) => {
                                 )}
                             </CustomSelect>
                         </InputWrapper>
-                        : <ContainerNumber><span>Tipo: </span>{tipiProdotti.name && tipiProdotti.filter((item) =>
+                        : <ContainerNumber><span>Tipo: </span>{tipiProdotti.name && tipiProdotti.filter((item, key) =>
                             item.id === props.tipoProdotto
                         )[0].name}<span>{props.price}</span>
                         </ContainerNumber>}

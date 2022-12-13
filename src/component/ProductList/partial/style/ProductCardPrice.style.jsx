@@ -72,6 +72,9 @@ export const InputWrapper = styled.div`
   justify-content:space-between;
   > *{margin-top:12px;
   margin-left: 5px;}
+  label{
+    flex-grow: 1;
+  }
   `
 
 

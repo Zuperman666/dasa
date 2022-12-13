@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
   justify-content: space-between;
   overflow: hidden auto;
   flex: 1 0 auto;
-  position: relative;
+  /* position: relative; */
   min-height: fit-content;
   background: transparent;
 

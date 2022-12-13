@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStore } from 'store/store';
+import { CustomInput } from 'style/Input.style';
 import { ContainerProductCard, InputCustomNumber, TextProductCard } from './style/ProductCard.style';
 
 
@@ -30,7 +31,9 @@ export const ProductCard = (props) => {
   return (
     <ContainerProductCard>
       <TextProductCard> {props.name}</TextProductCard>
-      <InputCustomNumber onChange={(e) => (modifyItem({ itemId: props.itemId, quantità: Number(e.target.value) }), ModifyItemFunction(e))}
+      <CustomInput
+        // @ts-ignore
+        maxWidth={'fit-content'} onChange={(e) => (modifyItem({ itemId: props.itemId, quantità: Number(e.target.value) }), ModifyItemFunction(e))}
         defaultValue={props.quantità} type={'number'} min={"0"} />
     </ContainerProductCard>
   );

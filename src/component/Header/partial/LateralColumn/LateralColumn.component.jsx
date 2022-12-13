@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from 'store/store';
 import { CustomSelect } from 'style/Select.style';
 import { ModalStamp } from '../ModalStamp/ModalStamp.component';
-import { ButtonSelect, ContainerLateral } from './style/LateralColumn.style';
+import { ButtonSelect, ButtonWrapper, ContainerLateral } from './style/LateralColumn.style';
 
 export const LateralColumn = (props) => {
   const [isSending, setIsSending] = useState(false)
@@ -34,6 +34,7 @@ export const LateralColumn = (props) => {
   const allUserGirino = useStore((state) => state.allUserGirino)
   const girini = useStore((state) => state.girini)
   const navigate = useNavigate();
+
 
 
   const SendToDbProduct = async () => {
@@ -123,17 +124,45 @@ export const LateralColumn = (props) => {
             )}
           </CustomSelect> :
           <></>}
-        <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/Order') : setValue('isModalOpen', true) }}>{'Ordinazioni'}</ButtonSelect>
-        <ButtonSelect onClick={() => {
-          modifiedItem.length === 0 && !changeday ? navigate('/History') :
-            setValue('isModalOpen', true)
-        }}>{'Storico'}</ButtonSelect>
-        <ButtonSelect onClick={() => PrintTotal()}>{'Stampa'}</ButtonSelect>
-        <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/Product') : setValue('isModalOpen', true) }}>{'Prodotti'}</ButtonSelect>
-        <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/Users') : setValue('isModalOpen', true) }}>{'Utenti'}</ButtonSelect>
-        <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/Girini') : setValue('isModalOpen', true) }}>{'Girini'}</ButtonSelect>
-        <ButtonSelect onClick={() => { modifiedItem.length === 0 && !changeday ? navigate('/TipiProdotti') : setValue('isModalOpen', true) }}>{'TipiProdotti'}</ButtonSelect>
-        <ButtonSelect disabled={modifiedItem.length === 0 && !changeday} onClick={async () => { await save(); await resetModify(); setIsSending(true) }}>{'Salva'}</ButtonSelect>
+        <ButtonWrapper>
+          <ButtonSelect
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday
+                ? navigate('/Order')
+                : setValue('isModalOpen', true)
+            }}>{'Ordinazioni'}</ButtonSelect>
+          <ButtonSelect onClick={() => {
+            modifiedItem.length === 0 && !changeday ? navigate('/History') :
+              setValue('isModalOpen', true)
+          }}>{'Storico'}</ButtonSelect>
+          <ButtonSelect onClick={() => PrintTotal()}>{'Stampa'}</ButtonSelect>
+          <ButtonSelect onClick={() => {
+            modifiedItem.length === 0 && !changeday
+              ? navigate('/Product') : setValue('isModalOpen', true)
+          }}>{'Prodotti'}</ButtonSelect>
+          <ButtonSelect onClick={() => {
+            modifiedItem.length === 0 && !changeday ?
+              navigate('/Users')
+              : setValue('isModalOpen', true)
+          }}>{'Utenti'}</ButtonSelect>
+          <ButtonSelect onClick={() => {
+            modifiedItem.length === 0 && !changeday ?
+              navigate('/Girini')
+              : setValue('isModalOpen', true)
+          }}>{'Girini'}</ButtonSelect>
+          <ButtonSelect onClick={() => {
+            modifiedItem.length === 0 && !changeday ?
+              navigate('/TipiProdotti')
+              : setValue('isModalOpen', true)
+          }}>{'TipiProdotti'}</ButtonSelect>
+          <ButtonSelect
+            disabled={modifiedItem.length === 0 && !changeday}
+            onClick={async () => {
+              await save();
+              await resetModify();
+              setIsSending(true)
+            }}>{'Salva'}</ButtonSelect>
+        </ButtonWrapper>
       </ContainerLateral>
       {isModalStamp && <ModalStamp setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney} />}
     </>

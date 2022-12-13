@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useStore } from 'store/store';
-import { Overlay, SHEader, SidebarContainer } from './style/Sidebar.style';
+import { ButtonSidebarSelect, SHEader, SidebarContainer } from './style/Sidebar.style';
 import { ReactComponent as CloseIcon } from 'images/icons/circled_X.svg';
+import { CustomSelect } from 'style/Select.style';
+import { Overlay } from 'style/Overlay.style';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     const navigate = useNavigate();
@@ -100,6 +102,17 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedGirino]);
 
+
+    const handleButtonSelectClick = ( path) => {
+        modifiedItem.length === 0 && !changeday ?
+        navigate(`/${path}`)
+        :
+        setValue('isModalOpen', true);
+        setSidebarOpen(false)
+        }
+
+ 
+
     return (
         <>
             <SidebarContainer className={sidebarOpen && 'open'}>
@@ -107,8 +120,50 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                     <div>{'Logo'}</div>
                     <CloseIcon onClick={() => setSidebarOpen(false)} />
                 </SHEader>
+                <div style={{ display: 'flex', minWidth: '200px' }}>
+                    <CustomSelect onChange={(e) => {
+                        modifiedItem.length === 0 && !changeday
+                            ? setValue('selectedGirino', [Number(e.target.value)])
+                            : setValue('isModalOpen', true)
+                    }}>
+                        {girini && girini?.map((val, key) => {
+                            return (
+                                <option key={key} value={val.id}>{val.name}</option>
+                            )
+                        }
+                        )}
+                    </CustomSelect>
+                    {isAdmin ?
+                        <CustomSelect
+
+                            onChange={(e) => {
+                                modifiedItem.length === 0 && !changeday ?
+                                    setValue('selectUser', allUser[e.target.value])
+                                    : setValue('isModalOpen', true)
+                            }}>
+                            {allUserGirino.map((val, key) => {
+                                return (
+                                    <option key={key} value={key}>{val.name}</option>
+                                )
+                            }
+                            )}
+                        </CustomSelect> :
+                        <></>}
+                </div>
+
+
+
+                <ButtonSidebarSelect
+                    onClick={() => handleButtonSelectClick('Order')}>{'Ordinazioni'}</ButtonSidebarSelect>
+                <ButtonSidebarSelect onClick={() => handleButtonSelectClick('History')}>{'Storico'}</ButtonSidebarSelect>
+                <ButtonSidebarSelect onClick={() => PrintTotal()}>{'Stampa'}</ButtonSidebarSelect>
+                <ButtonSidebarSelect onClick={() => handleButtonSelectClick('Product')}>{'Prodotti'}</ButtonSidebarSelect>
+                <ButtonSidebarSelect onClick={() => handleButtonSelectClick('Users')}>{'Utenti'}</ButtonSidebarSelect>
+                <ButtonSidebarSelect onClick={() => handleButtonSelectClick('Girini')}>{'Girini'}</ButtonSidebarSelect>
+                <ButtonSidebarSelect onClick={() => handleButtonSelectClick('TipiProdotti')}>{'TipiProdotti'}</ButtonSidebarSelect>
+
             </SidebarContainer>
-            <Overlay onClick={() => setSidebarOpen(false)} />
+
         </>
     )
 }

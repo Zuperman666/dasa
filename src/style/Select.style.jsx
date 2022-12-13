@@ -12,31 +12,18 @@ export const CustomSelect = styled.select`
     border: solid 1px transparent;
     outline: 0;
     display: inline-block;
-    padding: 5px 1.5em 5px 1em;
-    -webkit-appearance: none;
+    padding: 4px 5px 4px 5px;
     transition: all 0.3s ease-in-out;
-    background-image: linear-gradient(45deg,transparent 50%,gray 50%), linear-gradient(135deg,gray 50%,transparent 50%), linear-gradient(to right,#ccc,#ccc);
-    background-position: calc(100% - 20px) calc(1em + -2px), calc(100% - 15px) calc(1em - 2px), calc(100% - 3em);
-    background-size: 5px 5px,5px 5px,1px 1.5em;
-    background-repeat: no-repeat;
     width: 100%;
     max-width: 200px;
+    text-overflow: ellipsis;
+      
    &:focus{
     background-color: transparent;
     border: solid 1px;
-    background-image:
-    linear-gradient(45deg, green 50%, transparent 50%),
-    linear-gradient(135deg, transparent 50%, green 50%),
-    linear-gradient(to right, #ccc, #ccc);
-  background-position:
-    calc(100% - 15px) 0.8em,
-    calc(100% - 20px) 0.8em,
-    calc(100% - 3em);
-  background-size:
-    5px 5px,
-    5px 5px,
-    1px 1.5em;
-  background-repeat: no-repeat;
+    
+   
  
   }
   `
+

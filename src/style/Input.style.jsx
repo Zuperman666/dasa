@@ -5,7 +5,7 @@ export const CustomInput = styled.input`
   color:#6c6c6c;
 } 
 width: 100%;
-padding: 4px 5px 4px 24px;
+padding: 4px 5px 4px 5px;
 border:1px solid transparent;
 border-radius:8px;
 background-color:#ddd;
@@ -13,7 +13,7 @@ appearance: none;
 font-weight: 400;
 transition: all 0.3s ease-in-out;
 outline: 0;
-max-width: 200px;
+max-width: ${props=>props.maxWidth ||' 200px'};
 
 &:hover {
   opacity: 0.8;
@@ -24,6 +24,6 @@ max-width: 200px;
 
   }
   @media screen and (min-width: 575px) {
-    max-width: 200px;
+    max-width: ${props=>props.maxWidth ||' 200px'};
   }
 `

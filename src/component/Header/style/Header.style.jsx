@@ -7,12 +7,34 @@ height: 50px;
 display: flex;
 align-items: center;
 justify-content:space-between;
+overflow-x: auto ;
+::-webkit-scrollbar{
+display: none;
+}
+
 `
 export const Wrapper = styled.div`
 display: flex;
-padding:10px;
-gap: 24px;  
->*{cursor:pointer}
+min-width:fit-content;
+align-items: center;
+svg{
+   cursor:pointer;
+   height: 24px;
+   visibility:hidden;
+   transition: all 0.8s;
+   margin-left:24px;
+   &:hover{
+      visibility: visible;
+   }
+
+   
+}
+span{
+white-space: nowrap;
+&:hover + svg{
+visibility:visible;
+}
+}
  
 `
 export const ContainerPage = styled.div`
@@ -33,7 +55,7 @@ background: transparent;
 `
 export const BurgerDiv = styled.div`
 cursor: pointer;
- @media screen and (min-width: 575px){
+@media screen and (min-width: 575px){
     display: none;
  }
 `

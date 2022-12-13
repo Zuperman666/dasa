@@ -5,6 +5,7 @@ import { BurgerDiv, HeaderContainer, Wrapper } from './style/Header.style'
 import { ReactComponent as BurgerIcon } from 'images/icons/hamburger-menu.svg';
 import { ReactComponent as LogOutIcon } from 'images/icons/exit.svg';
 import Sidebar from './partial/Sidebar/Sidebar.component';
+import { Overlay } from 'style/Overlay.style';
 
 export const Header = () => {
   const selectUser = useStore((state) => state.selectUser)
@@ -18,18 +19,17 @@ export const Header = () => {
           {'Logo'}
         </Wrapper>
         <LateralColumn />
-        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> 
           {isLogged &&
             <Wrapper>
-              {'Ciao ' + selectUser?.name}
+              <span>{'Ciao ' + selectUser?.name}</span>
               <LogOutIcon stroke='#000000' />
-            </Wrapper>}
+            </Wrapper>} 
           <BurgerDiv onClick={() => setSidebarOpen(true)} >
             <BurgerIcon stroke='black' />
           </BurgerDiv>
-        </div>
       </HeaderContainer>
+      {sidebarOpen && <Overlay onClick={() => setSidebarOpen(false)} />}
     </>
   );
 };
