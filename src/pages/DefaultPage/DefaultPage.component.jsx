@@ -1,16 +1,17 @@
-import { ContainerPage } from 'component/Header/style/Header.style';
+import { MainContainer } from 'style/Container.style';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Header } from '../../component/Header/Header.component';
 
 export const DefaultPage = () => {
 
+
   return (
     <>
-        <Header/>
-          <ContainerPage>
-          <Outlet />
-        </ContainerPage>
+      <Header />
+      <MainContainer>
+        <Outlet />
+      </MainContainer>
     </>
   );
 };

@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
 import { ProductCardPrice } from './partial/ProductCardPrice.component';
-import { Column, ContainerDoubleTable, ContainerNewProduct, ContainerSelectTypeProduct, ContainerTableInside, ContainerToggle, Row, SelectTypeProduct } from './style/ProductList.style';
+import "react-toggle/style.css";
+import { Column, ContainerDoubleTable, ContainerToggle, Row } from './style/ProductList.style';
+import AddNewProductCard from 'component/AddNewProductCard/AddNewProductCard.component';
 
 
 export const ProductList = () => {
@@ -11,7 +13,8 @@ export const ProductList = () => {
   const tipiProdotti = useStore((state) => state.tipiProdotti)
   const setItem = useStore((state) => state.setItem)
   const [active, setActive] = useState(true)
-  const [tipoProdotto, setTipoProdotto] = useState(tipiProdotti[0])
+  const [tipoProdotto, setTipoProdotto] = useState(tipiProdotti.filter((item, key) =>
+    item.id === key).name)
   const [nome, setNome] = useState('')
   const [prezzo, setPrezzo] = useState('')
   const [iva, setIva] = useState('')
@@ -21,7 +24,7 @@ export const ProductList = () => {
       "name": nome,
       "price": prezzo,
       "iva": iva,
-      "tipoProdotto":tipoProdotto,
+      "tipoProdotto": tipoProdotto,
       "isActive": true
     })
     setItem()
@@ -32,9 +35,10 @@ export const ProductList = () => {
   }
 
   return (
-    <ContainerTableInside>
+    <>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
         <Toggle
+          icons={false}
           checked={active}
           onChange={() => setActive(!active)} />
       </ContainerToggle>
@@ -44,7 +48,14 @@ export const ProductList = () => {
             if (val.isActive === active) {
               return (
                 <Column>
-                  <ProductCardPrice id={val.id} tipoProdotto={val.tipoProdotto} isActive={val.isActive} key={key} name={val.name} iva={val.iva} price={val.price} />
+                  <ProductCardPrice
+                    id={val.id}
+                    tipoProdotto={val.tipoProdotto}
+                    isActive={val.isActive}
+                    key={key}
+                    name={val.name}
+                    iva={val.iva}
+                    price={val.price} />
                 </Column>
 
               )
@@ -53,24 +64,18 @@ export const ProductList = () => {
           }
         </Row>
       </ContainerDoubleTable>
-      <ContainerNewProduct>
-          Aggiungi Nuovo Prodotto
-          <input placeholder={'nome'} onChange={(e) => setNome(e.target.value)} type={'text'}></input>
-          <input type={'number'} onChange={(e) => setPrezzo(e.target.value)} placeholder={'prezzo'}></input>
-          <input type={'number'} onChange={(e) => setIva(e.target.value)} placeholder={'iva'}></input>
-          <ContainerSelectTypeProduct>
-          <SelectTypeProduct onChange={(e) => setTipoProdotto(e.target.value)}>
-          {tipiProdotti && tipiProdotti?.map((val, key) => {
-            return (
-              <option key={key} value={Number(val.id)}>{val.name}</option>
-            )
-          }
-          )}
-        </SelectTypeProduct>
-        </ContainerSelectTypeProduct>
-          <button onClick={() => sendToDbItem()} disabled={!(nome.length > 0 && prezzo.length > 0 && iva.length > 0)}>{'Conferma'}</button>
-      </ContainerNewProduct>
-    </ContainerTableInside>
+      <AddNewProductCard
+        setNome={setNome}
+        nome={nome}
+        setPrezzo={setPrezzo}
+        prezzo={prezzo}
+        setIva={setIva}
+        iva={iva}
+        setTipoProdotto={setTipoProdotto}
+        tipiProdotti={tipiProdotti}
+        sendToDbItem={sendToDbItem}
+      />
+    </>
   );
 };
 

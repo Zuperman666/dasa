@@ -14,8 +14,8 @@ export const ModalAlertContainer = styled.div`
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
-  margin-left: auto; 
-  margin-right: auto; 
+    margin-left: auto; 
+    margin-right: auto; 
 `
 export const ModalAlertText = styled.div`
     padding-left: 20%;

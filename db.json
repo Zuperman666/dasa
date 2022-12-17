@@ -37,23 +37,23 @@
     },
     {
       "id": 2,
-      "name": "CornettiMini",
+      "name": "Cornetti-Mini",
       "isActive": true
     }
   ],
   "item": [
     {
       "id": 1,
-      "name": "ciambelle",
+      "name": "Mario",
       "price": "3",
-      "tipoProdotto": 1,
+      "tipoProdotto": 2,
       "iva": 0,
-      "isActive": true
+      "isActive": false
     },
     {
       "id": 2,
-      "name": "ciambelleNutella",
-      "price": "1.5",
+      "name": "Ciambella",
+      "price": "1",
       "tipoProdotto": 2,
       "iva": "1",
       "isActive": true
@@ -62,15 +62,15 @@
       "name": "Pizza",
       "price": "3.5",
       "iva": "0",
-      "isActive": true,
+      "isActive": false,
       "tipoProdotto": 2,
       "id": 3
     },
     {
       "name": "Banana",
       "price": "2",
-      "iva": "20",
-      "tipoProdotto": 2,
+      "iva": "22",
+      "tipoProdotto": 1,
       "isActive": true,
       "id": 4
     },
@@ -78,13 +78,17 @@
       "name": "Mamma",
       "price": "20",
       "iva": "19",
-      "tipoProdotto": {
-        "id": 1,
-        "name": "Cornetti",
-        "isActive": true
-      },
+      "tipoProdotto": 1,
       "isActive": true,
       "id": 5
+    },
+    {
+      "name": "Luca",
+      "price": "3",
+      "iva": "3",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 6
     }
   ],
   "usuallyOrder": [
@@ -94,7 +98,7 @@
       "body": [
         {
           "day": "Monday",
-          "stato": "chiuso",
+          "stato": "aperto",
           "ordine": [
             {
               "itemId": 1,
@@ -144,7 +148,7 @@
             },
             {
               "itemId": 2,
-              "quantità": 3
+              "quantità": 6
             },
             {
               "itemId": 3,
@@ -179,7 +183,7 @@
             },
             {
               "itemId": 2,
-              "quantità": 1
+              "quantità": 0
             },
             {
               "itemId": 3,
@@ -187,7 +191,7 @@
             },
             {
               "itemId": 4,
-              "quantità": 3
+              "quantità": 2
             },
             {
               "itemId": 8,
@@ -205,14 +209,14 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 1
+              "quantità": 2
             },
             {
               "itemId": 2,
               "quantità": 1
             }
           ],
-          "stato": "chiuso"
+          "stato": "aperto"
         }
       ]
     },

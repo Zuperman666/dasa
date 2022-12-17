@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
-import { Column, ContainerDoubleTable, ContainerNewProduct, ContainerTableInside, ContainerToggle, ContainerUsers, Row } from './style/Girini.style';
+import { ContainerNewProduct, ContainerPadding } from 'style/Container.style';
+import { Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row } from './style/Girini.style';
 
 
 export const Girini = (props) => {
@@ -27,11 +28,12 @@ export const Girini = (props) => {
     setGirini()
   }
 
-  
+
   return (
-    <ContainerTableInside>
+    <ContainerPadding>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
-      <Toggle
+        <Toggle
+          icons={false}
           checked={active}
           onChange={() => setActive(!active)} />
       </ContainerToggle>
@@ -62,7 +64,7 @@ export const Girini = (props) => {
         <input placeholder={'nome'} onChange={(e) => setNome(e.target.value)} type={'text'}></input>
         <button onClick={() => sendToDbUser()} disabled={!(nome.length > 0)}>{'Conferma'}</button>
       </ContainerNewProduct>
-    </ContainerTableInside>
+    </ContainerPadding >
   );
 };
 

@@ -1,10 +1,12 @@
 import { ProductCard } from 'component/ProductCard/ProductCard.component';
 import React, { useEffect } from 'react';
 import { useStore } from 'store/store';
-import { Column, ContainerDoubleTable, ContainerTableInside, ContainerToggle, Row } from './style/TableProduct.style';
+import { Column, ContainerDoubleTable, ContainerToggle, DayH1, Row } from './style/TableProduct.style';
 import Toggle from 'react-toggle'
 import { HeaderTable } from './partials/HeaderTable/HeaderTable.component';
-
+import { Overlay } from 'style/Overlay.style';
+import { HeaderTableConfigDays } from './partials/HeaderTable/HeaderTable.config';
+ 
 export const TableProduct = () => {
   const item = useStore((state) => state.item)
   const selectedDay = useStore((state) => state.selectedDay)
@@ -14,7 +16,8 @@ export const TableProduct = () => {
   const setSelectedDayOrder = useStore((state) => state.setSelectedDayOrder)
   const selectedDayOrder = useStore((state) => state.selectedDayOrder)
   const userProduct = useStore((state) => state.userProduct)
-
+  const [isOpen, setIsOpen] = React.useState(false);
+  const today = HeaderTableConfigDays.filter((day)=>day.value === selectedDay);
   useEffect(() => {
     setSelectedDayOrder()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -26,29 +29,31 @@ export const TableProduct = () => {
 
   return (
     <>
-      <ContainerTableInside>
-        <HeaderTable />
-        <ContainerToggle> <div>Abilita/Disabilita giorno</div>
-          <Toggle
-            checked={selectedDayOrder && selectedDayOrder?.stato === 'aperto'}
-            onChange={() => { changeOpen(); setValue('changeday', !changeday) }} /></ContainerToggle>
+      <HeaderTable isOpen={isOpen} setIsOpen={setIsOpen}/>
+       
+      <DayH1 onClick={()=>setIsOpen(true)}>{today[0].text}</DayH1>
+      <ContainerToggle> <div>Abilita/Disabilita giorno</div>
+        <Toggle
+          icons={false}
+          checked={selectedDayOrder && selectedDayOrder?.stato === 'aperto'}
+          onChange={() => { changeOpen(); setValue('changeday', !changeday) }} /></ContainerToggle>
 
-        <ContainerDoubleTable>
-          <Row>
-            {selectedDayOrder.stato === 'aperto' && item.map((val, key) => {
-              if (val.isActive) {
-                const isPresent = selectedDayOrder.ordine.find((obj) => obj.itemId === val.id)
-                return (
-                  <Column>
-                    <ProductCard key={Math.random()} name={val.name} isPresent={isPresent} itemId={val.id} quantità={isPresent ? isPresent.quantità : 0} />
-                  </Column>
-                )
-              } else return<></>
-            })}
-          </Row>
-        </ContainerDoubleTable>
-      </ContainerTableInside>
-    </>
+      <ContainerDoubleTable>
+        <Row>
+          {selectedDayOrder.stato === 'aperto' && item.map((val, key) => {
+            if (val.isActive) {
+              const isPresent = selectedDayOrder.ordine.find((obj) => obj.itemId === val.id)
+              return (
+                <Column>
+                  <ProductCard key={Math.random()} name={val.name} isPresent={isPresent} itemId={val.id} quantità={isPresent ? isPresent.quantità : 0} />
+                </Column>
+              )
+            } else return <></>
+          })}
+        </Row>
+      </ContainerDoubleTable>
+      {isOpen && <Overlay onClick={()=>setIsOpen(false)}/>}
+       </>
   );
 };
 

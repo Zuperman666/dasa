@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 
-export const ContainerTableInside = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`
+
 
 export const InsideTableContainer = styled.div`
     width: 100%;
@@ -33,19 +27,7 @@ export const ContainerDoubleTable = styled.div`
     overflow: auto;
     max-height: 350px;
 `
-export const ContainerNewProduct = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    position:absolute;
-    bottom:0;
-    align-items: center;
-    margin-top:10px;
-    margin-bottom:10px;
-    > * {
-    margin-top:10px;
-  }
-`
+
 export const ContainerUsers = styled.div`
 white-space: nowrap;
 display: flex;
