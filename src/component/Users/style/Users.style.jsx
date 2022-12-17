@@ -46,7 +46,12 @@ export const ContainerToggle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    > div {
-        display: flex;
+    background-color:#e3dcf3;
+    min-height: 60px;
+    gap: 24px;
+    @media screen and (min-width: 575px) {
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
     }
+ 
 `

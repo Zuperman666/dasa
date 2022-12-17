@@ -159,7 +159,6 @@ export const ProductCardPrice = (props) => {
                             </IconWrapper>}
                     </ControlIcons>
                     <Button onClick={() => sendToDbItem()}> {props.isActive ? 'Disabilita' : 'Abilita'}</Button>
-
                 </ButtonContainer>
             </ContainerProdctCardPrice>
 

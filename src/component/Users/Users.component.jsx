@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AddNewUserCard from 'component/AddNewUserCard/AddNewUserCard.component';
 import React, { useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
@@ -78,7 +79,7 @@ export const Users = (props) => {
   }, [allUser]);
 
   return (
-    <ContainerPadding>
+    <>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
         <Toggle
           icons={false}
@@ -163,20 +164,16 @@ export const Users = (props) => {
         </Row>
       </ContainerDoubleTable>
       <ContainerNewProduct>
-        Aggiungi Nuovo User
-        <input placeholder={'nome'} onChange={(e) => setNome(e.target.value)} type={'text'}></input>
-        <input type={'text'} onChange={(e) => setVia(e.target.value)} placeholder={'via'}></input>
-        <SelectGirino onChange={(e) => setGirino(e.target.value)}>
-          {girini && girini?.map((val, key) => {
-            return (
-              <option key={key} value={val.id}>{val.name}</option>
-            )
-          }
-          )}
-        </SelectGirino>
-        <button onClick={() => sendToDbUser()} disabled={!(nome.length > 0 && via.length > 0)}>{'Conferma'}</button>
+      <AddNewUserCard  
+        setNome={setNome}
+        nome={nome}
+        setVia={setVia}
+        via={via}
+        sendToDbUser={sendToDbUser}
+        girini={girini}
+        setGirino={setGirino}/>
       </ContainerNewProduct>
-    </ContainerPadding>
+    </>
   );
 };
 

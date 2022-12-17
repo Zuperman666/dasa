@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AddNewGirini from 'component/AddNewGirini/AddNewGirini.component';
 import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
@@ -12,7 +13,7 @@ export const Girini = (props) => {
   const [active, setActive] = useState(true)
   const [nome, setNome] = useState('')
 
-  const sendToDbUser = async () => {
+  const sendToDbGirino = async () => {
     await axios.post(`http://localhost:3001/girini`, {
       "name": nome,
       "isActive": true,
@@ -30,7 +31,7 @@ export const Girini = (props) => {
 
 
   return (
-    <ContainerPadding>
+    <>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
         <Toggle
           icons={false}
@@ -60,11 +61,13 @@ export const Girini = (props) => {
         </Row>
       </ContainerDoubleTable>
       <ContainerNewProduct>
-        Aggiungi Nuovo Girino
-        <input placeholder={'nome'} onChange={(e) => setNome(e.target.value)} type={'text'}></input>
-        <button onClick={() => sendToDbUser()} disabled={!(nome.length > 0)}>{'Conferma'}</button>
+       <AddNewGirini 
+       nome={nome}
+       sendToDbItem={sendToDbGirino}
+       setNome={setNome}
+       />
       </ContainerNewProduct>
-    </ContainerPadding >
+    </ >
   );
 };
 

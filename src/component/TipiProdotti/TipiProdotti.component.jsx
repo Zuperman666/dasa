@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AddNewTipiProdotti from 'component/AddNewTipiProdotti/AddNewTipiProdotti.component';
 import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
@@ -30,10 +31,11 @@ export const TipiProdotti = (props) => {
 
 
   return (
-    <ContainerPadding>
+    <>
       <ContainerToggle> <div> {active ? <span>Vedi Disattivati</span> : <span>Vedi Abilitati</span>}</div>
         <Toggle
           checked={active}
+          icons={false}
           onChange={() => setActive(!active)} />
       </ContainerToggle>
       <ContainerDoubleTable>
@@ -59,11 +61,13 @@ export const TipiProdotti = (props) => {
         </Row>
       </ContainerDoubleTable>
       <ContainerNewProduct>
-        Aggiungi Nuovo Tipo Prodotto
-        <input placeholder={'nome'} onChange={(e) => setNome(e.target.value)} type={'text'}></input>
-        <button onClick={() => sendToDbUser()} disabled={!(nome.length > 0)}>{'Conferma'}</button>
+      <AddNewTipiProdotti 
+       nome={nome}
+       sendToDbItem={sendToDbUser}
+       setNome={setNome}
+       />
       </ContainerNewProduct>
-    </ContainerPadding>
+    </>
   );
 };
 
