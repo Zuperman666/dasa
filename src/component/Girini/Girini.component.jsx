@@ -3,8 +3,9 @@ import AddNewGirini from 'component/AddNewGirini/AddNewGirini.component';
 import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
+import { Button } from 'style/Button.style';
 import { ContainerNewProduct, ContainerPadding } from 'style/Container.style';
-import { Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row } from './style/Girini.style';
+import { ButtonContainer, Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row, TextProductCard } from './style/Girini.style';
 
 
 export const Girini = (props) => {
@@ -45,10 +46,15 @@ export const Girini = (props) => {
               return (
                 <Column>
                   <ContainerUsers>
-                    <div>
-                      {val.name}
-                    </div>
-                    <button onClick={() => patchToDbItem(val.id, val.isActive)} > {val.isActive ? 'Disabilita' : 'Abilita'}</button>
+                    <TextProductCard>
+
+                      <div>
+                        {val.name}
+                      </div>
+                    </TextProductCard>
+                    <ButtonContainer>
+                    <Button onClick={() => patchToDbItem(val.id, val.isActive)} > {val.isActive ? 'Disabilita' : 'Abilita'}</Button>
+                    </ButtonContainer>
                   </ContainerUsers>
                 </Column>
 
@@ -61,11 +67,11 @@ export const Girini = (props) => {
         </Row>
       </ContainerDoubleTable>
       <ContainerNewProduct>
-       <AddNewGirini 
-       nome={nome}
-       sendToDbItem={sendToDbGirino}
-       setNome={setNome}
-       />
+        <AddNewGirini
+          nome={nome}
+          sendToDbItem={sendToDbGirino}
+          setNome={setNome}
+        />
       </ContainerNewProduct>
     </ >
   );

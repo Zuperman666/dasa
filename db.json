@@ -15,6 +15,14 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 2
+    },
+    {
+      "name": "pippo",
+      "via": "via pippi",
+      "isActive": false,
+      "daPagare": 0,
+      "girino": 2,
+      "id": 3
     }
   ],
   "girini": [
@@ -27,6 +35,11 @@
       "name": "sergio",
       "isActive": true,
       "id": 2
+    },
+    {
+      "name": "franco",
+      "isActive": true,
+      "id": 3
     }
   ],
   "tipiProdotti": [
@@ -45,9 +58,9 @@
     {
       "id": 1,
       "name": "Mario",
-      "price": "3",
+      "price": "4",
       "tipoProdotto": 2,
-      "iva": 0,
+      "iva": "1",
       "isActive": true
     },
     {
@@ -86,7 +99,7 @@
       "name": "Luca",
       "price": "3",
       "iva": "3",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 6
     }
@@ -209,7 +222,7 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 2
+              "quantità": 4
             },
             {
               "itemId": 2,
@@ -331,6 +344,47 @@
         }
       ],
       "userId": 2
+    },
+    {
+      "userId": 3,
+      "body": [
+        {
+          "day": "Monday",
+          "stato": "aperto",
+          "ordine": []
+        },
+        {
+          "day": "Tuesday",
+          "stato": "aperto",
+          "ordine": []
+        },
+        {
+          "day": "Wednesday",
+          "stato": "aperto",
+          "ordine": []
+        },
+        {
+          "day": "Thursday",
+          "stato": "aperto",
+          "ordine": []
+        },
+        {
+          "day": "Friday",
+          "stato": "aperto",
+          "ordine": []
+        },
+        {
+          "day": "Saturday",
+          "stato": "aperto",
+          "ordine": []
+        },
+        {
+          "day": "Sunday",
+          "stato": "aperto",
+          "ordine": []
+        }
+      ],
+      "id": 3
     }
   ],
   "history": []

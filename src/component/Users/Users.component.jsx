@@ -1,5 +1,6 @@
 import axios from 'axios';
 import AddNewUserCard from 'component/AddNewUserCard/AddNewUserCard.component';
+import { UserCard } from 'component/UserCard/UserCard.component';
 import React, { useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
@@ -8,19 +9,14 @@ import { Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row, Sel
 
 
 export const Users = (props) => {
-  const [edit, setEdit] = useState({
-    isEditing: false,
-    name: '',
-    via: '',
-    girino: '',
-    id: ''
-  })
-  const allUser = useStore((state) => state.allUser)
   const girini = useStore((state) => state.girini)
+  const [girino, setGirino] = useState(girini[0])
+  const allUser = useStore((state) => state.allUser)
   const setUsers = useStore((state) => state.setUsers)
+ 
   const [active, setActive] = useState(true)
   const [sendToDbF, setSendToDbF] = useState(false)
-  const [girino, setGirino] = useState(girini[0])
+  
   const [nome, setNome] = useState('')
   const [via, setVia] = useState('')
   const arrayDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -46,29 +42,8 @@ export const Users = (props) => {
     })
   }
 
-  const patchToDbItem = async () => {
-    await axios.patch(`http://localhost:3001/user/${edit.id}`, {
-      "name": edit.name,
-      "via": edit.via,
-      'girino': Number(edit.girino)
-    })
-    setEdit({
-      isEditing: false,
-      name: '',
-      via: '',
-      girino: '',
-      id: ''
-    })
-    setUsers()
-  }
+  
 
-
-  const patchToDbItemActive = async (id, isActive) => {
-    await axios.patch(`http://localhost:3001/user/${id}`, {
-      "isActive": !isActive
-    })
-    setUsers()
-  }
 
   useEffect(() => {
     if (sendToDbF) {
@@ -93,65 +68,15 @@ export const Users = (props) => {
               return (
                 <Column>
                   <ContainerUsers>
-                    <div>
-                      {edit.isEditing && edit.id === val.id ?
-                        <input value={edit.name} onChange={(e) => setEdit({
-                          isEditing: true,
-                          name: e.target.value,
-                          via: edit.via,
-                          girino: edit.girino,
-                          id: edit.id
-                        })} type={'text'}></input> :
-                        <>{val.name}</>
-                      }
-                    </div>
-                    <div>
-                      {edit.isEditing && edit.id === val.id ?
-                        <input value={edit.via} onChange={(e) => setEdit({
-                          isEditing: true,
-                          name: edit.name,
-                          via: e.target.value,
-                          girino: edit.girino,
-                          id: edit.id
-                        })} type={'text'}></input> :
-                        <>{val.via}</>
-                      }
-                    </div>
-                    <div>
-                      {edit.isEditing && edit.id === val.id ?
-                        <SelectGirino defaultValue={edit.girino} onChange={(e) => setEdit({
-                          isEditing: true,
-                          name: edit.name,
-                          via: edit.via,
-                          girino: e.target.value,
-                          id: edit.id
-                        })}>
-                          {girini && girini?.map((val, key) => {
-                            return (
-                              <option key={key} value={val.id}>{val.name}</option>
-                            )
-                          }
-                          )}
-                        </SelectGirino> :
-                        <>{girini && girini?.filter((obj) => obj.id === val.girino)[0]?.name}</>
-                      }
-                    </div>
-                    <button onClick={() => patchToDbItemActive(val.id, val.isActive)} > {val.isActive ? 'Disabilita' : 'Abilita'}</button>
-                    {!edit.isEditing && <button onClick={() => setEdit({
-                      isEditing: true,
-                      name: val.name,
-                      via: val.via,
-                      girino: val.girino,
-                      id: val.id
-                    })} > {'Edita'}</button>}
-                    {edit.isEditing && edit.id === val.id && <button onClick={() => patchToDbItem()} > {'Salva'}</button>}
-                    {edit.isEditing && edit.id === val.id && <button onClick={() => setEdit({
-                      isEditing: false,
-                      name: '',
-                      via: '',
-                      girino: '',
-                      id: ''
-                    })} > {'Elimina Modifiche'}</button>}
+                   <UserCard
+                   via={val.via}
+                   id={val.id}
+                   girino={val.girino}
+                   tipoProdotto={val.tipoProdotto}
+                   isActive={val.isActive}
+                   key={key}
+                   name={val.name}
+                   />
                   </ContainerUsers>
                 </Column>
 

@@ -23,9 +23,13 @@ export const ContainerLateral = styled.div`
     }
 `
 export const ButtonSelect = styled.button`
+    color: ${props => props.selected ? 'red' : 'black'}; 
     width: 100%;
     height: 50px;
     border:none;
+    &:disabled{
+        color:grey
+    }
 `
 export const ButtonWrapper = styled.div`
 display: flex;

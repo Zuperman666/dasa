@@ -5,7 +5,7 @@ import { CustomInput } from 'style/Input.style'
 import { CustomSelect } from 'style/Select.style'
 
 export const AddNewUserCard = (props) => {
-console.log(props)
+
     return (
         <ContainerNewProduct>
             Aggiungi Nuovo User

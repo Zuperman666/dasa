@@ -1,10 +1,12 @@
 import axios from 'axios';
 import AddNewTipiProdotti from 'component/AddNewTipiProdotti/AddNewTipiProdotti.component';
+import { ButtonContainer, ContainerUsers, TextProductCard } from 'component/Girini/style/Girini.style';
 import React, { useState } from 'react';
 import Toggle from 'react-toggle';
 import { useStore } from 'store/store';
+import { Button } from 'style/Button.style';
 import { ContainerNewProduct, ContainerPadding } from 'style/Container.style';
-import { Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row } from './style/TipiProdotti.style';
+import { Column, ContainerDoubleTable, ContainerToggle, Row } from './style/TipiProdotti.style';
 
 
 export const TipiProdotti = (props) => {
@@ -45,10 +47,16 @@ export const TipiProdotti = (props) => {
               return (
                 <Column>
                   <ContainerUsers>
-                    <div>
-                      {val.name}
-                    </div>
-                    <button onClick={() => patchToDbItem(val.id, val.isActive)} > {val.isActive ? 'Disabilita' : 'Abilita'}</button>
+                    <TextProductCard>
+
+                      <div>
+                        {val.name}
+                      </div>
+                      </TextProductCard>
+                      <ButtonContainer>
+                        <Button onClick={() => patchToDbItem(val.id, val.isActive)} > {val.isActive ? 'Disabilita' : 'Abilita'}</Button>
+                      </ButtonContainer>
+                  
                   </ContainerUsers>
                 </Column>
 
@@ -61,11 +69,11 @@ export const TipiProdotti = (props) => {
         </Row>
       </ContainerDoubleTable>
       <ContainerNewProduct>
-      <AddNewTipiProdotti 
-       nome={nome}
-       sendToDbItem={sendToDbUser}
-       setNome={setNome}
-       />
+        <AddNewTipiProdotti
+          nome={nome}
+          sendToDbItem={sendToDbUser}
+          setNome={setNome}
+        />
       </ContainerNewProduct>
     </>
   );

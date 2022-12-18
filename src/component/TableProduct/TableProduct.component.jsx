@@ -1,11 +1,12 @@
 import { ProductCard } from 'component/ProductCard/ProductCard.component';
 import React, { useEffect } from 'react';
 import { useStore } from 'store/store';
-import { Column, ContainerDoubleTable, ContainerToggle, DayH1, Row } from './style/TableProduct.style';
+import { Column, ContainerDoubleTable, DayH1, Row } from './style/TableProduct.style';
 import Toggle from 'react-toggle'
 import { HeaderTable } from './partials/HeaderTable/HeaderTable.component';
 import { Overlay } from 'style/Overlay.style';
 import { HeaderTableConfigDays } from './partials/HeaderTable/HeaderTable.config';
+import { ContainerToggle } from 'component/Users/style/Users.style';
  
 export const TableProduct = () => {
   const item = useStore((state) => state.item)
@@ -28,9 +29,8 @@ export const TableProduct = () => {
   )
 
   return (
-    <>
+    <div>
       <HeaderTable isOpen={isOpen} setIsOpen={setIsOpen}/>
-       
       <DayH1 onClick={()=>setIsOpen(true)}>{today[0].text}</DayH1>
       <ContainerToggle> <div>Abilita/Disabilita giorno</div>
         <Toggle
@@ -53,7 +53,7 @@ export const TableProduct = () => {
         </Row>
       </ContainerDoubleTable>
       {isOpen && <Overlay onClick={()=>setIsOpen(false)}/>}
-       </>
+       </div>
   );
 };
 

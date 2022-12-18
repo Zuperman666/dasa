@@ -134,9 +134,9 @@ export const ProductCardPrice = (props) => {
                                 )}
                             </CustomSelect>
                         </InputWrapper>
-                        : <ContainerNumber><span>Tipo: </span>{tipiProdotti.name && tipiProdotti.filter((item, key) =>
-                            item.id === props.tipoProdotto
-                        )[0].name}<span>{props.price}</span>
+                        : <ContainerNumber><span>Tipo: </span>{tipiProdotti && tipiProdotti?.filter((item, key) =>
+                            item.id === Number(props.tipoProdotto)
+                        )[0]?.name}
                         </ContainerNumber>}
                 </ContainerInputs>
                 <ButtonContainer>

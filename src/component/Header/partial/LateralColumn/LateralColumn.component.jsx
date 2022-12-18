@@ -103,6 +103,8 @@ export const LateralColumn = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGirino]);
 
+  const pathname = window.location.pathname
+
   return (
     <>
       <ContainerLateral>
@@ -126,31 +128,42 @@ export const LateralColumn = (props) => {
           <></>}
         <ButtonWrapper>
           <ButtonSelect
+            selected= {pathname === '/Order'}
             onClick={() => {
               modifiedItem.length === 0 && !changeday
                 ? navigate('/Order')
                 : setValue('isModalOpen', true)
             }}>{'Ordinazioni'}</ButtonSelect>
-          <ButtonSelect onClick={() => {
+          <ButtonSelect 
+          selected= {pathname === '/History'}
+          onClick={() => {
             modifiedItem.length === 0 && !changeday ? navigate('/History') :
               setValue('isModalOpen', true)
           }}>{'Storico'}</ButtonSelect>
           <ButtonSelect onClick={() => PrintTotal()}>{'Stampa'}</ButtonSelect>
-          <ButtonSelect onClick={() => {
+          <ButtonSelect 
+          selected= {pathname === '/Product'}
+          onClick={() => {
             modifiedItem.length === 0 && !changeday
               ? navigate('/Product') : setValue('isModalOpen', true)
           }}>{'Prodotti'}</ButtonSelect>
-          <ButtonSelect onClick={() => {
+          <ButtonSelect 
+          selected= {pathname === '/Users'}
+          onClick={() => {
             modifiedItem.length === 0 && !changeday ?
               navigate('/Users')
               : setValue('isModalOpen', true)
           }}>{'Utenti'}</ButtonSelect>
-          <ButtonSelect onClick={() => {
+          <ButtonSelect 
+          selected= {pathname === '/Girini'}
+          onClick={() => {
             modifiedItem.length === 0 && !changeday ?
               navigate('/Girini')
               : setValue('isModalOpen', true)
           }}>{'Girini'}</ButtonSelect>
-          <ButtonSelect onClick={() => {
+          <ButtonSelect 
+          selected= {pathname === '/TipiProdotti'}
+          onClick={() => {
             modifiedItem.length === 0 && !changeday ?
               navigate('/TipiProdotti')
               : setValue('isModalOpen', true)
