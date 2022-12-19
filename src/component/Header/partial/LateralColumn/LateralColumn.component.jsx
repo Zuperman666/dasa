@@ -44,16 +44,21 @@ export const LateralColumn = (props) => {
 
     const resp = await axios.get('http://localhost:3001/usuallyOrder').then((resp) => resp)
     const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === selectedDay) })).filter((obj) => obj.body.length > 0)
+    console.log(filteredData)
     const money = filteredData.map((obj) => ({
       'userId': obj.userId, 'body': obj.body, 'totale': obj.body[0].ordine.map((obj2) => item.filter((obj3) => obj3.id === obj2.itemId)[0].price * obj2.quantità).reduce((previous, next) => {
         return previous + next;
-      })
+      })?.toFixed(2)
     }))
-    const moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totale': obj.totale }))
+    console.log(money)
+    let moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totale': obj.totale, 'girino': allUser.filter((obj2) => obj2.id === obj.userId)[0].girino}))
     /* await axios.post(`http://localhost:3001/history`, { 
        ordini: money,
        data: moment(new Date()).format()
      })*/
+
+    
+    console.log(moneyName)
     setMoney(moneyName)
     setIsModalStamp(true)
   }
@@ -128,46 +133,46 @@ export const LateralColumn = (props) => {
           <></>}
         <ButtonWrapper>
           <ButtonSelect
-            selected= {pathname === '/Order'}
+            selected={pathname === '/Order'}
             onClick={() => {
               modifiedItem.length === 0 && !changeday
                 ? navigate('/Order')
                 : setValue('isModalOpen', true)
             }}>{'Ordinazioni'}</ButtonSelect>
-          <ButtonSelect 
-          selected= {pathname === '/History'}
-          onClick={() => {
-            modifiedItem.length === 0 && !changeday ? navigate('/History') :
-              setValue('isModalOpen', true)
-          }}>{'Storico'}</ButtonSelect>
+          <ButtonSelect
+            selected={pathname === '/History'}
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday ? navigate('/History') :
+                setValue('isModalOpen', true)
+            }}>{'Storico'}</ButtonSelect>
           <ButtonSelect onClick={() => PrintTotal()}>{'Stampa'}</ButtonSelect>
-          <ButtonSelect 
-          selected= {pathname === '/Product'}
-          onClick={() => {
-            modifiedItem.length === 0 && !changeday
-              ? navigate('/Product') : setValue('isModalOpen', true)
-          }}>{'Prodotti'}</ButtonSelect>
-          <ButtonSelect 
-          selected= {pathname === '/Users'}
-          onClick={() => {
-            modifiedItem.length === 0 && !changeday ?
-              navigate('/Users')
-              : setValue('isModalOpen', true)
-          }}>{'Utenti'}</ButtonSelect>
-          <ButtonSelect 
-          selected= {pathname === '/Girini'}
-          onClick={() => {
-            modifiedItem.length === 0 && !changeday ?
-              navigate('/Girini')
-              : setValue('isModalOpen', true)
-          }}>{'Girini'}</ButtonSelect>
-          <ButtonSelect 
-          selected= {pathname === '/TipiProdotti'}
-          onClick={() => {
-            modifiedItem.length === 0 && !changeday ?
-              navigate('/TipiProdotti')
-              : setValue('isModalOpen', true)
-          }}>{'TipiProdotti'}</ButtonSelect>
+          <ButtonSelect
+            selected={pathname === '/Product'}
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday
+                ? navigate('/Product') : setValue('isModalOpen', true)
+            }}>{'Prodotti'}</ButtonSelect>
+          <ButtonSelect
+            selected={pathname === '/Users'}
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday ?
+                navigate('/Users')
+                : setValue('isModalOpen', true)
+            }}>{'Utenti'}</ButtonSelect>
+          <ButtonSelect
+            selected={pathname === '/Girini'}
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday ?
+                navigate('/Girini')
+                : setValue('isModalOpen', true)
+            }}>{'Girini'}</ButtonSelect>
+          <ButtonSelect
+            selected={pathname === '/TipiProdotti'}
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday ?
+                navigate('/TipiProdotti')
+                : setValue('isModalOpen', true)
+            }}>{'TipiProdotti'}</ButtonSelect>
           <ButtonSelect
             disabled={modifiedItem.length === 0 && !changeday}
             onClick={async () => {

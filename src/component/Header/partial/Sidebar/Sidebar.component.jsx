@@ -44,9 +44,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         const resp = await axios.get('http://localhost:3001/usuallyOrder').then((resp) => resp)
         const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === selectedDay) })).filter((obj) => obj.body.length > 0)
         const money = filteredData.map((obj) => ({
-            'userId': obj.userId, 'body': obj.body, 'totale': obj.body[0].ordine.map((obj2) => item.filter((obj3) => obj3.id === obj2.itemId)[0].price * obj2.quantità).reduce((previous, next) => {
+            'userId': obj.userId, 'body': obj.body, 'totale':obj.body[0].ordine.map((obj2) => item.filter((obj3) => obj3.id === obj2.itemId)[0].price * obj2.quantità).reduce((previous, next) => {
                 return previous + next;
-            })
+            }).toFixed(2)
         }))
         const moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totale': obj.totale }))
         /* await axios.post(`http://localhost:3001/history`, { 
@@ -103,15 +103,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
     }, [selectedGirino]);
 
 
-    const handleButtonSelectClick = ( path) => {
+    const handleButtonSelectClick = (path) => {
         modifiedItem.length === 0 && !changeday ?
-        navigate(`/${path}`)
-        :
-        setValue('isModalOpen', true);
+            navigate(`/${path}`)
+            :
+            setValue('isModalOpen', true);
         setSidebarOpen(false)
-        }
+    }
 
- 
+
 
     return (
         <>

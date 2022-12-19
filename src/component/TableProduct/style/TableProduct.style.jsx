@@ -18,7 +18,11 @@ border: solid 1px ;
 display: none;
 }
 `
-    
+
+
+export const ContainerDivFull = styled.div`
+    width: 100%;
+`
 
 export const InsideTableContainer = styled.div`
     width: 100%;

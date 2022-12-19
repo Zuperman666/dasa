@@ -17,9 +17,9 @@
       "girino": 2
     },
     {
-      "name": "pippo",
-      "via": "via pippi",
-      "isActive": false,
+      "name": "dfgdf",
+      "via": "dfgdf",
+      "isActive": true,
       "daPagare": 0,
       "girino": 2,
       "id": 3
@@ -57,10 +57,10 @@
   "item": [
     {
       "id": 1,
-      "name": "Mario",
-      "price": "4",
+      "name": "Bomba",
+      "price": "0.40",
       "tipoProdotto": 2,
-      "iva": "1",
+      "iva": "22",
       "isActive": true
     },
     {
@@ -171,7 +171,7 @@
         },
         {
           "day": "Friday",
-          "stato": "aperto",
+          "stato": "chiuso",
           "ordine": [
             {
               "itemId": 1,
@@ -351,37 +351,212 @@
         {
           "day": "Monday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         },
         {
           "day": "Tuesday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         },
         {
           "day": "Wednesday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         },
         {
           "day": "Thursday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         },
         {
           "day": "Friday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         },
         {
           "day": "Saturday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         },
         {
           "day": "Sunday",
           "stato": "aperto",
-          "ordine": []
+          "ordine": [
+            {
+              "itemId": 1,
+              "quantità": 0
+            },
+            {
+              "itemId": 2,
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            }
+          ]
         }
       ],
       "id": 3
