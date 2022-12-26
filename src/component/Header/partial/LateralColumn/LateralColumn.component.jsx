@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -36,30 +37,72 @@ export const LateralColumn = (props) => {
   const navigate = useNavigate();
 
 
-
   const SendToDbProduct = async () => {
     await axios.patch(`http://localhost:3001/usuallyOrder/${idStore.id}`, { body: userProduct })
   }
   const PrintTotal = async () => {
 
     const resp = await axios.get('http://localhost:3001/usuallyOrder').then((resp) => resp)
-    const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === selectedDay) })).filter((obj) => obj.body.length > 0)
-    console.log(filteredData)
+    const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === moment(new Date()).format('dddd')).map((obj4) => obj4.ordine.filter((obj5) => item.filter((obj6) => obj6.id === obj5.itemId)[0]?.isActive)) })).filter((obj) => obj.body.length > 0)
     const money = filteredData.map((obj) => ({
-      'userId': obj.userId, 'body': obj.body, 'totale': obj.body[0].ordine.map((obj2) => item.filter((obj3) => obj3.id === obj2.itemId)[0].price * obj2.quantità).reduce((previous, next) => {
+      'userId': obj.userId, 'body': obj.body, 'totaliPezzi': tipiProdotti.map((obj6) => ({
+        'tipoProdotto': obj6.id, 'totale': obj?.body?.[0] ? obj.body[0].filter((obj7) => item.filter((obj8) => obj8.id === obj7.itemId)[0].tipoProdotto === obj6.id).map((obj9) => obj9.quantità).reduce((partialSum, a) => partialSum + a, 0) : 0
+      })), 'totaleSoldi': obj.body ? obj?.body[0]?.map((obj2) => item.filter((obj3) => obj3.id === obj2.itemId)[0].price * obj2.quantità).reduce((previous, next) => {
         return previous + next;
-      })?.toFixed(2)
+      })?.toFixed(2) : 0
     }))
-    console.log(money)
-    let moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totale': obj.totale, 'girino': allUser.filter((obj2) => obj2.id === obj.userId)[0].girino}))
+    let moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totaleSoldi': obj.totaleSoldi, 'totaliPezzi': obj.totaliPezzi, 'girino': allUser.filter((obj2) => obj2.id === obj.userId)[0].girino }))
     /* await axios.post(`http://localhost:3001/history`, { 
        ordini: money,
        data: moment(new Date()).format()
      })*/
-
-    
-    console.log(moneyName)
-    setMoney(moneyName)
+    let testReduce = (objTotal, params, isAdmin) => {
+      let valueObj = params === 'itemId' ? 'itemId' : 'tipoProdotto';
+      let result = []
+      let Check;
+      if (!isAdmin) {
+        let arrayFull = moneyName.filter((obj2) => obj2.girino === objTotal.id).length > 0
+        if (arrayFull) {
+          if (params === 'itemId') {
+            Check = moneyName.filter((obj2) => obj2.girino === objTotal.id).map(obj => obj?.body[0])
+          } else {
+            Check = moneyName.filter((obj2) => obj2.girino === objTotal.id).map(obj => obj[params])
+          }
+        } else {
+          return []
+        }
+      } else {
+        if (params === 'itemId') {
+          Check = objTotal.map(obj => obj?.body[0].ordine ? obj?.body[0]?.ordine : obj?.body)
+        } else {
+          Check = objTotal.map(obj => obj[params])
+        }
+      }
+      for (let i = 0; i < Check.length; i++) {
+        for (let a = 0; a < Check[i].length; a++) {
+          if (result.find(obj => Number(obj[valueObj]) == Number(Check[i][a][valueObj]))) {
+            const target = result.find((obj) => obj[valueObj] === Check[i][a][valueObj]);
+            let newValue;
+            if (params === 'itemId') {
+              newValue = { ...target, 'quantità': target.quantità + Check[i][a].quantità }
+            } else {
+              newValue = { ...target, 'totale': target.totale + Check[i][a].totale }
+            }
+            Object.assign(target, newValue);
+          }
+          else {
+            result.push(Check[i][a])
+          }
+        }
+      }
+      return result
+    }
+    let girinoTotal = girini.map((obj) => ({ 'name': 'Girino ' + obj.name, 'body': [testReduce(obj, 'itemId')], 'totaleSoldi': moneyName.filter((obj2) => obj2.girino === obj.id).length > 0 ? moneyName.filter((obj2) => obj2.girino === obj.id).map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0) : 0, 'totaliPezzi': testReduce(obj, 'totaliPezzi'), 'girino': obj.id }))
+    let totalLavoration = [{ 'name': 'Lista Produzione', 'body': [testReduce(girinoTotal, 'itemId', true)], 'totaleSoldi': girinoTotal.map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0), 'totaliPezzi': testReduce(girinoTotal, 'totaliPezzi', true), 'girino': 'Nessuno' }]
+    let total = []
+    total= moneyName.concat(totalLavoration)
+    total= total.concat(girinoTotal)
+    setMoney(total)
     setIsModalStamp(true)
   }
 
@@ -105,15 +148,19 @@ export const LateralColumn = (props) => {
   useEffect(() => {
     if (selectedGirino)
       setAllUserGirino()
+    document.getElementById("lateralChange").value = allUserGirino[0]?.id.toString();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedGirino]);
 
   const pathname = window.location.pathname
+  const setValueSelect = (e) => {
+    setValue('selectedGirino', [Number(e.target.value)]);
 
+  }
   return (
     <>
       <ContainerLateral>
-        <CustomSelect onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectedGirino', [Number(e.target.value)]) : setValue('isModalOpen', true) }}>
+        <CustomSelect onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValueSelect(e) : setValue('isModalOpen', true) }}>
           {girini && girini?.map((val, key) => {
             return (
               <option key={key} value={val.id}>{val.name}</option>
@@ -122,10 +169,10 @@ export const LateralColumn = (props) => {
           )}
         </CustomSelect>
         {isAdmin ?
-          <CustomSelect onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectUser', allUser[e.target.value]) : setValue('isModalOpen', true) }}>
+          <CustomSelect id="lateralChange" onChange={(e) => { modifiedItem.length === 0 && !changeday ? setValue('selectUser', allUser.filter(obj => obj.id === Number(e.target.value))[0]) : setValue('isModalOpen', true) }}>
             {allUserGirino.map((val, key) => {
               return (
-                <option key={key} value={key}>{val.name}</option>
+                <option key={key} value={val.id}>{val.name}</option>
               )
             }
             )}
@@ -182,7 +229,7 @@ export const LateralColumn = (props) => {
             }}>{'Salva'}</ButtonSelect>
         </ButtonWrapper>
       </ContainerLateral>
-      {isModalStamp && <ModalStamp setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney} />}
+      {isModalStamp && <ModalStamp tipiProdotti={tipiProdotti} setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney} />}
     </>
   );
 };

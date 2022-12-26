@@ -6,6 +6,7 @@ import { ProductCardPrice } from './partial/ProductCardPrice.component';
 import "react-toggle/style.css";
 import { Column, ContainerDoubleTable, ContainerToggle, Row } from './style/ProductList.style';
 import AddNewProductCard from 'component/AddNewProductCard/AddNewProductCard.component';
+import { useEffect } from 'react';
 
 
 export const ProductList = () => {
@@ -13,8 +14,7 @@ export const ProductList = () => {
   const tipiProdotti = useStore((state) => state.tipiProdotti)
   const setItem = useStore((state) => state.setItem)
   const [active, setActive] = useState(true)
-  const [tipoProdotto, setTipoProdotto] = useState(tipiProdotti.filter((item, key) =>
-    item.id === key).name)
+  const [tipoProdotto, setTipoProdotto] = useState('')
   const [nome, setNome] = useState('')
   const [prezzo, setPrezzo] = useState('')
   const [iva, setIva] = useState('')
@@ -31,8 +31,13 @@ export const ProductList = () => {
     setNome('')
     setPrezzo('')
     setIva('')
-    setTipoProdotto(tipiProdotti[0])
+    setTipoProdotto(tipiProdotti[0]?.id)
   }
+
+  useEffect(() => {
+    setTipoProdotto(tipiProdotti[0]?.id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tipiProdotti]);
 
   return (
     <>

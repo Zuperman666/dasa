@@ -10,14 +10,13 @@ import { Column, ContainerDoubleTable, ContainerToggle, ContainerUsers, Row, Sel
 
 export const Users = (props) => {
   const girini = useStore((state) => state.girini)
-  const [girino, setGirino] = useState(girini[0])
+  const [girino, setGirino] = useState(girini[0]?.id)
   const allUser = useStore((state) => state.allUser)
   const setUsers = useStore((state) => state.setUsers)
   const item = useStore((state) => state.item)
  
   const [active, setActive] = useState(true)
   const [sendToDbF, setSendToDbF] = useState(false)
-  
   const [nome, setNome] = useState('')
   const [via, setVia] = useState('')
   const arrayDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -43,7 +42,12 @@ export const Users = (props) => {
     })
   }
 
-  
+  useEffect(() => {
+    if (girini) {
+      setGirino(girini[0]?.id)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [girini]);
 
   useEffect(() => {
     if (sendToDbF) {

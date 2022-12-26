@@ -31,10 +31,12 @@ export const ProductCard = (props) => {
   return (
     <ContainerProductCard>
       <TextProductCard> {props.name}</TextProductCard>
+      <div>
       <CustomInput
         // @ts-ignore
-        maxWidth={'fit-content'} onChange={(e) => (modifyItem({ itemId: props.itemId, quantità: Number(e.target.value) }), ModifyItemFunction(e))}
+        maxWidth={'50px'} onChange={(e) => (modifyItem({ itemId: props.itemId, quantità: Number(e.target.value) }), ModifyItemFunction(e))}
         defaultValue={props.quantità} type={'number'} min={"0"} />
+        </div>
     </ContainerProductCard>
   );
 };

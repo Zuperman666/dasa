@@ -1,28 +1,12 @@
 {
   "user": [
     {
-      "id": 1,
-      "name": "tizio",
-      "via": "via grosseto 30",
+      "name": "Test utente",
+      "via": "via test ",
       "isActive": true,
       "daPagare": 0,
-      "girino": 1
-    },
-    {
-      "id": 2,
-      "name": "Caio",
-      "via": "via grosseto 31",
-      "isActive": true,
-      "daPagare": 0,
-      "girino": 2
-    },
-    {
-      "name": "dfgdf",
-      "via": "dfgdf",
-      "isActive": true,
-      "daPagare": 0,
-      "girino": 2,
-      "id": 3
+      "girino": 1,
+      "id": 1
     }
   ],
   "girini": [
@@ -56,57 +40,440 @@
   ],
   "item": [
     {
-      "id": 1,
-      "name": "Bomba",
+      "name": "Ciambelle",
       "price": "0.40",
-      "tipoProdotto": 2,
       "iva": "22",
-      "isActive": true
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Ciambella",
-      "price": "1",
-      "tipoProdotto": 2,
-      "iva": "1",
-      "isActive": false
+      "name": "Bombe Crema",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 2
     },
     {
-      "name": "Pizza",
-      "price": "3.5",
-      "iva": "0",
-      "isActive": false,
-      "tipoProdotto": 2,
+      "name": "Bombe Cioccolato",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
       "id": 3
     },
     {
-      "name": "Banana",
-      "price": "2",
+      "name": "Bombe Cioccolato Bianco",
+      "price": "0.40",
       "iva": "22",
       "tipoProdotto": 1,
       "isActive": true,
       "id": 4
     },
     {
-      "name": "Mamma",
-      "price": "20",
-      "iva": "19",
+      "name": "Bombe Nocciola",
+      "price": "0.40",
+      "iva": "22",
       "tipoProdotto": 1,
       "isActive": true,
       "id": 5
     },
     {
-      "name": "Luca",
-      "price": "3",
-      "iva": "3",
-      "tipoProdotto": 2,
+      "name": "Bombe Pistacchio",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
       "isActive": true,
       "id": 6
+    },
+    {
+      "name": "Flauto Crema",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 7
+    },
+    {
+      "name": "Flauto Cioccolato",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 8
+    },
+    {
+      "name": "Maritozzi",
+      "price": "0.80",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 9
+    },
+    {
+      "name": "Veneziana",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 10
+    },
+    {
+      "name": "Canucci Sfoglia",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 11
+    },
+    {
+      "name": "Fiocchi Sfoglia",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 12
+    },
+    {
+      "name": "Treccia",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 13
+    },
+    {
+      "name": "Radesco",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 14
+    },
+    {
+      "name": "Campane",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 15
+    },
+    {
+      "name": "Danesi",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 16
+    },
+    {
+      "name": "Casti Frutti Di Bosco",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 17
+    },
+    {
+      "name": "Romby Fragole",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 18
+    },
+    {
+      "name": "Cannoli Block",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 19
+    },
+    {
+      "name": "Fagottino Ricotta e Visciole",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 20
+    },
+    {
+      "name": "Fagottino Mele",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 21
+    },
+    {
+      "name": "Fagottino Cocco e Nutella",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 22
+    },
+    {
+      "name": "Fagottino Cioccolato",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 23
+    },
+    {
+      "name": "Fagottino Noci",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 24
+    },
+    {
+      "name": "Cornetti Glassati",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 25
+    },
+    {
+      "name": "Cornetti Lucidi",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 26
+    },
+    {
+      "name": "Cornetti Crema",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 27
+    },
+    {
+      "name": "Cornetti Cioccolato",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 28
+    },
+    {
+      "name": "Cornetti Cioccolato Bianco",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 29
+    },
+    {
+      "name": "Cornetti Nocciola",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 30
+    },
+    {
+      "name": "Cornetti Pistacchio",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 31
+    },
+    {
+      "name": "Cornetti Albicocca",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 32
+    },
+    {
+      "name": "Cornetti Visciola",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 33
+    },
+    {
+      "name": "Cornetti Vegani",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 34
+    },
+    {
+      "name": "Cornetti Integrale",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 35
+    },
+    {
+      "name": "Cornetti Integrale Miele",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 36
+    },
+    {
+      "name": "Cornetti Cereali",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 37
+    },
+    {
+      "name": "Cornetti bic. frutti bosco",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 38
+    },
+    {
+      "name": "Cornetti bic. pistacchio",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 39
+    },
+    {
+      "name": "Cornetti bic.cioccolato",
+      "price": "0.40",
+      "iva": "22",
+      "tipoProdotto": 1,
+      "isActive": true,
+      "id": 40
+    },
+    {
+      "name": "Ciambelline",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 41
+    },
+    {
+      "name": "Bombette crema",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": 2,
+      "isActive": true,
+      "id": 42
+    },
+    {
+      "name": "Bombette cioccolato",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 43
+    },
+    {
+      "name": "Bombette pistacchio",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 44
+    },
+    {
+      "name": "Radesco",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 45
+    },
+    {
+      "name": "Danesi",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 46
+    },
+    {
+      "name": "Fazzoletti",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 47
+    },
+    {
+      "name": "Fagottino Mele",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 48
+    },
+    {
+      "name": "Fagottino cioccolato",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 49
+    },
+    {
+      "name": "Cornettini",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 50
+    },
+    {
+      "name": "Cornettini crema",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 51
+    },
+    {
+      "name": "Cornettini cioccolato",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 52
+    },
+    {
+      "name": "Cornettini albicocca",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 53
+    },
+    {
+      "name": "Cornettini visciola",
+      "price": "0.25",
+      "iva": "22",
+      "tipoProdotto": "2",
+      "isActive": true,
+      "id": 54
     }
   ],
   "usuallyOrder": [
     {
-      "id": 1,
       "userId": 1,
       "body": [
         {
@@ -115,84 +482,7 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 1
-            },
-            {
-              "itemId": 2,
-              "quantità": 1
-            }
-          ]
-        },
-        {
-          "day": "Tuesday",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 3
-            },
-            {
-              "itemId": 2,
-              "quantità": 1
-            }
-          ],
-          "stato": "aperto"
-        },
-        {
-          "day": "Wednesday",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 2
-            },
-            {
-              "itemId": 2,
-              "quantità": 1
-            }
-          ],
-          "stato": "aperto"
-        },
-        {
-          "day": "Thursday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 1
-            },
-            {
-              "itemId": 2,
-              "quantità": 6
-            },
-            {
-              "itemId": 3,
-              "quantità": 1
-            }
-          ]
-        },
-        {
-          "day": "Friday",
-          "stato": "chiuso",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 6
-            },
-            {
-              "itemId": 2,
-              "quantità": 1
-            },
-            {
-              "itemId": 3,
-              "quantità": 1
-            }
-          ]
-        },
-        {
-          "day": "Saturday",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 4
+              "quantità": 0
             },
             {
               "itemId": 2,
@@ -200,53 +490,211 @@
             },
             {
               "itemId": 3,
-              "quantità": 1
+              "quantità": 0
             },
             {
               "itemId": 4,
-              "quantità": 2
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            },
+            {
+              "itemId": 7,
+              "quantità": 0
             },
             {
               "itemId": 8,
-              "quantità": 1
+              "quantità": 0
             },
             {
-              "itemId": 5,
-              "quantità": 2
-            }
-          ],
-          "stato": "aperto"
-        },
-        {
-          "day": "Sunday",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 4
+              "itemId": 9,
+              "quantità": 0
             },
             {
-              "itemId": 2,
-              "quantità": 1
-            }
-          ],
-          "stato": "aperto"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "body": [
-        {
-          "day": "Monday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 1
+              "itemId": 10,
+              "quantità": 0
             },
             {
-              "itemId": 2,
-              "quantità": 1
+              "itemId": 11,
+              "quantità": 0
+            },
+            {
+              "itemId": 12,
+              "quantità": 0
+            },
+            {
+              "itemId": 13,
+              "quantità": 0
+            },
+            {
+              "itemId": 14,
+              "quantità": 0
+            },
+            {
+              "itemId": 15,
+              "quantità": 0
+            },
+            {
+              "itemId": 16,
+              "quantità": 0
+            },
+            {
+              "itemId": 17,
+              "quantità": 0
+            },
+            {
+              "itemId": 18,
+              "quantità": 0
+            },
+            {
+              "itemId": 19,
+              "quantità": 0
+            },
+            {
+              "itemId": 20,
+              "quantità": 0
+            },
+            {
+              "itemId": 21,
+              "quantità": 0
+            },
+            {
+              "itemId": 22,
+              "quantità": 0
+            },
+            {
+              "itemId": 23,
+              "quantità": 0
+            },
+            {
+              "itemId": 24,
+              "quantità": 0
+            },
+            {
+              "itemId": 25,
+              "quantità": 0
+            },
+            {
+              "itemId": 26,
+              "quantità": 0
+            },
+            {
+              "itemId": 27,
+              "quantità": 0
+            },
+            {
+              "itemId": 28,
+              "quantità": 0
+            },
+            {
+              "itemId": 29,
+              "quantità": 0
+            },
+            {
+              "itemId": 30,
+              "quantità": 0
+            },
+            {
+              "itemId": 31,
+              "quantità": 0
+            },
+            {
+              "itemId": 32,
+              "quantità": 0
+            },
+            {
+              "itemId": 33,
+              "quantità": 0
+            },
+            {
+              "itemId": 34,
+              "quantità": 0
+            },
+            {
+              "itemId": 35,
+              "quantità": 0
+            },
+            {
+              "itemId": 36,
+              "quantità": 0
+            },
+            {
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 0
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
+              "quantità": 0
             }
           ]
         },
@@ -256,11 +704,219 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 2
+              "quantità": 0
             },
             {
               "itemId": 2,
-              "quantità": 1
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            },
+            {
+              "itemId": 7,
+              "quantità": 0
+            },
+            {
+              "itemId": 8,
+              "quantità": 0
+            },
+            {
+              "itemId": 9,
+              "quantità": 0
+            },
+            {
+              "itemId": 10,
+              "quantità": 0
+            },
+            {
+              "itemId": 11,
+              "quantità": 0
+            },
+            {
+              "itemId": 12,
+              "quantità": 0
+            },
+            {
+              "itemId": 13,
+              "quantità": 0
+            },
+            {
+              "itemId": 14,
+              "quantità": 0
+            },
+            {
+              "itemId": 15,
+              "quantità": 0
+            },
+            {
+              "itemId": 16,
+              "quantità": 0
+            },
+            {
+              "itemId": 17,
+              "quantità": 0
+            },
+            {
+              "itemId": 18,
+              "quantità": 0
+            },
+            {
+              "itemId": 19,
+              "quantità": 0
+            },
+            {
+              "itemId": 20,
+              "quantità": 0
+            },
+            {
+              "itemId": 21,
+              "quantità": 0
+            },
+            {
+              "itemId": 22,
+              "quantità": 0
+            },
+            {
+              "itemId": 23,
+              "quantità": 0
+            },
+            {
+              "itemId": 24,
+              "quantità": 0
+            },
+            {
+              "itemId": 25,
+              "quantità": 0
+            },
+            {
+              "itemId": 26,
+              "quantità": 0
+            },
+            {
+              "itemId": 27,
+              "quantità": 0
+            },
+            {
+              "itemId": 28,
+              "quantità": 0
+            },
+            {
+              "itemId": 29,
+              "quantità": 0
+            },
+            {
+              "itemId": 30,
+              "quantità": 0
+            },
+            {
+              "itemId": 31,
+              "quantità": 0
+            },
+            {
+              "itemId": 32,
+              "quantità": 0
+            },
+            {
+              "itemId": 33,
+              "quantità": 0
+            },
+            {
+              "itemId": 34,
+              "quantità": 0
+            },
+            {
+              "itemId": 35,
+              "quantità": 0
+            },
+            {
+              "itemId": 36,
+              "quantità": 0
+            },
+            {
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 0
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
+              "quantità": 0
             }
           ]
         },
@@ -270,11 +926,219 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 3
+              "quantità": 0
             },
             {
               "itemId": 2,
-              "quantità": 1
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            },
+            {
+              "itemId": 7,
+              "quantità": 0
+            },
+            {
+              "itemId": 8,
+              "quantità": 0
+            },
+            {
+              "itemId": 9,
+              "quantità": 0
+            },
+            {
+              "itemId": 10,
+              "quantità": 0
+            },
+            {
+              "itemId": 11,
+              "quantità": 0
+            },
+            {
+              "itemId": 12,
+              "quantità": 0
+            },
+            {
+              "itemId": 13,
+              "quantità": 0
+            },
+            {
+              "itemId": 14,
+              "quantità": 0
+            },
+            {
+              "itemId": 15,
+              "quantità": 0
+            },
+            {
+              "itemId": 16,
+              "quantità": 0
+            },
+            {
+              "itemId": 17,
+              "quantità": 0
+            },
+            {
+              "itemId": 18,
+              "quantità": 0
+            },
+            {
+              "itemId": 19,
+              "quantità": 0
+            },
+            {
+              "itemId": 20,
+              "quantità": 0
+            },
+            {
+              "itemId": 21,
+              "quantità": 0
+            },
+            {
+              "itemId": 22,
+              "quantità": 0
+            },
+            {
+              "itemId": 23,
+              "quantità": 0
+            },
+            {
+              "itemId": 24,
+              "quantità": 0
+            },
+            {
+              "itemId": 25,
+              "quantità": 0
+            },
+            {
+              "itemId": 26,
+              "quantità": 0
+            },
+            {
+              "itemId": 27,
+              "quantità": 0
+            },
+            {
+              "itemId": 28,
+              "quantità": 0
+            },
+            {
+              "itemId": 29,
+              "quantità": 0
+            },
+            {
+              "itemId": 30,
+              "quantità": 0
+            },
+            {
+              "itemId": 31,
+              "quantità": 0
+            },
+            {
+              "itemId": 32,
+              "quantità": 0
+            },
+            {
+              "itemId": 33,
+              "quantità": 0
+            },
+            {
+              "itemId": 34,
+              "quantità": 0
+            },
+            {
+              "itemId": 35,
+              "quantità": 0
+            },
+            {
+              "itemId": 36,
+              "quantità": 0
+            },
+            {
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 0
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
+              "quantità": 0
             }
           ]
         },
@@ -284,11 +1148,219 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 4
+              "quantità": 0
             },
             {
               "itemId": 2,
-              "quantità": 1
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            },
+            {
+              "itemId": 7,
+              "quantità": 0
+            },
+            {
+              "itemId": 8,
+              "quantità": 0
+            },
+            {
+              "itemId": 9,
+              "quantità": 0
+            },
+            {
+              "itemId": 10,
+              "quantità": 0
+            },
+            {
+              "itemId": 11,
+              "quantità": 0
+            },
+            {
+              "itemId": 12,
+              "quantità": 0
+            },
+            {
+              "itemId": 13,
+              "quantità": 0
+            },
+            {
+              "itemId": 14,
+              "quantità": 0
+            },
+            {
+              "itemId": 15,
+              "quantità": 0
+            },
+            {
+              "itemId": 16,
+              "quantità": 0
+            },
+            {
+              "itemId": 17,
+              "quantità": 0
+            },
+            {
+              "itemId": 18,
+              "quantità": 0
+            },
+            {
+              "itemId": 19,
+              "quantità": 0
+            },
+            {
+              "itemId": 20,
+              "quantità": 0
+            },
+            {
+              "itemId": 21,
+              "quantità": 0
+            },
+            {
+              "itemId": 22,
+              "quantità": 0
+            },
+            {
+              "itemId": 23,
+              "quantità": 0
+            },
+            {
+              "itemId": 24,
+              "quantità": 0
+            },
+            {
+              "itemId": 25,
+              "quantità": 0
+            },
+            {
+              "itemId": 26,
+              "quantità": 0
+            },
+            {
+              "itemId": 27,
+              "quantità": 0
+            },
+            {
+              "itemId": 28,
+              "quantità": 0
+            },
+            {
+              "itemId": 29,
+              "quantità": 0
+            },
+            {
+              "itemId": 30,
+              "quantità": 0
+            },
+            {
+              "itemId": 31,
+              "quantità": 0
+            },
+            {
+              "itemId": 32,
+              "quantità": 0
+            },
+            {
+              "itemId": 33,
+              "quantità": 0
+            },
+            {
+              "itemId": 34,
+              "quantità": 0
+            },
+            {
+              "itemId": 35,
+              "quantità": 0
+            },
+            {
+              "itemId": 36,
+              "quantità": 0
+            },
+            {
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 0
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
+              "quantità": 0
             }
           ]
         },
@@ -298,11 +1370,219 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 5
+              "quantità": 0
             },
             {
               "itemId": 2,
-              "quantità": 1
+              "quantità": 0
+            },
+            {
+              "itemId": 3,
+              "quantità": 0
+            },
+            {
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            },
+            {
+              "itemId": 7,
+              "quantità": 0
+            },
+            {
+              "itemId": 8,
+              "quantità": 0
+            },
+            {
+              "itemId": 9,
+              "quantità": 0
+            },
+            {
+              "itemId": 10,
+              "quantità": 0
+            },
+            {
+              "itemId": 11,
+              "quantità": 0
+            },
+            {
+              "itemId": 12,
+              "quantità": 0
+            },
+            {
+              "itemId": 13,
+              "quantità": 0
+            },
+            {
+              "itemId": 14,
+              "quantità": 0
+            },
+            {
+              "itemId": 15,
+              "quantità": 0
+            },
+            {
+              "itemId": 16,
+              "quantità": 0
+            },
+            {
+              "itemId": 17,
+              "quantità": 0
+            },
+            {
+              "itemId": 18,
+              "quantità": 0
+            },
+            {
+              "itemId": 19,
+              "quantità": 0
+            },
+            {
+              "itemId": 20,
+              "quantità": 0
+            },
+            {
+              "itemId": 21,
+              "quantità": 0
+            },
+            {
+              "itemId": 22,
+              "quantità": 0
+            },
+            {
+              "itemId": 23,
+              "quantità": 0
+            },
+            {
+              "itemId": 24,
+              "quantità": 0
+            },
+            {
+              "itemId": 25,
+              "quantità": 0
+            },
+            {
+              "itemId": 26,
+              "quantità": 0
+            },
+            {
+              "itemId": 27,
+              "quantità": 0
+            },
+            {
+              "itemId": 28,
+              "quantità": 0
+            },
+            {
+              "itemId": 29,
+              "quantità": 0
+            },
+            {
+              "itemId": 30,
+              "quantità": 0
+            },
+            {
+              "itemId": 31,
+              "quantità": 0
+            },
+            {
+              "itemId": 32,
+              "quantità": 0
+            },
+            {
+              "itemId": 33,
+              "quantità": 0
+            },
+            {
+              "itemId": 34,
+              "quantità": 0
+            },
+            {
+              "itemId": 35,
+              "quantità": 0
+            },
+            {
+              "itemId": 36,
+              "quantità": 0
+            },
+            {
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 0
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
+              "quantità": 0
             }
           ]
         },
@@ -312,19 +1592,219 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 6
+              "quantità": 0
             },
             {
               "itemId": 2,
-              "quantità": 3
+              "quantità": 0
             },
             {
               "itemId": 3,
-              "quantità": 1
+              "quantità": 0
             },
             {
-              "itemId": 3,
-              "quantità": 2
+              "itemId": 4,
+              "quantità": 0
+            },
+            {
+              "itemId": 5,
+              "quantità": 0
+            },
+            {
+              "itemId": 6,
+              "quantità": 0
+            },
+            {
+              "itemId": 7,
+              "quantità": 0
+            },
+            {
+              "itemId": 8,
+              "quantità": 0
+            },
+            {
+              "itemId": 9,
+              "quantità": 0
+            },
+            {
+              "itemId": 10,
+              "quantità": 0
+            },
+            {
+              "itemId": 11,
+              "quantità": 0
+            },
+            {
+              "itemId": 12,
+              "quantità": 0
+            },
+            {
+              "itemId": 13,
+              "quantità": 0
+            },
+            {
+              "itemId": 14,
+              "quantità": 0
+            },
+            {
+              "itemId": 15,
+              "quantità": 0
+            },
+            {
+              "itemId": 16,
+              "quantità": 0
+            },
+            {
+              "itemId": 17,
+              "quantità": 0
+            },
+            {
+              "itemId": 18,
+              "quantità": 0
+            },
+            {
+              "itemId": 19,
+              "quantità": 0
+            },
+            {
+              "itemId": 20,
+              "quantità": 0
+            },
+            {
+              "itemId": 21,
+              "quantità": 0
+            },
+            {
+              "itemId": 22,
+              "quantità": 0
+            },
+            {
+              "itemId": 23,
+              "quantità": 0
+            },
+            {
+              "itemId": 24,
+              "quantità": 0
+            },
+            {
+              "itemId": 25,
+              "quantità": 0
+            },
+            {
+              "itemId": 26,
+              "quantità": 0
+            },
+            {
+              "itemId": 27,
+              "quantità": 0
+            },
+            {
+              "itemId": 28,
+              "quantità": 0
+            },
+            {
+              "itemId": 29,
+              "quantità": 0
+            },
+            {
+              "itemId": 30,
+              "quantità": 0
+            },
+            {
+              "itemId": 31,
+              "quantità": 0
+            },
+            {
+              "itemId": 32,
+              "quantità": 0
+            },
+            {
+              "itemId": 33,
+              "quantità": 0
+            },
+            {
+              "itemId": 34,
+              "quantità": 0
+            },
+            {
+              "itemId": 35,
+              "quantità": 0
+            },
+            {
+              "itemId": 36,
+              "quantità": 0
+            },
+            {
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 0
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
+              "quantità": 0
             }
           ]
         },
@@ -334,27 +1814,7 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 7
-            },
-            {
-              "itemId": 2,
               "quantità": 1
-            }
-          ]
-        }
-      ],
-      "userId": 2
-    },
-    {
-      "userId": 3,
-      "body": [
-        {
-          "day": "Monday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
-              "quantità": 0
             },
             {
               "itemId": 2,
@@ -375,191 +1835,203 @@
             {
               "itemId": 6,
               "quantità": 0
-            }
-          ]
-        },
-        {
-          "day": "Tuesday",
-          "stato": "aperto",
-          "ordine": [
+            },
             {
-              "itemId": 1,
+              "itemId": 7,
               "quantità": 0
             },
             {
-              "itemId": 2,
+              "itemId": 8,
               "quantità": 0
             },
             {
-              "itemId": 3,
+              "itemId": 9,
               "quantità": 0
             },
             {
-              "itemId": 4,
+              "itemId": 10,
               "quantità": 0
             },
             {
-              "itemId": 5,
+              "itemId": 11,
               "quantità": 0
             },
             {
-              "itemId": 6,
-              "quantità": 0
-            }
-          ]
-        },
-        {
-          "day": "Wednesday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
+              "itemId": 12,
               "quantità": 0
             },
             {
-              "itemId": 2,
+              "itemId": 13,
               "quantità": 0
             },
             {
-              "itemId": 3,
+              "itemId": 14,
               "quantità": 0
             },
             {
-              "itemId": 4,
+              "itemId": 15,
               "quantità": 0
             },
             {
-              "itemId": 5,
+              "itemId": 16,
               "quantità": 0
             },
             {
-              "itemId": 6,
-              "quantità": 0
-            }
-          ]
-        },
-        {
-          "day": "Thursday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
+              "itemId": 17,
               "quantità": 0
             },
             {
-              "itemId": 2,
+              "itemId": 18,
               "quantità": 0
             },
             {
-              "itemId": 3,
+              "itemId": 19,
               "quantità": 0
             },
             {
-              "itemId": 4,
+              "itemId": 20,
               "quantità": 0
             },
             {
-              "itemId": 5,
+              "itemId": 21,
               "quantità": 0
             },
             {
-              "itemId": 6,
-              "quantità": 0
-            }
-          ]
-        },
-        {
-          "day": "Friday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
+              "itemId": 22,
               "quantità": 0
             },
             {
-              "itemId": 2,
+              "itemId": 23,
               "quantità": 0
             },
             {
-              "itemId": 3,
+              "itemId": 24,
               "quantità": 0
             },
             {
-              "itemId": 4,
+              "itemId": 25,
               "quantità": 0
             },
             {
-              "itemId": 5,
+              "itemId": 26,
               "quantità": 0
             },
             {
-              "itemId": 6,
-              "quantità": 0
-            }
-          ]
-        },
-        {
-          "day": "Saturday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
+              "itemId": 27,
               "quantità": 0
             },
             {
-              "itemId": 2,
+              "itemId": 28,
               "quantità": 0
             },
             {
-              "itemId": 3,
+              "itemId": 29,
               "quantità": 0
             },
             {
-              "itemId": 4,
+              "itemId": 30,
               "quantità": 0
             },
             {
-              "itemId": 5,
+              "itemId": 31,
               "quantità": 0
             },
             {
-              "itemId": 6,
-              "quantità": 0
-            }
-          ]
-        },
-        {
-          "day": "Sunday",
-          "stato": "aperto",
-          "ordine": [
-            {
-              "itemId": 1,
+              "itemId": 32,
               "quantità": 0
             },
             {
-              "itemId": 2,
+              "itemId": 33,
               "quantità": 0
             },
             {
-              "itemId": 3,
+              "itemId": 34,
               "quantità": 0
             },
             {
-              "itemId": 4,
+              "itemId": 35,
               "quantità": 0
             },
             {
-              "itemId": 5,
+              "itemId": 36,
               "quantità": 0
             },
             {
-              "itemId": 6,
+              "itemId": 37,
+              "quantità": 0
+            },
+            {
+              "itemId": 38,
+              "quantità": 0
+            },
+            {
+              "itemId": 39,
+              "quantità": 0
+            },
+            {
+              "itemId": 40,
+              "quantità": 0
+            },
+            {
+              "itemId": 41,
+              "quantità": 0
+            },
+            {
+              "itemId": 42,
+              "quantità": 0
+            },
+            {
+              "itemId": 43,
+              "quantità": 0
+            },
+            {
+              "itemId": 44,
+              "quantità": 0
+            },
+            {
+              "itemId": 45,
+              "quantità": 0
+            },
+            {
+              "itemId": 46,
+              "quantità": 1
+            },
+            {
+              "itemId": 47,
+              "quantità": 0
+            },
+            {
+              "itemId": 48,
+              "quantità": 0
+            },
+            {
+              "itemId": 49,
+              "quantità": 0
+            },
+            {
+              "itemId": 50,
+              "quantità": 0
+            },
+            {
+              "itemId": 51,
+              "quantità": 0
+            },
+            {
+              "itemId": 52,
+              "quantità": 0
+            },
+            {
+              "itemId": 53,
+              "quantità": 0
+            },
+            {
+              "itemId": 54,
               "quantità": 0
             }
           ]
         }
       ],
-      "id": 3
+      "id": 1
     }
   ],
   "history": []
