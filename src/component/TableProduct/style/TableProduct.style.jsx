@@ -77,3 +77,10 @@ export const ContainerDoubleTable = styled.div`
    overflow:auto;
    max-height: 460px;
 `
+export const RowTitle = styled.div`
+ font-size: 14px;
+ font-weight: bold;
+ padding: 5px;
+`
+
+
