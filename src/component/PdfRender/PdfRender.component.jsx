@@ -76,6 +76,7 @@ export const MyDocument = (props) => {
 
     let maxRow = 32;
     let filtered = props.item.filter((obj6) => obj6.isActive)
+
     function filterByType(xs, prop) {
         var grouped = {};
         for (var i = 0; i < xs.length; i++) {
@@ -103,27 +104,27 @@ export const MyDocument = (props) => {
                     count++
                     if (count >= limitMin && count < limitMax) {
                         if (count < maxRow + ((maxRow * 2) * index)) {
-                            a.push([props.tipiProdotti.filter((obj2) => obj2.id == item[i][l].tipoProdotto)?.[0].name, 'TIPO PRODOTTO'])
+                            a.push([props.tipiProdotti.filter((obj2) => Number(obj2.id) == Number(item[i][l].tipoProdotto))?.[0].name, 'TIPO PRODOTTO'])
                         } else {
-                            b.push([props.tipiProdotti.filter((obj3) => obj3.id == item[i][l].tipoProdotto)?.[0].name, 'TIPO PRODOTTO'])
+                            b.push([props.tipiProdotti.filter((obj3) => Number(obj3.id) == Number(item[i][l].tipoProdotto))?.[0].name, 'TIPO PRODOTTO'])
                         }
                     }
                 }
                 if (count >= limitMin && count < limitMax) {
                     if (count < maxRow + ((maxRow * 2) * index)) {
-                        a.push([item[i][l].name, obj.body[0].filter((obj3) => obj3.itemId === item[i][l].id).length > 0 && obj.body[0].filter((obj3) => obj3.itemId === item[i][l].id)?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => obj3.itemId === item[i][l].id)[0]?.quantità : null])
+                        a.push([item[i][l].name, obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                     else {
-                        b.push([item[i][l].name, obj.body[0].filter((obj3) => obj3.itemId === item[i][l].id).length > 0 && obj.body[0].filter((obj3) => obj3.itemId === item[i][l].id)?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => obj3.itemId === item[i][l].id)[0]?.quantità : null])
+                        b.push([item[i][l].name, obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                 }
                 if (l + 1 === item[i].length) {
                     count++
                     if (count >= limitMin && count < limitMax) {
                         if (count < maxRow + ((maxRow * 2) * index)) {
-                            a.push(['Totale', obj.totaliPezzi.filter((obj2) => obj2.tipoProdotto === item[i][l].tipoProdotto).length > 0 ? obj.totaliPezzi.filter((obj2) => obj2.tipoProdotto === item[i][l].tipoProdotto)[0]?.totale : 0])
+                            a.push(['Totale', obj.totaliPezzi.filter((obj2) => Number(obj2.tipoProdotto) === Number(item[i][l].tipoProdotto)).length > 0 ? obj.totaliPezzi.filter((obj2) => Number(obj2.tipoProdotto) === Number(item[i][l].tipoProdotto))[0]?.totale : 0])
                         } else {
-                            b.push(['Totale', obj.totaliPezzi.filter((obj2) => obj2.tipoProdotto === item[i][l].tipoProdotto).length > 0 ? obj.totaliPezzi.filter((obj2) => obj2.tipoProdotto === item[i][l].tipoProdotto)[0]?.totale : 0])
+                            b.push(['Totale', obj.totaliPezzi.filter((obj2) => Number(obj2.tipoProdotto) === Number(item[i][l].tipoProdotto)).length > 0 ? obj.totaliPezzi.filter((obj2) => Number(obj2.tipoProdotto) === Number(item[i][l].tipoProdotto))[0]?.totale : 0])
                         }
                         if (i +1 !== item.length) {
                             if (count < maxRow + ((maxRow * 2) * index)) {

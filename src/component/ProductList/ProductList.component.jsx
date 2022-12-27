@@ -24,7 +24,7 @@ export const ProductList = () => {
       "name": nome,
       "price": prezzo,
       "iva": iva,
-      "tipoProdotto": tipoProdotto,
+      "tipoProdotto": Number(tipoProdotto),
       "isActive": true
     })
     setItem()

@@ -5,6 +5,7 @@
       "via": "via test ",
       "isActive": true,
       "daPagare": 0,
+      "lista": 1,
       "girino": 1,
       "id": 1
     }
@@ -24,6 +25,12 @@
       "name": "franco",
       "isActive": true,
       "id": 3
+    }
+  ],
+  "liste": [
+    {
+      "id": 1,
+      "name": "Default"
     }
   ],
   "tipiProdotti": [
@@ -363,7 +370,7 @@
       "name": "Ciambelline",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 41
     },
@@ -379,7 +386,7 @@
       "name": "Bombette cioccolato",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 43
     },
@@ -387,7 +394,7 @@
       "name": "Bombette pistacchio",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 44
     },
@@ -395,7 +402,7 @@
       "name": "Radesco",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 45
     },
@@ -403,7 +410,7 @@
       "name": "Danesi",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 46
     },
@@ -411,7 +418,7 @@
       "name": "Fazzoletti",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 47
     },
@@ -419,7 +426,7 @@
       "name": "Fagottino Mele",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 48
     },
@@ -427,7 +434,7 @@
       "name": "Fagottino cioccolato",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto":2,
       "isActive": true,
       "id": 49
     },
@@ -435,7 +442,7 @@
       "name": "Cornettini",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 50
     },
@@ -443,7 +450,7 @@
       "name": "Cornettini crema",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 51
     },
@@ -451,7 +458,7 @@
       "name": "Cornettini cioccolato",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 52
     },
@@ -459,7 +466,7 @@
       "name": "Cornettini albicocca",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 53
     },
@@ -467,7 +474,7 @@
       "name": "Cornettini visciola",
       "price": "0.25",
       "iva": "22",
-      "tipoProdotto": "2",
+      "tipoProdotto": 2,
       "isActive": true,
       "id": 54
     }
@@ -704,7 +711,7 @@
           "ordine": [
             {
               "itemId": 1,
-              "quantità": 0
+              "quantità": 3
             },
             {
               "itemId": 2,
@@ -856,7 +863,7 @@
             },
             {
               "itemId": 39,
-              "quantità": 0
+              "quantità": 2
             },
             {
               "itemId": 40,
@@ -864,7 +871,7 @@
             },
             {
               "itemId": 41,
-              "quantità": 0
+              "quantità": 2
             },
             {
               "itemId": 42,

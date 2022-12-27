@@ -45,8 +45,9 @@ export const LateralColumn = (props) => {
     const resp = await axios.get('http://localhost:3001/usuallyOrder').then((resp) => resp)
     const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === moment(new Date()).format('dddd')).map((obj4) => obj4.ordine.filter((obj5) => item.filter((obj6) => obj6.id === obj5.itemId)[0]?.isActive)) })).filter((obj) => obj.body.length > 0)
     const money = filteredData.map((obj) => ({
+      
       'userId': obj.userId, 'body': obj.body, 'totaliPezzi': tipiProdotti.map((obj6) => ({
-        'tipoProdotto': obj6.id, 'totale': obj?.body?.[0] ? obj.body[0].filter((obj7) => item.filter((obj8) => obj8.id === obj7.itemId)[0].tipoProdotto === obj6.id).map((obj9) => obj9.quantità).reduce((partialSum, a) => partialSum + a, 0) : 0
+        'tipoProdotto': obj6.id, 'totale':obj?.body?.[0] ? obj.body[0].filter((obj7) => item.filter((obj8) => Number(obj8.id) === Number(obj7.itemId))[0].tipoProdotto === Number(obj6.id)).map((obj9) => Number(obj9.quantità)).reduce((partialSum, a) => partialSum + a, 0) : 0
       })), 'totaleSoldi': obj.body ? obj?.body[0]?.map((obj2) => item.filter((obj3) => obj3.id === obj2.itemId)[0].price * obj2.quantità).reduce((previous, next) => {
         return previous + next;
       })?.toFixed(2) : 0
@@ -98,10 +99,11 @@ export const LateralColumn = (props) => {
       return result
     }
     let girinoTotal = girini.map((obj) => ({ 'name': 'Girino ' + obj.name, 'body': [testReduce(obj, 'itemId')], 'totaleSoldi': moneyName.filter((obj2) => obj2.girino === obj.id).length > 0 ? moneyName.filter((obj2) => obj2.girino === obj.id).map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0) : 0, 'totaliPezzi': testReduce(obj, 'totaliPezzi'), 'girino': obj.id }))
-    let totalLavoration = [{ 'name': 'Lista Produzione', 'body': [testReduce(girinoTotal, 'itemId', true)], 'totaleSoldi': girinoTotal.map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0), 'totaliPezzi': testReduce(girinoTotal, 'totaliPezzi', true), 'girino': 'Nessuno' }]
+    let totalLavoration = [{ 'name': 'Lista Produzione', 'body': testReduce(girinoTotal, 'itemId', true), 'totaleSoldi': girinoTotal.map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0), 'totaliPezzi': testReduce(girinoTotal, 'totaliPezzi', true), 'girino': 'Nessuno' }]
     let total = []
     total= moneyName.concat(totalLavoration)
     total= total.concat(girinoTotal)
+    console.log(total)
     setMoney(total)
     setIsModalStamp(true)
   }
