@@ -58,6 +58,11 @@ const styles = StyleSheet.create({
     marginBottom: {
         marginBottom: '10px'
     },
+    marginBottomDouble: {
+        marginBottom: '10px',
+        flexDirection: 'row',
+        justifyContent:'space-around'
+    },
     marginTopLow: {
         marginTop: '5px'
     },
@@ -77,15 +82,17 @@ export const MyDocument = (props) => {
     let maxRow = 32;
     let filtered = props.item.filter((obj6) => obj6.isActive)
 
-    function filterByType(xs, prop) {
-        var grouped = {};
+    function filterByType(xs,prop) {
+        let grouped = {};
         for (var i = 0; i < xs.length; i++) {
-            var p = xs[i][prop];
-            if (!grouped[p]) { grouped[p] = []; }
-            grouped[p].push(xs[i]);
+          var p = xs[i][prop];
+          if (!grouped[p]) { grouped[p] = []; }
+          grouped[p].push(xs[i]);
         }
-        return Object.values(grouped);;
-    }
+        let result = Object.values(grouped);
+        result = result.map((obj)=> obj.sort((a, b) => a.sort - b.sort))
+        return result;
+      }
 
 
 
@@ -112,10 +119,11 @@ export const MyDocument = (props) => {
                 }
                 if (count >= limitMin && count < limitMax) {
                     if (count < maxRow + ((maxRow * 2) * index)) {
-                        a.push([item[i][l].name, obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
+                        console.log(obj)
+                        a.push([item[i][l].name, obj.body[0]?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                     else {
-                        b.push([item[i][l].name, obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
+                        b.push([item[i][l].name, obj.body[0]?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                 }
                 if (l + 1 === item[i].length) {
@@ -194,8 +202,9 @@ export const MyDocument = (props) => {
                                     <View style={styles.marginBottom}>
                                         <Text style={styles.Title}>{'PASTICCERIA DASA s.r.l ~ Gastronomia e Catering ~ Tel. 3474884888 Alessandro'}</Text>
                                     </View>
-                                    <View style={styles.marginBottom}>
+                                    <View style={styles.marginBottomDouble}>
                                         <Text>{'Cliente: ' + obj.name}</Text>
+                                        {obj.girino !== 'Nessuno' && <Text>{'Girino: ' + props.girini.filter((obj2)=> obj2.id === obj.girino )[0]?.name}</Text>}
                                     </View>
                                     <View style={styles.column}>
                                         <View style={styles.row}>

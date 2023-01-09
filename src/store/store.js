@@ -8,6 +8,7 @@ export const useStore = create((set, get) => ({
   changeday: false,
   isModalOpen: false,
   selectedDayOrder: [],
+  liste:[],
   selectedDay: moment(new Date()).format('dddd'),
   userProduct: [
   ],
@@ -20,6 +21,10 @@ export const useStore = create((set, get) => ({
   allUserGirino: [],
   allUser: [],
   item: [],
+  setListe: async () => {
+    const response = await axios.get('http://localhost:3001/liste')
+    set({ liste: response.data})
+  },
   setSelectedDayOrder: async () => {
     set({ selectedDayOrder: get().userProduct.find((obj) => obj.day === get().selectedDay) })
   },

@@ -11,6 +11,7 @@ import { UserPage } from "pages/UserPage/UserPage.component";
 import { ProductPage } from "pages/ProductPage/ProductPage.component";
 import { GiriniPage } from "pages/GiriniPage/GiriniPage.component";
 import { TipiProdottiPage } from "pages/TipiProdottiPage/TipiProdotti.component";
+import { ListePrezziPage } from "pages/ListePrezzi/ListePrezzi.component";
 
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/Order',
         element: <TablePage />,
+      },
+      {
+        path: '/Liste',
+        element: <ListePrezziPage />,
       },
       {
         path: '/Users',

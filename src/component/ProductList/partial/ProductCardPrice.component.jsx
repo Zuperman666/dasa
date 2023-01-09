@@ -24,7 +24,8 @@ export const ProductCardPrice = (props) => {
         name: '',
         price: '',
         iva: '',
-        tipoProdotto: ''
+        tipoProdotto: '',
+        ordine:''
     })
 
     const patchToDbItem = async () => {
@@ -32,6 +33,7 @@ export const ProductCardPrice = (props) => {
             "name": edit.name,
             "price": edit.price,
             "iva": edit.iva,
+            "sort": Number(edit.ordine),
             "tipoProdotto": Number(edit.tipoProdotto)
         })
         setItem()
@@ -40,7 +42,8 @@ export const ProductCardPrice = (props) => {
             name: '',
             price: '',
             iva: '',
-            tipoProdotto: ''
+            tipoProdotto: '',
+            ordine:''
         })
     }
 
@@ -59,7 +62,8 @@ export const ProductCardPrice = (props) => {
             name: props.name,
             price: props.price,
             iva: props.iva,
-            tipoProdotto: props.tipoProdotto
+            tipoProdotto: props.tipoProdotto,
+            ordine:props.ordine
         })
     }
 
@@ -78,7 +82,8 @@ export const ProductCardPrice = (props) => {
                                 name: e.target.value,
                                 price: edit.price,
                                 iva: edit.iva,
-                                tipoProdotto: edit.tipoProdotto
+                                tipoProdotto: edit.tipoProdotto,
+                                ordine:edit.ordine
                             })} type={'text'}
                         />
                         : <span style={{ minWidth: 'fit-content' }}> {props.name}</span>}
@@ -94,7 +99,8 @@ export const ProductCardPrice = (props) => {
                                     name: edit.name,
                                     price: e.target.value,
                                     iva: edit.iva,
-                                    tipoProdotto: edit.tipoProdotto
+                                    tipoProdotto: edit.tipoProdotto,
+                                    ordine:edit.ordine
                                 })} value={edit.price} placeholder={'Prezzo'} type={'number'} min={"0"} id='price' />
                         </InputWrapper>
 
@@ -109,10 +115,25 @@ export const ProductCardPrice = (props) => {
                                     name: edit.name,
                                     price: edit.price,
                                     iva: e.target.value,
-                                    tipoProdotto: edit.tipoProdotto
+                                    tipoProdotto: edit.tipoProdotto,
+                                    ordine:edit.ordine
                                 })} value={edit.iva} placeholder={'Iva'} type={'number'} pattern="[0-9]" min="0" max="100" id='iva' />
                         </InputWrapper>
                         : <ContainerNumber><span>Iva:</span><span>{props.iva}</span></ContainerNumber>}
+                        {edit.isEditing ?
+                        <InputWrapper>
+                            <label htmlFor="Ordine">Ordine:</label>
+                            <CustomInput
+                                onChange={(e) => setEdit({
+                                    isEditing: true,
+                                    name: edit.name,
+                                    price: edit.price,
+                                    iva: edit.iva,
+                                    tipoProdotto: edit.tipoProdotto,
+                                    ordine:e.target.value
+                                })} value={edit.ordine} placeholder={'ordine'} type={'number'} pattern="[0-9]" min="0" id='ordine' />
+                        </InputWrapper>
+                        : <ContainerNumber><span>Ordine:</span><span>{props.ordine}</span></ContainerNumber>}
                     {edit.isEditing ?
                         <InputWrapper>
                             <label htmlFor="tipo">Tipo: </label>
@@ -124,7 +145,8 @@ export const ProductCardPrice = (props) => {
                                     name: edit.name,
                                     price: edit.price,
                                     iva: edit.iva,
-                                    tipoProdotto: e.target.value
+                                    tipoProdotto: e.target.value,
+                                    ordine:edit.ordine
                                 })}>
                                 {tipiProdotti && tipiProdotti?.map((val, key) => {
                                     return (
@@ -153,7 +175,8 @@ export const ProductCardPrice = (props) => {
                                 name: '',
                                 price: '',
                                 iva: '',
-                                tipoProdotto: ''
+                                tipoProdotto: '',
+                                ordine:''
                             })}>
                                 <DeleteIcon />
                             </IconWrapper>}

@@ -1,7 +1,7 @@
 import { ProductCard } from 'component/ProductCard/ProductCard.component';
 import React, { useEffect } from 'react';
 import { useStore } from 'store/store';
-import { Column, ContainerDivFull, ContainerDoubleTable, DayH1, Row, RowTitle } from './style/TableProduct.style';
+import { Column, ColumnSpecial, ContainerDivFull, ContainerDoubleTable, DayH1, Row, RowTitle } from './style/TableProduct.style';
 import Toggle from 'react-toggle'
 import { HeaderTable } from './partials/HeaderTable/HeaderTable.component';
 import { Overlay } from 'style/Overlay.style';
@@ -38,7 +38,9 @@ export const TableProduct = () => {
       if (!grouped[p]) { grouped[p] = []; }
       grouped[p].push(xs[i]);
     }
-    return Object.values(grouped);;
+    let result = Object.values(grouped);
+    result = result.map((obj)=> obj.sort((a, b) => a.sort - b.sort))
+    return result;
   }
 
   return (
@@ -61,12 +63,20 @@ export const TableProduct = () => {
                 if (vali.isActive) {
                   const isPresent = selectedDayOrder.ordine.find((obj) => obj.itemId === vali.id)
                   return (
+                    <>
                     <Column>
-                      <ProductCard key={Math.random()} name={vali.name} isPresent={isPresent} itemId={vali.id} quantità={isPresent ? isPresent.quantità : 0} />
+                      <ProductCard key={Math.random()} name={vali.name} isPresent={isPresent} itemId={vali.id} quantità={isPresent ? isPresent.quantità : 0}
+                    />
                     </Column>
+                    {keys +1 === val.length && val.length % 2 !== 0 ?<ColumnSpecial></ColumnSpecial> : <></> }
+                    </>
                   )
-                } else return <></>
-              })}
+                } else return <>
+                 {keys +1 === val.length && val.length % 2 !== 0 ? <ColumnSpecial></ColumnSpecial> : <></> }
+                </>
+                
+              }
+              )}
               </>
               )
           })

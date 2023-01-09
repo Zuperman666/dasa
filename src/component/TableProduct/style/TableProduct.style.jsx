@@ -62,6 +62,10 @@ export const Column = styled.div`
 white-space: nowrap; /* Don't forget this one */
 text-overflow: ellipsis;
 `
+export const ColumnSpecial = styled(Column)`
+height:50px
+`
+
 
 
 export const Row = styled.div`
@@ -79,6 +83,7 @@ export const ContainerDoubleTable = styled.div`
 `
 export const RowTitle = styled.div`
  font-size: 14px;
+ display: block;
  font-weight: bold;
  padding: 5px;
 `

@@ -1,8 +1,8 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import styled from 'styled-components';
 
 export const ModalAlertContainer = styled.div`
     position: absolute;
-    width:300px;
     height:300px;
     display: flex;
     border:2px black solid;
@@ -18,7 +18,6 @@ export const ModalAlertContainer = styled.div`
     margin-right: auto; 
 `
 export const ModalAlertText = styled.div`
-    padding-left: 20%;
     padding-right: 20%;
 `
 export const ModalAlertBody = styled.div`
@@ -39,6 +38,7 @@ export const ModalAlertFooter = styled.div`
     align-items: center;
     justify-content: space-evenly;
 `
-
-
-
+export const LinkModify = styled(PDFDownloadLink)`
+    margin-left:20px;
+    margin-right: 20px;
+`

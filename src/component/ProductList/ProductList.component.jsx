@@ -18,6 +18,7 @@ export const ProductList = () => {
   const [nome, setNome] = useState('')
   const [prezzo, setPrezzo] = useState('')
   const [iva, setIva] = useState('')
+  const [ordine, setOrdine] = useState('')
 
   const sendToDbItem = async () => {
     await axios.post(`http://localhost:3001/item`, {
@@ -25,17 +26,21 @@ export const ProductList = () => {
       "price": prezzo,
       "iva": iva,
       "tipoProdotto": Number(tipoProdotto),
-      "isActive": true
+      "isActive": true,
+      "sort": Number(ordine)
     })
     setItem()
     setNome('')
     setPrezzo('')
     setIva('')
     setTipoProdotto(tipiProdotti[0]?.id)
+    setOrdine( tipiProdotti[0]?.length)
+   
   }
 
   useEffect(() => {
     setTipoProdotto(tipiProdotti[0]?.id)
+    setOrdine( tipiProdotti[0]?.length)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tipiProdotti]);
 
@@ -60,7 +65,9 @@ export const ProductList = () => {
                     key={key}
                     name={val.name}
                     iva={val.iva}
+                    ordine={val.sort}
                     price={val.price} />
+                    
                 </Column>
 
               )
@@ -77,6 +84,8 @@ export const ProductList = () => {
         setIva={setIva}
         iva={iva}
         setTipoProdotto={setTipoProdotto}
+        setOrdine={setOrdine}
+        ordine={ordine}
         tipiProdotti={tipiProdotti}
         sendToDbItem={sendToDbItem}
       />

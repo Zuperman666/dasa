@@ -34,6 +34,8 @@ export const LateralColumn = (props) => {
   const setAllUserGirino = useStore((state) => state.setAllUserGirino)
   const allUserGirino = useStore((state) => state.allUserGirino)
   const girini = useStore((state) => state.girini)
+  const liste = useStore((state) => state.liste)
+  const setListe = useStore((state) => state.setListe)
   const navigate = useNavigate();
 
 
@@ -42,8 +44,11 @@ export const LateralColumn = (props) => {
   }
   const PrintTotal = async () => {
 
-    const resp = await axios.get('http://localhost:3001/usuallyOrder').then((resp) => resp)
-    const filteredData = resp?.data?.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === moment(new Date()).format('dddd')).map((obj4) => obj4.ordine.filter((obj5) => item.filter((obj6) => obj6.id === obj5.itemId)[0]?.isActive)) })).filter((obj) => obj.body.length > 0)
+    await axios.get('http://localhost:3001/usuallyOrder').then((resp) => {
+
+  const filterActive = resp.data.filter((obj2)=> allUser.filter((obj3)=> obj3.id ===obj2.id )[0].isActive === true )
+    const filteredData = filterActive.map((obj) => ({ 'userId': obj.userId, 'body': obj.body.filter((obj2) => obj2.stato === 'aperto' && obj2.day === moment(new Date()).format('dddd')).map((obj4) => obj4.ordine.filter((obj5) => item.filter((obj6) => obj6.id === obj5.itemId)[0]?.isActive)) })).filter((obj) => obj.body.length > 0)
+   
     const money = filteredData.map((obj) => ({
       
       'userId': obj.userId, 'body': obj.body, 'totaliPezzi': tipiProdotti.map((obj6) => ({
@@ -52,21 +57,26 @@ export const LateralColumn = (props) => {
         return previous + next;
       })?.toFixed(2) : 0
     }))
-    let moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0].name, 'body': obj.body, 'totaleSoldi': obj.totaleSoldi, 'totaliPezzi': obj.totaliPezzi, 'girino': allUser.filter((obj2) => obj2.id === obj.userId)[0].girino }))
+    
+
+    let moneyName = money.map((obj) => ({ 'name': allUser.filter((obj2) => obj2.id === obj.userId)[0]?.name, 'body': obj.body, 'totaleSoldi': obj.totaleSoldi, 'totaliPezzi': obj.totaliPezzi, 'girino': allUser.filter((obj2) => obj2.id === obj.userId)[0]?.girino }))
+    let test = moneyName;
     /* await axios.post(`http://localhost:3001/history`, { 
        ordini: money,
        data: moment(new Date()).format()
      })*/
-    let testReduce = (objTotal, params, isAdmin) => {
+    let testReduce = (objTotal, params, isAdmin = false) => {
       let valueObj = params === 'itemId' ? 'itemId' : 'tipoProdotto';
-      let result = []
+      let testResult = []
       let Check;
       if (!isAdmin) {
         let arrayFull = moneyName.filter((obj2) => obj2.girino === objTotal.id).length > 0
+      
         if (arrayFull) {
           if (params === 'itemId') {
+          
             Check = moneyName.filter((obj2) => obj2.girino === objTotal.id).map(obj => obj?.body[0])
-          } else {
+} else {
             Check = moneyName.filter((obj2) => obj2.girino === objTotal.id).map(obj => obj[params])
           }
         } else {
@@ -74,38 +84,44 @@ export const LateralColumn = (props) => {
         }
       } else {
         if (params === 'itemId') {
-          Check = objTotal.map(obj => obj?.body[0].ordine ? obj?.body[0]?.ordine : obj?.body)
+          Check = objTotal.map(obj => obj?.body[0]?.ordine ? obj?.body[0]?.ordine : obj?.body)
+          Check = Check.map((obj)=> obj[0] )
         } else {
           Check = objTotal.map(obj => obj[params])
         }
       }
       for (let i = 0; i < Check.length; i++) {
         for (let a = 0; a < Check[i].length; a++) {
-          if (result.find(obj => Number(obj[valueObj]) == Number(Check[i][a][valueObj]))) {
-            const target = result.find((obj) => obj[valueObj] === Check[i][a][valueObj]);
+          if (testResult.find(obj => Number(obj[valueObj]) == Number(Check[i][a][valueObj]))) {
+            const target = testResult.find(obj => Number(obj[valueObj]) == Number(Check[i][a][valueObj]));
+            const targetIndex = testResult.findIndex(obj => Number(obj[valueObj]) == Number(Check[i][a][valueObj]));
             let newValue;
             if (params === 'itemId') {
               newValue = { ...target, 'quantità': target.quantità + Check[i][a].quantità }
             } else {
               newValue = { ...target, 'totale': target.totale + Check[i][a].totale }
             }
-            Object.assign(target, newValue);
+            testResult[targetIndex] = newValue
           }
           else {
-            result.push(Check[i][a])
+            testResult.push(Check[i][a])
           }
         }
       }
-      return result
+      
+      return testResult
     }
-    let girinoTotal = girini.map((obj) => ({ 'name': 'Girino ' + obj.name, 'body': [testReduce(obj, 'itemId')], 'totaleSoldi': moneyName.filter((obj2) => obj2.girino === obj.id).length > 0 ? moneyName.filter((obj2) => obj2.girino === obj.id).map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0) : 0, 'totaliPezzi': testReduce(obj, 'totaliPezzi'), 'girino': obj.id }))
-    let totalLavoration = [{ 'name': 'Lista Produzione', 'body': testReduce(girinoTotal, 'itemId', true), 'totaleSoldi': girinoTotal.map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0), 'totaliPezzi': testReduce(girinoTotal, 'totaliPezzi', true), 'girino': 'Nessuno' }]
+    
+    let girinoTotal = girini.map((obj) => ({ 'name': 'Girino ' + obj.name, 'body': [testReduce(obj, 'itemId')], 'totaleSoldi': moneyName.filter((obj2) => obj2.girino === obj.id).length > 0 ? moneyName.filter((obj2) => obj2.girino === obj.id).map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0).toFixed(2) : 0, 'totaliPezzi': testReduce(obj, 'totaliPezzi'), 'girino': 'Nessuno' }))
+    let totalLavoration = [{ 'name': 'Lista Produzione', 'body': [testReduce(girinoTotal, 'itemId', true)], 'totaleSoldi': girinoTotal.map(obj => obj.totaleSoldi).reduce((partialSum, a) => Number(partialSum) + Number(a), 0).toFixed(2), 'totaliPezzi': testReduce(girinoTotal, 'totaliPezzi', true), 'girino': 'Nessuno' }]
+ 
     let total = []
-    total= moneyName.concat(totalLavoration)
-    total= total.concat(girinoTotal)
+   
+    total= test.concat(girinoTotal,totalLavoration)
     console.log(total)
     setMoney(total)
     setIsModalStamp(true)
+  })
   }
 
 
@@ -123,6 +139,12 @@ export const LateralColumn = (props) => {
     allUser.length === 0 && setUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    liste.length === 0 && setListe()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
 
 
@@ -215,6 +237,13 @@ export const LateralColumn = (props) => {
                 navigate('/Girini')
                 : setValue('isModalOpen', true)
             }}>{'Girini'}</ButtonSelect>
+            <ButtonSelect
+            selected={pathname === '/Liste'}
+            onClick={() => {
+              modifiedItem.length === 0 && !changeday ?
+                navigate('/Liste')
+                : setValue('isModalOpen', true)
+            }}>{'Liste Prezzi'}</ButtonSelect>
           <ButtonSelect
             selected={pathname === '/TipiProdotti'}
             onClick={() => {
@@ -231,7 +260,7 @@ export const LateralColumn = (props) => {
             }}>{'Salva'}</ButtonSelect>
         </ButtonWrapper>
       </ContainerLateral>
-      {isModalStamp && <ModalStamp tipiProdotti={tipiProdotti} setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney} />}
+      {isModalStamp && <ModalStamp girini={girini} tipiProdotti={tipiProdotti} setIsModalStamp={setIsModalStamp} item={item} money={money} setMoney={setMoney} />}
     </>
   );
 };

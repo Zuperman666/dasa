@@ -12,6 +12,7 @@ export const AddNewProductCard = (props) => {
             <CustomInput placeholder={'Nome'} onChange={(e) => props.setNome(e.target.value)} type={'text'}></CustomInput>
             <CustomInput type={'number'} onChange={(e) => props.setPrezzo(e.target.value)} placeholder={'Prezzo'}></CustomInput>
             <CustomInput type={'number'} onChange={(e) => props.setIva(e.target.value)} placeholder={'Iva'}></CustomInput>
+            <CustomInput type={'number'} onChange={(e) => props.setOrdine(e.target.value)} placeholder={'ordine'}></CustomInput>
 
             <CustomSelect onChange={(e) => props.setTipoProdotto(e.target.value)}>
                 {props.tipiProdotti && props.tipiProdotti?.map((val, key) => {
