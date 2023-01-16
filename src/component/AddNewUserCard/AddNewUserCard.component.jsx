@@ -19,6 +19,14 @@ export const AddNewUserCard = (props) => {
                 }
                 )}
             </CustomSelect>
+            <CustomSelect onChange={(e) => props.setLista(e.target.value)}>
+                {props.liste && props.liste?.map((val, key) => {
+                    return (
+                        <option key={key} value={val.id}>{val.name}</option>
+                    )
+                }
+                )}
+            </CustomSelect>
             <Button onClick={() => props.sendToDbUser()} disabled={!(props.nome.length > 0 && props.via.length > 0)}>{'Conferma'}</Button>
         </ContainerNewProduct>
     )

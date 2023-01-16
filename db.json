@@ -6,6 +6,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 1
     },
     {
@@ -14,6 +15,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 2
     },
     {
@@ -22,6 +24,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 3
     },
     {
@@ -30,6 +33,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 4
     },
     {
@@ -38,6 +42,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 5
     },
     {
@@ -46,6 +51,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 6
     },
     {
@@ -54,6 +60,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 2,
+      "listId": 1,
       "id": 7
     },
     {
@@ -62,6 +69,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 1,
+      "listId": 1,
       "id": 8
     },
     {
@@ -70,6 +78,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 1,
+      "listId": 1,
       "id": 9
     },
     {
@@ -78,6 +87,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 2,
+      "listId": 1,
       "id": 10
     },
     {
@@ -86,6 +96,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 11
     },
     {
@@ -94,6 +105,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 12
     },
     {
@@ -102,6 +114,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 13
     },
     {
@@ -110,6 +123,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 14
     },
     {
@@ -118,6 +132,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 15
     },
     {
@@ -126,6 +141,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 16
     },
     {
@@ -134,6 +150,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 2,
+      "listId": 1,
       "id": 17
     },
     {
@@ -142,6 +159,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 2,
+      "listId": 1,
       "id": 18
     },
     {
@@ -150,6 +168,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 2,
+      "listId": 1,
       "id": 19
     },
     {
@@ -158,6 +177,7 @@
       "isActive": false,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 20
     },
     {
@@ -166,6 +186,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 21
     },
     {
@@ -174,6 +195,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 3,
+      "listId": 1,
       "id": 22
     }
   ],
@@ -199,20 +221,6 @@
       "id": 1,
       "name": "Default",
       "modifiche": []
-    },
-    {
-      "name": "TEST",
-      "id": 2,
-      "modifiche": [
-        {
-          "id": 42,
-          "price": 0.6
-        },
-        {
-          "id": 45,
-          "price": 0.5
-        }
-      ]
     }
   ],
   "tipiProdotti": [

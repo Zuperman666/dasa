@@ -14,7 +14,8 @@ export const CardListPrice = (props) => {
                     <div>{props.name}</div>
                 </TextProductCard>
                 <ButtonContainer>
-                    <button onClick={ ()=> (props.setId(props.id),props.setIsEditing(true))} > Edita</button>
+                    <button onClick={() => (props.setId(props.id),props.setIsEditing(true),props.setName(props.name))} > Edita</button>
+                    <button onClick={() => props.delete(props.id)}> Elimina</button>
                 </ButtonContainer>
             </ContainerCardListPrice>
         </>
