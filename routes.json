@@ -1,3 +1,4 @@
 {
-    "/usuallyOrder/userid/:userId": "/usuallyOrder?userId=:userId"
+  "/usuallyOrder/userid/:userId": "/usuallyOrder?userId=:userId",
+  "/usuallyOrder/numr/:numr/:numr2": "/usuallyOrder?numr_gte=numr&numr_lte=numr2"
 }

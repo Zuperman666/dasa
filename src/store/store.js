@@ -8,31 +8,35 @@ export const useStore = create((set, get) => ({
   changeday: false,
   isModalOpen: false,
   selectedDayOrder: [],
-  liste:[],
+  defaultOrder: [],
+  dayOrder: [],
+  liste: [],
   selectedDay: moment(new Date()).format('dddd'),
+  closeDay: [],
   userProduct: [
   ],
   modifiedItem: [],
+  temporary: false,
   girini: [],
   selectedGirino: 1,
   isAdmin: true,
   idStore: '',
-  tipiProdotti:[],
+  tipiProdotti: [],
   allUserGirino: [],
   allUser: [],
   item: [],
   setListe: async () => {
     const response = await axios.get('http://localhost:3001/liste')
-    set({ liste: response.data})
+    set({ liste: response.data })
   },
-  setSelectedDayOrder: async () => {
-    set({ selectedDayOrder: get().userProduct.find((obj) => obj.day === get().selectedDay) })
+  setSelectedDayOrder: () => {
+    set({ selectedDayOrder: get().userProduct?.dayOrder?.filter((obj) => obj.day === get().selectedDay) })
   },
   setUsers: async () => {
     const response = await axios.get('http://localhost:3001/user')
     set({ allUserGirino: response.data.filter((obj) => obj.girino === get().girini.filter((obj2) => obj2.id === get().selectedGirino)[0].id) })
     set({ selectUser: response.data.filter((obj) => obj.girino === get().girini.filter((obj2) => obj2.id === get().selectedGirino)[0].id)[0] })
-    set({ allUser: await response.data })
+    set({ allUser: response.data })
   },
   setAllUserGirino: async () => {
     set({ allUserGirino: get().allUser.filter((obj) => obj.girino === get().girini.filter((obj2) => obj2.id === get().selectedGirino[0])[0].id) })
@@ -51,8 +55,10 @@ export const useStore = create((set, get) => ({
     set({ item: await response.data })
   },
   setProduct: async (id) => {
-    set({ idStore: await axios.get(`http://localhost:3001/usuallyOrder?userId=${id}`).then(resp => resp.data[0]) })
-    set({ userProduct: get().idStore !== '' ? get().idStore.body : [] })
+    set({ userProduct: await axios.get(`http://localhost:3001/usuallyOrder/${id}`).then(resp => resp.data) })
+    set({ closeDay: get().userProduct !== '' ? get().userProduct.closeDay : [] })
+    set({ defaultOrder: get().userProduct !== '' ? get().userProduct.defaultOrder : [] })
+    set({ dayOrder: get().userProduct !== '' ? get().userProduct.dayOrder : [] })
   },
   setValue: (key, value) =>
     set(() => ({
@@ -63,24 +69,14 @@ export const useStore = create((set, get) => ({
       modifiedItem: get().modifiedItem.findIndex((el) => el.itemId === objectModi.itemID) === -1 ? [...state.modifiedItem, objectModi] :
         get().modifiedItem.map((r) => (r.itemId === objectModi.itemId ? objectModi : r)),
     })),
-  changeOpen: () =>
+  setTemporary: () =>
+    set(({ temporary: !get().temporary })),
+  /* changeOpen: () =>
     set(() => ({
       selectedDayOrder: Object.fromEntries(Object.entries(get().selectedDayOrder)
         .map(([k, v]) => [k, k === 'stato' ? v === 'aperto' ? 'chiuso' : 'aperto' : v]))
-    })),
-  save: () =>
-    set(() => ({
-      userProduct: get().userProduct.map((obj) =>
-        obj.day === get().selectedDay
-          ?
-          get().selectedDayOrder
-          : obj
-      )
-    })),
+    })), */
   resetModify: () => {
-    set(() => ({
-      changeday: false
-    }))
     set(() => ({
       modifiedItem: []
     }))

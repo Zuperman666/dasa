@@ -57,8 +57,8 @@ export const Users = (props) => {
       ordine: item.map((obj) => ({ itemId: obj.id, quantità: 0 })),
     }));
     await axios.post(`http://localhost:3001/usuallyOrder`, {
-      userId: userId.id,
-      body: body,
+      id: userId.id,
+      body: body, //TODO: piscia
     });
   };
 

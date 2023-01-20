@@ -27,4 +27,8 @@ export const HeaderTableConfigDays = [
         text:'Domenica',
         value:'Sunday'
     },
+    {
+        text:'Default',
+        value:'default'
+    }
 ]
