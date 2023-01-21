@@ -119,11 +119,11 @@ export const MyDocument = (props) => {
                 }
                 if (count >= limitMin && count < limitMax) {
                     if (count < maxRow + ((maxRow * 2) * index)) {
-                        console.log(obj)
-                        a.push([item[i][l].name, obj.body[0]?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
+
+                        a.push([item[i][l].name, obj.body?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                     else {
-                        b.push([item[i][l].name, obj.body[0]?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body[0].filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
+                        b.push([item[i][l].name, obj.body?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                 }
                 if (l + 1 === item[i].length) {

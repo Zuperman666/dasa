@@ -42,6 +42,9 @@ export const LateralColumn = (props) => {
   const girini = useStore((state) => state.girini);
   const liste = useStore((state) => state.liste);
   const setListe = useStore((state) => state.setListe);
+  const temporary = useStore((state) => state.temporary);
+  const tempOrder = useStore((state) => state.tempOrder);
+  const selectedTempOrder = useStore((state) => state.selectedTempOrder);
   const navigate = useNavigate();
 
   const SendToDbProduct = async () => {
@@ -49,74 +52,92 @@ export const LateralColumn = (props) => {
       await axios.patch(`http://localhost:3001/usuallyOrder/${selectUser.id}`, {
         defaultOrder: defaultOrder,
       });
+    } else if (!temporary) {
+      await axios.patch(`http://localhost:3001/usuallyOrder/${selectUser.id}`, {
+        dayOrder: [selectedDayOrder[0]],
+      });
     } else {
       await axios.patch(`http://localhost:3001/usuallyOrder/${selectUser.id}`, {
-        dayOrder: [...dayOrder, Object.assign({}, selectedDayOrder[0])],
+        tempOrder: [selectedTempOrder[0]],
       });
     }
+    setValue('temporary', false)
     setProduct(selectUser.id);
   };
   const PrintTotal = async () => {
     await axios.get("http://localhost:3001/usuallyOrder").then((resp) => {
+      console.log(resp.data)
+      console.log(allUser)
       const filterActive = resp.data.filter(
         (obj2) =>
           allUser.filter((obj3) => obj3.id === obj2.id)[0].isActive === true
       );
+      const handleFiltertemp = (obj2,obj) => {
+        let temp = obj.tempOrder.filter((obj3)=>
+        obj3.day === moment(new Date()).format("dddd"))[0];
+        let day = obj.dayOrder.filter((obj3)=>
+        obj3.day === moment(new Date()).format("dddd"))[0];
+        if(temp && temp.order.length >0){
+          if(temp.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]){
+             return temp.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]
+          }
+        }
+        if(day && day.order.length > 0){
+          if(day.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]){
+            console.log(day.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0])
+             return day.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]
+          }
+        }
+        return obj2
+      }
       const filteredData = filterActive
         .map((obj) => ({
-          userId: obj.userId,
-          body: obj.body
-            .filter(
-              (obj2) =>
-                obj2.stato === "aperto" &&
-                obj2.day === moment(new Date()).format("dddd")
-            )
-            .map((obj4) =>
-              obj4.ordine.filter(
-                (obj5) =>
-                  item.filter((obj6) => obj6.id === obj5.itemId)[0]?.isActive
+          id: obj.id,
+          closeDay:obj.closeDay,
+          body: obj.defaultOrder.map((obj2)=> handleFiltertemp(obj2,obj))
+            .filter((obj4) =>
+                  item.filter((obj6) => obj6.id === obj4.itemId)[0]?.isActive
               )
-            ),
         }))
-        .filter((obj) => obj.body.length > 0);
+        .filter((obj) => obj.body.length > 0).filter((obj)=> obj.closeDay.length === 0 || obj.closeDay.filter((obj4)=>obj4 === moment(new Date()).format("dddd"))[0].length === 0 )
 
       const money = filteredData.map((obj) => ({
-        userId: obj.userId,
+        id: obj.id,
         body: obj.body,
         totaliPezzi: tipiProdotti.map((obj6) => ({
           tipoProdotto: obj6.id,
-          totale: obj?.body?.[0]
-            ? obj.body[0]
-                .filter(
-                  (obj7) =>
-                    item.filter(
-                      (obj8) => Number(obj8.id) === Number(obj7.itemId)
-                    )[0].tipoProdotto === Number(obj6.id)
-                )
-                .map((obj9) => Number(obj9.quantità))
-                .reduce((partialSum, a) => partialSum + a, 0)
+          totale: obj?.body
+            ? obj.body
+              .filter(
+                (obj7) =>
+                  item.filter(
+                    (obj8) => Number(obj8.id) === Number(obj7.itemId)
+                  )[0].tipoProdotto === Number(obj6.id)
+              )
+              .map((obj9) => Number(obj9.quantità))
+              .reduce((partialSum, a) => partialSum + a, 0)
             : 0,
         })),
         totaleSoldi: obj.body
-          ? obj?.body[0]
-              ?.map(
-                (obj2) =>
-                  item.filter((obj3) => obj3.id === obj2.itemId)[0].price *
-                  obj2.quantità
-              )
-              .reduce((previous, next) => {
-                return previous + next;
-              })
-              ?.toFixed(2)
+          ? obj?.body
+            ?.map(
+              (obj2) =>
+                item.filter((obj3) => obj3.id === obj2.itemId)[0].price *
+                obj2.quantità
+            )
+            .reduce((previous, next) => {
+              return previous + next;
+            })
+            ?.toFixed(2)
           : 0,
       }));
 
       let moneyName = money.map((obj) => ({
-        name: allUser.filter((obj2) => obj2.id === obj.userId)[0]?.name,
+        name: allUser.filter((obj2) => obj2.id === obj.id)[0]?.name,
         body: obj.body,
         totaleSoldi: obj.totaleSoldi,
         totaliPezzi: obj.totaliPezzi,
-        girino: allUser.filter((obj2) => obj2.id === obj.userId)[0]?.girino,
+        girino: allUser.filter((obj2) => obj2.id === obj.id)[0]?.girino,
       }));
       let test = moneyName;
       /* await axios.post(`http://localhost:3001/history`, { 
@@ -135,7 +156,7 @@ export const LateralColumn = (props) => {
             if (params === "itemId") {
               Check = moneyName
                 .filter((obj2) => obj2.girino === objTotal.id)
-                .map((obj) => obj?.body[0]);
+                .map((obj) => obj?.body);
             } else {
               Check = moneyName
                 .filter((obj2) => obj2.girino === objTotal.id)
@@ -147,9 +168,9 @@ export const LateralColumn = (props) => {
         } else {
           if (params === "itemId") {
             Check = objTotal.map((obj) =>
-              obj?.body[0]?.ordine ? obj?.body[0]?.ordine : obj?.body
+              obj?.body?.ordine ? obj?.body?.ordine : obj?.body
             );
-            Check = Check.map((obj) => obj[0]);
+            Check = Check.map((obj) => obj);
           } else {
             Check = objTotal.map((obj) => obj[params]);
           }
@@ -185,20 +206,19 @@ export const LateralColumn = (props) => {
             }
           }
         }
-
         return testResult;
       };
 
       let girinoTotal = girini.map((obj) => ({
         name: "Girino " + obj.name,
-        body: [testReduce(obj, "itemId")],
+        body: testReduce(obj, "itemId"),
         totaleSoldi:
           moneyName.filter((obj2) => obj2.girino === obj.id).length > 0
             ? moneyName
-                .filter((obj2) => obj2.girino === obj.id)
-                .map((obj) => obj.totaleSoldi)
-                .reduce((partialSum, a) => Number(partialSum) + Number(a), 0)
-                .toFixed(2)
+              .filter((obj2) => obj2.girino === obj.id)
+              .map((obj) => obj.totaleSoldi)
+              .reduce((partialSum, a) => Number(partialSum) + Number(a), 0)
+              .toFixed(2)
             : 0,
         totaliPezzi: testReduce(obj, "totaliPezzi"),
         girino: "Nessuno",
@@ -206,7 +226,7 @@ export const LateralColumn = (props) => {
       let totalLavoration = [
         {
           name: "Lista Produzione",
-          body: [testReduce(girinoTotal, "itemId", true)],
+          body: testReduce(girinoTotal, "itemId", true),
           totaleSoldi: girinoTotal
             .map((obj) => obj.totaleSoldi)
             .reduce((partialSum, a) => Number(partialSum) + Number(a), 0)
@@ -219,7 +239,6 @@ export const LateralColumn = (props) => {
       let total = [];
 
       total = test.concat(girinoTotal, totalLavoration);
-      console.log(total);
       setMoney(total);
       setIsModalStamp(true);
     });
@@ -299,11 +318,11 @@ export const LateralColumn = (props) => {
             onChange={(e) => {
               modifiedItem.length === 0 && !changeday
                 ? setValue(
-                    "selectUser",
-                    allUser.filter(
-                      (obj) => obj.id === Number(e.target.value)
-                    )[0]
-                  )
+                  "selectUser",
+                  allUser.filter(
+                    (obj) => obj.id === Number(e.target.value)
+                  )[0]
+                )
                 : setValue("isModalOpen", true);
             }}
           >

@@ -8,6 +8,15 @@
       "girino": 1,
       "listId": 1,
       "id": 1
+    },
+    {
+      "name": "Pippo",
+      "via": "da vedere",
+      "isActive": true,
+      "daPagare": 0,
+      "girino": 1,
+      "listId": 1,
+      "id": 2
     }
   ],
   "girini": [
@@ -564,10 +573,7 @@
   "usuallyOrder": [
     {
       "id": 1,
-      "numr": 9,
-      "closeDay": [
-        "Sunday"
-      ],
+      "closeDay": [],
       "defaultOrder": [
         {
           "itemId": 1,
@@ -800,88 +806,264 @@
       ],
       "dayOrder": [
         {
-          "day": "Monday",
+          "day": "Saturday",
           "order": [
             {
-              "itemId": 5,
-              "quantità": 12
-            }
-          ]
-        },
-        {
-          "day": "Friday",
-          "order": [
-            {
-              "itemId": 3,
-              "quantità": 4
-            },
-            {
-              "itemId": 1,
-              "quantità": 3
-            }
-          ]
-        },
-        {
-          "day": "Friday",
-          "order": [
-            {
-              "itemId": 3,
-              "quantità": 4
-            }
-          ]
-        },
-        {
-          "day": "Friday",
-          "order": [
-            {
-              "itemId": 3,
-              "quantità": 4
-            },
-            {
-              "itemId": 1,
-              "quantità": 3
+              "itemId": 2,
+              "quantità": 17
             }
           ]
         }
       ],
-      "tempOrder": [
-        {
-          "day": "Monday",
-          "order": [
-            {
-              "itemId": 5,
-              "quantità": 12
-            }
-          ]
-        }
-      ]
+      "tempOrder": []
     },
     {
       "id": 2,
-      "numr": 23,
-      "closeDay": [
-        "Monday"
-      ],
+      "closeDay": [],
       "defaultOrder": [
         {
           "itemId": 1,
           "quantità": 2
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "numr": 50,
-      "closeDay": [
-        "Giorgio"
-      ],
-      "defaultOrder": [
+        },
         {
-          "itemId": 1,
+          "itemId": 2,
+          "quantità": 0
+        },
+        {
+          "itemId": 3,
           "quantità": 2
+        },
+        {
+          "itemId": 4,
+          "quantità": 0
+        },
+        {
+          "itemId": 5,
+          "quantità": 0
+        },
+        {
+          "itemId": 6,
+          "quantità": 0
+        },
+        {
+          "itemId": 7,
+          "quantità": 0
+        },
+        {
+          "itemId": 8,
+          "quantità": 0
+        },
+        {
+          "itemId": 9,
+          "quantità": 0
+        },
+        {
+          "itemId": 10,
+          "quantità": 0
+        },
+        {
+          "itemId": 11,
+          "quantità": 0
+        },
+        {
+          "itemId": 12,
+          "quantità": 0
+        },
+        {
+          "itemId": 13,
+          "quantità": 0
+        },
+        {
+          "itemId": 14,
+          "quantità": 0
+        },
+        {
+          "itemId": 15,
+          "quantità": 0
+        },
+        {
+          "itemId": 16,
+          "quantità": 0
+        },
+        {
+          "itemId": 17,
+          "quantità": 0
+        },
+        {
+          "itemId": 18,
+          "quantità": 0
+        },
+        {
+          "itemId": 19,
+          "quantità": 0
+        },
+        {
+          "itemId": 20,
+          "quantità": 0
+        },
+        {
+          "itemId": 21,
+          "quantità": 0
+        },
+        {
+          "itemId": 22,
+          "quantità": 0
+        },
+        {
+          "itemId": 23,
+          "quantità": 0
+        },
+        {
+          "itemId": 24,
+          "quantità": 0
+        },
+        {
+          "itemId": 25,
+          "quantità": 0
+        },
+        {
+          "itemId": 26,
+          "quantità": 0
+        },
+        {
+          "itemId": 27,
+          "quantità": 0
+        },
+        {
+          "itemId": 28,
+          "quantità": 0
+        },
+        {
+          "itemId": 29,
+          "quantità": 0
+        },
+        {
+          "itemId": 30,
+          "quantità": 0
+        },
+        {
+          "itemId": 31,
+          "quantità": 0
+        },
+        {
+          "itemId": 32,
+          "quantità": 0
+        },
+        {
+          "itemId": 33,
+          "quantità": 0
+        },
+        {
+          "itemId": 34,
+          "quantità": 0
+        },
+        {
+          "itemId": 35,
+          "quantità": 0
+        },
+        {
+          "itemId": 36,
+          "quantità": 0
+        },
+        {
+          "itemId": 37,
+          "quantità": 0
+        },
+        {
+          "itemId": 38,
+          "quantità": 0
+        },
+        {
+          "itemId": 39,
+          "quantità": 0
+        },
+        {
+          "itemId": 40,
+          "quantità": 0
+        },
+        {
+          "itemId": 41,
+          "quantità": 0
+        },
+        {
+          "itemId": 42,
+          "quantità": 0
+        },
+        {
+          "itemId": 43,
+          "quantità": 0
+        },
+        {
+          "itemId": 44,
+          "quantità": 0
+        },
+        {
+          "itemId": 45,
+          "quantità": 0
+        },
+        {
+          "itemId": 46,
+          "quantità": 0
+        },
+        {
+          "itemId": 47,
+          "quantità": 0
+        },
+        {
+          "itemId": 48,
+          "quantità": 0
+        },
+        {
+          "itemId": 49,
+          "quantità": 0
+        },
+        {
+          "itemId": 50,
+          "quantità": 0
+        },
+        {
+          "itemId": 51,
+          "quantità": 0
+        },
+        {
+          "itemId": 52,
+          "quantità": 0
+        },
+        {
+          "itemId": 53,
+          "quantità": 0
+        },
+        {
+          "itemId": 54,
+          "quantità": 0
+        },
+        {
+          "itemId": 55,
+          "quantità": 0
+        },
+        {
+          "itemId": 56,
+          "quantità": 0
+        },
+        {
+          "itemId": 57,
+          "quantità": 0
         }
-      ]
+      ],
+      "dayOrder": [
+        {
+          "day": "Saturday",
+          "order": [
+            {
+              "itemId": 2,
+              "quantità": 17
+            }
+          ]
+        }
+      ],
+      "tempOrder": []
     }
   ],
+  
   "history": []
 }

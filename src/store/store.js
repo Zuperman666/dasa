@@ -11,6 +11,8 @@ export const useStore = create((set, get) => ({
   defaultOrder: [],
   dayOrder: [],
   liste: [],
+  tempOrder:[],
+  selectedTempOrder:[],
   selectedDay: moment(new Date()).format('dddd'),
   closeDay: [],
   userProduct: [
@@ -31,6 +33,7 @@ export const useStore = create((set, get) => ({
   },
   setSelectedDayOrder: () => {
     set({ selectedDayOrder: get().userProduct?.dayOrder?.filter((obj) => obj.day === get().selectedDay) })
+    set({ selectedTempOrder: get().userProduct?.tempOrder?.filter((obj) => obj.day === get().selectedDay) })
   },
   setUsers: async () => {
     const response = await axios.get('http://localhost:3001/user')
@@ -59,6 +62,7 @@ export const useStore = create((set, get) => ({
     set({ closeDay: get().userProduct !== '' ? get().userProduct.closeDay : [] })
     set({ defaultOrder: get().userProduct !== '' ? get().userProduct.defaultOrder : [] })
     set({ dayOrder: get().userProduct !== '' ? get().userProduct.dayOrder : [] })
+    set({ tempOrder: get().userProduct !== '' ? get().userProduct.tempOrder : [] })
   },
   setValue: (key, value) =>
     set(() => ({

@@ -13,6 +13,8 @@ export const ProductCard = (props) => {
   const selectedDay = useStore((state) => state.selectedDay);
   const defaultOrder = useStore((state) => state.defaultOrder);
   const selectedDayOrder = useStore((state) => state.selectedDayOrder);
+  const selectedTempOrder = useStore((state) => state.selectedTempOrder);
+  const temporary = useStore((state) => state.temporary);
   const setValue = useStore((state) => state.setValue);
 
   const ModifyFunction = (e) => {
@@ -27,7 +29,8 @@ export const ProductCard = (props) => {
   };
 
   const modifyDayOrder = (e) => {
-    let array = selectedDayOrder;
+    let isPresent = temporary ? props.isPresentTemp : props.isPresentDay;
+    let array = temporary ? selectedTempOrder : selectedDayOrder;
     let result;
     let modify = { itemId: props.itemId, quantità: Number(e.target.value) };
     if (array && array.length === 0) {
@@ -36,17 +39,20 @@ export const ProductCard = (props) => {
     let alreadyInside = array[0].order.filter(
       (obj) => props.itemId === obj.itemId
     );
-    if (!props.isPresent && alreadyInside.length === 0) {
+    if (!isPresent && alreadyInside.length === 0) {
+      console.log("true")
       array[0].order.push(modify);
       result = array;
     } else {
+      console.log("fas")
       let order = array[0].order.map((obj) =>
         props.itemId === obj.itemId ? modify : obj
       );
       array[0].order = order;
       result = array;
     }
-    setValue("selectedDayOrder", result);
+   
+    setValue(temporary ? "selectedTempOrder" : "selectedDayOrder", result);
   };
 
   const modifyDefaultOrder = (e) => {

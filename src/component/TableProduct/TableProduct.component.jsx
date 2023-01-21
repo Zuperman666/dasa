@@ -16,6 +16,7 @@ import { Overlay } from "style/Overlay.style";
 import { HeaderTableConfigDays } from "./partials/HeaderTable/HeaderTable.config";
 import { ContainerToggle } from "component/Users/style/Users.style";
 import axios from "axios";
+import { ModalAlertTemp } from "./partials/ModalAlertTemp.component";
 
 export const TableProduct = () => {
   const item = useStore((state) => state.item);
@@ -30,15 +31,22 @@ export const TableProduct = () => {
   const selectedDayOrder = useStore((state) => state.selectedDayOrder);
   const setProduct = useStore((state) => state.setProduct);
   const userProduct = useStore((state) => state.userProduct);
+  const selectedTempOrder = useStore((state) => state.selectedTempOrder);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [modalAlertTemp, setModalAlertTemp] = React.useState(false);
+  const [hasTemp, setHasTemp] = React.useState(!closeDay.some((closedDay) => closedDay === selectedDay)
+  && selectedTempOrder?.length > 0);
   const today = HeaderTableConfigDays.filter((day) =>
     selectedDay !== "" ? day.value === selectedDay : day.value === "default"
   );
   // @ts-ignore
   useEffect(() => {
     setSelectedDayOrder();
+    setHasTemp(!closeDay.some((closedDay) => closedDay === selectedDay)
+    && selectedTempOrder?.length > 0)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDay, userProduct]);
+  
 
   if (!selectedDayOrder) return <>{"Sta caricando ..."}</>;
 
@@ -66,7 +74,14 @@ export const TableProduct = () => {
       })
       .then(() => setProduct(userProduct.id));
   };
-
+const handleChangeTemp = ()=>{
+  if(selectedTempOrder.length > 0 && hasTemp){
+    setModalAlertTemp(true)
+  }else {
+    setValue('temporary',!hasTemp);
+    setHasTemp(!hasTemp);
+  }
+}
   return (
     <ContainerDivFull>
       <HeaderTable isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -74,7 +89,7 @@ export const TableProduct = () => {
       <ContainerToggle>
         <>
           {selectedDayOrder &&
-          !closeDay.some((closedDay) => closedDay === selectedDay) ? (
+            !closeDay.some((closedDay) => closedDay === selectedDay) ? (
             <span>Giorno Abilitato</span>
           ) : (
             <span>Giorno Disabilitato</span>
@@ -84,6 +99,7 @@ export const TableProduct = () => {
             checked={
               selectedDayOrder &&
               !closeDay.some((closedDay) => closedDay === selectedDay)
+
             }
             onChange={handleToggle}
           />
@@ -93,8 +109,8 @@ export const TableProduct = () => {
             id="temp"
             name="temp"
             value="temp"
-            checked={temporary}
-            onChange={() => setTemporary()}
+            checked={hasTemp}
+            onChange={() => handleChangeTemp()}
           />
         </>
       </ContainerToggle>
@@ -114,7 +130,10 @@ export const TableProduct = () => {
                   </RowTitle>
                   {val.map((vali, keys) => {
                     if (vali.isActive) {
-                      const isPresent = selectedDayOrder[0]?.order?.find(
+                      const isPresentDay = selectedDayOrder[0]?.order?.find(
+                        (obj) => obj.itemId === vali.id
+                      );
+                      const isPresentTemp = selectedTempOrder[0]?.order?.find(
                         (obj) => obj.itemId === vali.id
                       );
                       return (
@@ -123,10 +142,12 @@ export const TableProduct = () => {
                             <ProductCard
                               key={Math.random()}
                               name={vali.name}
-                              isPresent={isPresent}
+                              isPresentTemp={isPresentTemp}
+                              isPresentDay={isPresentDay}
                               itemId={vali.id}
                               quantità={
-                                isPresent?.quantità ||
+                                isPresentTemp?.quantità ||
+                                isPresentDay?.quantità ||
                                 userProduct?.defaultOrder.find(
                                   (obj) => obj.itemId === vali.id
                                 ).quantità
@@ -157,6 +178,7 @@ export const TableProduct = () => {
         </Row>
       </ContainerDoubleTable>
       {isOpen && <Overlay onClick={() => setIsOpen(false)} />}
+      {modalAlertTemp && <ModalAlertTemp setModalAlertTemp={setModalAlertTemp} />}
     </ContainerDivFull>
   );
 };
