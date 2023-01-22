@@ -14,6 +14,7 @@ import {
 
 export const LateralColumn = (props) => {
   const [isSending, setIsSending] = useState(false);
+  const [hasPatch, setHasPatch] = useState();
   const [isModalStamp, setIsModalStamp] = useState(false);
   const [money, setMoney] = useState("");
   const setTipiProdotti = useStore((state) => state.setTipiProdotti);
@@ -66,26 +67,28 @@ export const LateralColumn = (props) => {
   };
   const PrintTotal = async () => {
     await axios.get("http://localhost:3001/usuallyOrder").then((resp) => {
-      console.log(resp.data)
-      console.log(allUser)
       const filterActive = resp.data.filter(
         (obj2) =>
           allUser.filter((obj3) => obj3.id === obj2.id)[0].isActive === true
       );
-      const handleFiltertemp = (obj2,obj) => {
-        let temp = obj.tempOrder.filter((obj3)=>
-        obj3.day === moment(new Date()).format("dddd"))[0];
-        let day = obj.dayOrder.filter((obj3)=>
-        obj3.day === moment(new Date()).format("dddd"))[0];
-        if(temp && temp.order.length >0){
-          if(temp.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]){
-             return temp.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]
+      const hasPatchFunc = async()=> {
+        setHasPatch(filterActive.filter((obj)=> obj.tempOrder.length > 0))
+
+      }
+      hasPatchFunc()
+      const handleFiltertemp = (obj2, obj) => {
+        let temp = obj.tempOrder.filter((obj3) =>
+          obj3.day === moment(new Date()).format("dddd"))[0];
+        let day = obj.dayOrder.filter((obj3) =>
+          obj3.day === moment(new Date()).format("dddd"))[0];
+        if (temp && temp.order.length > 0) {
+          if (temp.order.filter((obj4) => obj4.itemId === obj2.itemId)[0]) {
+            return temp.order.filter((obj4) => obj4.itemId === obj2.itemId)[0]
           }
         }
-        if(day && day.order.length > 0){
-          if(day.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]){
-            console.log(day.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0])
-             return day.order.filter((obj4)=> obj4.itemId === obj2.itemId)[0]
+        if (day && day.order.length > 0) {
+          if (day.order.filter((obj4) => obj4.itemId === obj2.itemId)[0]) {
+            return day.order.filter((obj4) => obj4.itemId === obj2.itemId)[0]
           }
         }
         return obj2
@@ -93,14 +96,13 @@ export const LateralColumn = (props) => {
       const filteredData = filterActive
         .map((obj) => ({
           id: obj.id,
-          closeDay:obj.closeDay,
-          body: obj.defaultOrder.map((obj2)=> handleFiltertemp(obj2,obj))
+          closeDay: obj.closeDay,
+          body: obj.defaultOrder.map((obj2) => handleFiltertemp(obj2, obj))
             .filter((obj4) =>
-                  item.filter((obj6) => obj6.id === obj4.itemId)[0]?.isActive
-              )
+              item.filter((obj6) => obj6.id === obj4.itemId)[0]?.isActive
+            )
         }))
-        .filter((obj) => obj.body.length > 0).filter((obj)=> obj.closeDay.length === 0 || obj.closeDay.filter((obj4)=>obj4 === moment(new Date()).format("dddd"))[0].length === 0 )
-
+        .filter((obj) => obj.body.length > 0).filter((obj) => obj.closeDay.length === 0 || obj.closeDay.filter((obj4) => obj4 === moment(new Date()).format("dddd"))[0].length === 0)
       const money = filteredData.map((obj) => ({
         id: obj.id,
         body: obj.body,
@@ -122,8 +124,12 @@ export const LateralColumn = (props) => {
           ? obj?.body
             ?.map(
               (obj2) =>
-                item.filter((obj3) => obj3.id === obj2.itemId)[0].price *
-                obj2.quantità
+                allUser.filter((obj4) => obj4.id === obj.id)[0]?.listId === 1 ||
+                  liste.filter((obj6) => Number(allUser.filter((obj4) => obj4.id === obj.id)[0]?.listId) === Number(obj6.id))[0].modifiche.filter((obj7) => obj7.itemId === obj2.itemId).length === 0
+                  ?
+                  item.filter((obj3) => obj3.id === obj2.itemId)[0].price *
+                  obj2.quantità
+                  : liste.filter((obj6) => Number(allUser.filter((obj4) => obj4.id === obj.id)[0]?.listId) === Number(obj6.id))[0].modifiche.filter((obj7) => obj7.itemId === obj2.itemId)[0].price * obj2.quantità
             )
             .reduce((previous, next) => {
               return previous + next;
@@ -145,6 +151,7 @@ export const LateralColumn = (props) => {
        data: moment(new Date()).format()
      })*/
       let testReduce = (objTotal, params, isAdmin = false) => {
+
         let valueObj = params === "itemId" ? "itemId" : "tipoProdotto";
         let testResult = [];
         let Check;
@@ -241,6 +248,7 @@ export const LateralColumn = (props) => {
       total = test.concat(girinoTotal, totalLavoration);
       setMoney(total);
       setIsModalStamp(true);
+      
     });
   };
 
@@ -428,6 +436,10 @@ export const LateralColumn = (props) => {
           item={item}
           money={money}
           setMoney={setMoney}
+          hasPatch={hasPatch}
+          setHasPatch={setHasPatch}
+          setProduct={setProduct}
+          selectUser={selectUser}
         />
       )}
     </>

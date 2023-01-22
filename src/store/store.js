@@ -8,6 +8,8 @@ export const useStore = create((set, get) => ({
   changeday: false,
   isModalOpen: false,
   selectedDayOrder: [],
+  allHistory:[],
+  history:[],
   defaultOrder: [],
   dayOrder: [],
   liste: [],

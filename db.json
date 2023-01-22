@@ -15,7 +15,7 @@
       "isActive": true,
       "daPagare": 0,
       "girino": 1,
-      "listId": 1,
+      "listId": 2,
       "id": 2
     }
   ],
@@ -41,6 +41,16 @@
       "id": 1,
       "name": "Default",
       "modifiche": []
+    },
+    {
+      "id": 2,
+      "name": "Test",
+      "modifiche": [
+        {
+          "itemId": 1,
+          "price": 2
+        }
+      ]
     }
   ],
   "tipiProdotti": [
@@ -1064,6 +1074,64 @@
       "tempOrder": []
     }
   ],
-  
-  "history": []
+  "history": [
+    {
+      "id": 1,
+      "day": "01/21/2023",
+      "fullOrder": [
+        {
+          "userId": 1,
+          "daPagare": 0,
+          "relativeOrder": [
+            {
+              "itemId": 1,
+              "quantità": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "day": "01/20/2023",
+      "fullOrder": [
+        {
+          "userId": 1,
+          "daPagare": 0,
+          "relativeOrder": [
+            {
+              "itemId": 1,
+              "quantità": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "day": "01/22/2023",
+      "fullOrder": [
+        {
+          "userId": 1,
+          "daPagare": 0,
+          "relativeOrder": [
+            {
+              "itemId": 2,
+              "quantità": 2
+            }
+          ]
+        },
+        {
+          "userId": 2,
+          "daPagare": 20,
+          "relativeOrder": [
+            {
+              "itemId": 2,
+              "quantità": 2
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
