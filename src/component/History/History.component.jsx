@@ -3,10 +3,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
-
+import { HistoryCard } from "./partial/HistoryCard.component";
 import "react-datepicker/dist/react-datepicker.css";
 import { useStore } from "store/store";
 import { ContainerButton, ContainerDatePicker, ContainerHistory, TitleDatePicker } from "./style/History.style";
+import { Column } from "component/TableProduct/style/TableProduct.style";
 
 export const HistoryPage = (props) => {
   const [startDate, setStartDate] = useState(new Date());
@@ -67,7 +68,7 @@ export const HistoryPage = (props) => {
         return {}
       }
     }
-   
+
     const result = filterDate()
     setValue('history', result)
   }
@@ -79,10 +80,10 @@ export const HistoryPage = (props) => {
   }
   const payAll = async () => {
     for (let i = 0; i < allHistory.length; i++) {
-      let newPay = allHistory[i].fullOrder.map((obj) => ({...obj,"daPagare": obj.userId === selectUser.id ? 0 : obj.daPagare}))
-      await axios.patch(`http://localhost:3001/history/${allHistory[i].id}`,{
-         fullOrder: newPay
-       });
+      let newPay = allHistory[i].fullOrder.map((obj) => ({ ...obj, "daPagare": obj.userId === selectUser.id ? 0 : obj.daPagare }))
+      await axios.patch(`http://localhost:3001/history/${allHistory[i].id}`, {
+        fullOrder: newPay
+      });
     }
     findHistory()
   }
@@ -112,9 +113,11 @@ export const HistoryPage = (props) => {
           ? history.daPagareTotale
           : ''}
         <div>
-          {history.length > 0 ?
-            history.map((obj) =>
-              <>{ }</>
+          {history && history.fullOrder?.length > 0 ?
+            history.fullOrder.map((obj) =>
+            <Column>
+              <HistoryCard itemId={obj.itemId} quantità={obj.quantità} />
+            </Column>
             )
             :
 
