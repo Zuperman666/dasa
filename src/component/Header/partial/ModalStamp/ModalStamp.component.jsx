@@ -28,7 +28,7 @@ export const ModalStamp = (props) => {
       <ModalAlertContainer>
         <ModalAlertBody>
           <ModalAlertText>
-            <LinkModify document={<MyDocument girini={props.girini} tipiProdotti={props.tipiProdotti} money={props.money} item={props.item} />} fileName={namePdf}>
+            <LinkModify document={<MyDocument girini={props.girini} tipiProdotti={props.tipiProdotti} money={props.money} item={props.item} date={moment(new Date()).format("DD/MM/YYYY")}/>} fileName={namePdf}>
               {({ blob, url, loading, error }) =>
                 loading ? 'Loading document...' : namePdf
               }

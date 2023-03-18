@@ -16,12 +16,11 @@ export const HistoryPage = (props) => {
   const allHistory = useStore((state) => state.allHistory);
   const setValue = useStore((state) => state.setValue);
   const selectUser = useStore((state) => state.selectUser)
+
   const sumDay = (filterBetween) => {
     let testResult = []
-    console.log(filterBetween)
     for (let i = 0; i < filterBetween.length; i++) {
       for (let a = 0; a < filterBetween[i].fullOrder.relativeOrder.length; a++) {
-        console.log(filterBetween[i].fullOrder.relativeOrder)
         if (
           testResult.find(
             (obj) => Number(obj["itemId"]) == Number(filterBetween[i].fullOrder.relativeOrder[a]["itemId"])

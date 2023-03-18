@@ -51,14 +51,12 @@ export const Users = (props) => {
 
   const sendToDbUsuallyOrder = async () => {
     const userId = allUser.find((obj) => obj.name === nome);
-    const body = arrayDays.map((obj) => ({
-      day: obj,
-      stato: "aperto",
-      ordine: item.map((obj) => ({ itemId: obj.id, quantità: 0 })),
-    }));
     await axios.post(`http://localhost:3001/usuallyOrder`, {
-      id: userId.id,
-      body: body, //TODO: piscia
+      "id": userId.id,
+      "closeDay": [],
+      "defaultOrder": item.map((obj) => ({ itemId: obj.id, quantità: 0 })),
+      "dayOrder": [],
+      "tempOrder": []
     });
   };
 
@@ -93,7 +91,7 @@ export const Users = (props) => {
       </ContainerToggle>
       <ContainerDoubleTable>
         <Row>
-          {allUser.map((val, key) => {
+          {allUser && allUser.map((val, key) => {
             if (val.isActive === active) {
               return (
                 <Column>
@@ -106,7 +104,7 @@ export const Users = (props) => {
                       tipoProdotto={val.tipoProdotto}
                       isActive={val.isActive}
                       key={key}
-                      name={val.name}
+                      name={val?.name}
                     />
                   </ContainerUsers>
                 </Column>

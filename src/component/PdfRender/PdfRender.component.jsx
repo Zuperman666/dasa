@@ -99,6 +99,7 @@ export const MyDocument = (props) => {
 
     let item = filterByType(filtered, 'tipoProdotto')
     const separateColumnFunction = (index, obj) => {
+        console.log(obj)
         let count = 0;
         let limitMin = index * (maxRow * 2);
         let limitMax = (index + 1) * (maxRow * 2);
@@ -106,7 +107,6 @@ export const MyDocument = (props) => {
         let b = [];
         for (var i = 0; i < item.length; i++) {
             for (var l = 0; l < item[i].length; l++) {
-
                 if (l === 0) {
                     count++
                     if (count >= limitMin && count < limitMax) {
@@ -119,7 +119,6 @@ export const MyDocument = (props) => {
                 }
                 if (count >= limitMin && count < limitMax) {
                     if (count < maxRow + ((maxRow * 2) * index)) {
-
                         a.push([item[i][l].name, obj.body?.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id)).length > 0 && obj.body.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))?.[0]?.quantità !== 0 ? obj.body.filter((obj3) => Number(obj3.itemId) === Number(item[i][l].id))[0]?.quantità : null])
                     }
                     else {
@@ -148,6 +147,7 @@ export const MyDocument = (props) => {
             }
 
         }
+        b.push(['Totale Da Pagare', obj.totaleSoldi + ' €']);
         return (
             <>
                 {
@@ -167,7 +167,7 @@ export const MyDocument = (props) => {
                                 </View>
                                 {b.length > 0 && b[indx] !== undefined && <>
                                     <View style={styles.text3}>
-                                        {b?.[indx]?.[0] === 'Totale' || b?.[indx]?.[1] === 'TIPO PRODOTTO' ?
+                                        {b?.[indx]?.[0] === 'Totale' || b?.[indx]?.[0] === 'Totale Da Pagare' || b?.[indx]?.[1] === 'TIPO PRODOTTO' ?
                                             <Text style={styles.marginTopLowColor}>{b?.[indx]?.[0]}</Text>
                                             :
                                             <Text style={styles.marginTopLow}>{b?.[indx]?.[0]}</Text>
@@ -190,7 +190,7 @@ export const MyDocument = (props) => {
 
     }
     let arrayLen = Math.ceil((filtered.length + item.length * 2) / (maxRow * 2))
-
+ 
     return (
         <Document>
             {props.money.map((obj) => {
@@ -203,8 +203,8 @@ export const MyDocument = (props) => {
                                         <Text style={styles.Title}>{'PASTICCERIA DASA s.r.l ~ Gastronomia e Catering ~ Tel. 3474884888 Alessandro'}</Text>
                                     </View>
                                     <View style={styles.marginBottomDouble}>
-                                        <Text>{'Cliente: ' + obj.name}</Text>
-                                        {obj.girino !== 'Nessuno' && <Text>{'Girino: ' + props.girini.filter((obj2)=> obj2.id === obj.girino )[0]?.name}</Text>}
+                                        <Text>{'Cliente: ' + obj.name}{obj.girino === 'Nessuno' ? '  Data:' + props.date : ''}</Text>
+                                        {obj.girino !== 'Nessuno' && <Text>{'Girino: ' + props.girini.filter((obj2)=> obj2.id === obj.girino )[0]?.name }</Text>}
                                     </View>
                                     <View style={styles.column}>
                                         <View style={styles.row}>

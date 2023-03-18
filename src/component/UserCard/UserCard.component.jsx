@@ -64,7 +64,7 @@ export const UserCard = (props) => {
     setTimeout(() => ref.current.focus());
     setEdit({
       isEditing: true,
-      name: props.name,
+      name: props?.name,
       via: props.via,
       girino: props.girino,
       lista: props.lista,
@@ -93,7 +93,7 @@ export const UserCard = (props) => {
               type={"text"}
             />
           ) : (
-            <span style={{ minWidth: "fit-content" }}> {props.name}</span>
+            <span style={{ minWidth: "fit-content" }}> {props?.name}</span>
           )}
         </TextProductCard>
 
@@ -143,7 +143,7 @@ export const UserCard = (props) => {
                   girini?.map((val, key) => {
                     return (
                       <option key={key} value={Number(val.id)}>
-                        {val.name}
+                        {val?.name}
                       </option>
                     );
                   })}
@@ -153,7 +153,7 @@ export const UserCard = (props) => {
             <ContainerNumber>
               <span>Tipo:</span>
               {girini &&
-                girini.filter((item, key) => item.id === props.girino)[0].name}
+                girini.filter((item, key) => item.id === props.girino)[0]?.name}
             </ContainerNumber>
           )}
           {edit.isEditing ? (
@@ -188,7 +188,7 @@ export const UserCard = (props) => {
             <ContainerNumber>
               <span>Listino:</span>
               {liste &&
-                liste.filter((item, key) => item.id === props.lista)[0].name}
+                liste.filter((item, key) => item.id === props.lista)[0]?.name}
             </ContainerNumber>
           )}
         </ContainerInputs>

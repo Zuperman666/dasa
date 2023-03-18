@@ -33,25 +33,36 @@ export const ProductCard = (props) => {
     let array = temporary ? selectedTempOrder : selectedDayOrder;
     let result;
     let modify = { itemId: props.itemId, quantità: Number(e.target.value) };
+    const checkIfEqualDefault = defaultOrder.filter((obj) =>
+      obj.itemId === props.itemId)[0]?.quantità === Number(e.target.value)
+
     if (array && array.length === 0) {
       array = [{ day: selectedDay, order: [] }];
     }
     let alreadyInside = array[0].order.filter(
       (obj) => props.itemId === obj.itemId
     );
-    if (!isPresent && alreadyInside.length === 0) {
-      console.log("true")
-      array[0].order.push(modify);
-      result = array;
+
+    if (alreadyInside.length === 0) {
+      if (!checkIfEqualDefault) {
+        array[0].order.push(modify);
+        result = array;
+      }
     } else {
-      console.log("fas")
-      let order = array[0].order.map((obj) =>
-        props.itemId === obj.itemId ? modify : obj
-      );
-      array[0].order = order;
+      if (!checkIfEqualDefault) {
+        let order = array[0].order.map((obj) =>
+          props.itemId === obj.itemId ? modify : obj
+        );
+        array[0].order = order;
+        result = array;
+      }else {
+      let order = array[0].order.filter((obj) =>
+        props.itemId !== obj.itemId
+      )
+      array[0].order = order || [];
       result = array;
+      }
     }
-   
     setValue(temporary ? "selectedTempOrder" : "selectedDayOrder", result);
   };
 

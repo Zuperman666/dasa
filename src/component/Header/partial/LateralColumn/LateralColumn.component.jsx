@@ -54,12 +54,50 @@ export const LateralColumn = (props) => {
         defaultOrder: defaultOrder,
       });
     } else if (!temporary) {
+      let ordine;
+      if(selectedDayOrder[0].order.length === 0 ){
+        if(dayOrder.length === 0){
+          ordine = []
+        }else {
+          ordine = dayOrder.filter((obj) => obj.day !== selectedDayOrder[0].day);
+        }
+      } else {
+        if(dayOrder.length === 0){
+          ordine = [selectedDayOrder[0]]
+        }else {
+          if(dayOrder.filter((obj) => obj?.day === selectedDayOrder[0].day).length === 0){
+            ordine = dayOrder
+            ordine.push(selectedDayOrder[0])
+          }else {
+            ordine = dayOrder.map((obj) => obj?.day === selectedDayOrder[0].day ? selectedDayOrder[0] : obj );
+          }
+        }
+      }
       await axios.patch(`http://localhost:3001/usuallyOrder/${selectUser.id}`, {
-        dayOrder: [selectedDayOrder[0]],
+        dayOrder: ordine || [],
       });
     } else {
+      let ordine;
+      if(selectedTempOrder[0].order.length === 0 ){
+        if(tempOrder.length === 0){
+          ordine = []
+        }else {
+          ordine = tempOrder.filter((obj) => obj.day !== selectedTempOrder[0].day);
+        }
+      } else {
+        if(tempOrder.length === 0){
+          ordine = [selectedTempOrder[0]]
+        }else {
+          if(tempOrder.filter((obj) => obj?.day === selectedTempOrder[0].day).length === 0){
+            ordine = tempOrder
+            ordine.push(selectedTempOrder[0])
+          }else {
+            ordine = tempOrder.map((obj) => obj?.day === selectedTempOrder[0].day ? selectedTempOrder[0] : obj );
+          }
+        }
+      }
       await axios.patch(`http://localhost:3001/usuallyOrder/${selectUser.id}`, {
-        tempOrder: [selectedTempOrder[0]],
+        tempOrder: ordine || [],
       });
     }
     setValue('temporary', false)
@@ -73,7 +111,6 @@ export const LateralColumn = (props) => {
       );
       const hasPatchFunc = async()=> {
         setHasPatch(filterActive.filter((obj)=> obj.tempOrder.length > 0))
-
       }
       hasPatchFunc()
       const handleFiltertemp = (obj2, obj) => {
@@ -146,9 +183,21 @@ export const LateralColumn = (props) => {
         girino: allUser.filter((obj2) => obj2.id === obj.id)[0]?.girino,
       }));
       let test = moneyName;
+      console.log(test)
       /* await axios.post(`http://localhost:3001/history`, { 
-       ordini: money,
-       data: moment(new Date()).format()
+      "day": moment(new Date()).format("mm/dd/yyyy"),
+      "fullOrder": [
+        {
+          "userId": 1,
+          "daPagare": 0,
+          "relativeOrder": [
+            {
+              "itemId": 1,
+              "quantità": 2
+            }
+          ]
+        }
+      ]
      })*/
       let testReduce = (objTotal, params, isAdmin = false) => {
 
@@ -276,7 +325,7 @@ export const LateralColumn = (props) => {
     item.length === 0 && setItem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  
   useEffect(() => {
     if (isSending) {
       SendToDbProduct();

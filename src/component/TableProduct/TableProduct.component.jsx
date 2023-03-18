@@ -34,19 +34,35 @@ export const TableProduct = () => {
   const selectedTempOrder = useStore((state) => state.selectedTempOrder);
   const [isOpen, setIsOpen] = React.useState(false);
   const [modalAlertTemp, setModalAlertTemp] = React.useState(false);
-  const [hasTemp, setHasTemp] = React.useState(!closeDay.some((closedDay) => closedDay === selectedDay)
-  && selectedTempOrder?.length > 0);
   const today = HeaderTableConfigDays.filter((day) =>
     selectedDay !== "" ? day.value === selectedDay : day.value === "default"
   );
   // @ts-ignore
   useEffect(() => {
+
     setSelectedDayOrder();
-    setHasTemp(!closeDay.some((closedDay) => closedDay === selectedDay)
-    && selectedTempOrder?.length > 0)
+    setValue('temporary', !closeDay.some((closedDay) => closedDay === selectedDay)
+    && selectedTempOrder?.length > 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDay, userProduct]);
+
   
+  useEffect(() => {
+
+    setValue('temporary', !closeDay.some((closedDay) => closedDay === selectedDay)
+    && selectedTempOrder?.length > 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedTempOrder]);
+  
+  useEffect(() => {
+    setValue('temporary', !closeDay.some((closedDay) => closedDay === selectedDay)
+    && selectedTempOrder?.length > 0);
+  }, []);
+
+
+  useEffect(() => {
+   console.log(temporary)
+  }, [temporary]);
 
   if (!selectedDayOrder) return <>{"Sta caricando ..."}</>;
 
@@ -74,46 +90,48 @@ export const TableProduct = () => {
       })
       .then(() => setProduct(userProduct.id));
   };
-const handleChangeTemp = ()=>{
-  if(selectedTempOrder.length > 0 && hasTemp){
-    setModalAlertTemp(true)
-  }else {
-    setValue('temporary',!hasTemp);
-    setHasTemp(!hasTemp);
+  const handleChangeTemp = () => {
+    if (selectedTempOrder.length > 0 && temporary) {
+      setModalAlertTemp(true)
+    } else {
+      setValue('temporary', !temporary);
+    }
   }
-}
+
   return (
     <ContainerDivFull>
       <HeaderTable isOpen={isOpen} setIsOpen={setIsOpen} />
       <DayH1 onClick={() => setIsOpen(true)}>{today[0].text}</DayH1>
-      <ContainerToggle>
-        <>
-          {selectedDayOrder &&
-            !closeDay.some((closedDay) => closedDay === selectedDay) ? (
-            <span>Giorno Abilitato</span>
-          ) : (
-            <span>Giorno Disabilitato</span>
-          )}
-          <Toggle
-            icons={false}
-            checked={
-              selectedDayOrder &&
-              !closeDay.some((closedDay) => closedDay === selectedDay)
+      {today[0].text === 'Default' ? <div></div> :
+        <ContainerToggle>
+          <>
+            {selectedDayOrder &&
+              !closeDay.some((closedDay) => closedDay === selectedDay) ? (
+              <span>Giorno Abilitato</span>
+            ) : (
+              <span>Giorno Disabilitato</span>
+            )}
+            <Toggle
+              icons={false}
+              checked={
+                selectedDayOrder &&
+                !closeDay.some((closedDay) => closedDay === selectedDay)
 
-            }
-            onChange={handleToggle}
-          />
-          <label htmlFor="temp"> Temporaneo? </label>
-          <input
-            type="checkbox"
-            id="temp"
-            name="temp"
-            value="temp"
-            checked={hasTemp}
-            onChange={() => handleChangeTemp()}
-          />
-        </>
-      </ContainerToggle>
+              }
+              onChange={handleToggle}
+            />
+            <label htmlFor="temp"> Temporaneo? </label>
+            <input
+              type="checkbox"
+              id="temp"
+              name="temp"
+              value="temp"
+              checked={temporary}
+              onChange={() => handleChangeTemp()}
+            />
+          </>
+        </ContainerToggle>
+      }
 
       <ContainerDoubleTable>
         <Row>
@@ -136,6 +154,10 @@ const handleChangeTemp = ()=>{
                       const isPresentTemp = selectedTempOrder[0]?.order?.find(
                         (obj) => obj.itemId === vali.id
                       );
+                      const quantità = isPresentTemp?.quantità !== undefined ? isPresentTemp?.quantità :
+                      isPresentDay?.quantità !== undefined ? isPresentDay?.quantità : userProduct?.defaultOrder.find(
+                        (obj) => obj.itemId === vali.id
+                      )?.quantità || 0
                       return (
                         <>
                           <Column>
@@ -145,12 +167,7 @@ const handleChangeTemp = ()=>{
                               isPresentTemp={isPresentTemp}
                               isPresentDay={isPresentDay}
                               itemId={vali.id}
-                              quantità={
-                                isPresentTemp?.quantità ||
-                                isPresentDay?.quantità ||
-                                userProduct?.defaultOrder.find(
-                                  (obj) => obj.itemId === vali.id
-                                ).quantità
+                              quantità={quantità
                               }
                             />
                           </Column>

@@ -48,7 +48,7 @@ export const NewList = () => {
         modifiche: [
           ...liste.filter((obj) => obj.id === id)[0].modifiche,
           {
-            id: prodotto,
+            itemId: prodotto,
             price: price,
           },
         ],

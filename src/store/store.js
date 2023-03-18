@@ -77,11 +77,6 @@ export const useStore = create((set, get) => ({
     })),
   setTemporary: () =>
     set(({ temporary: !get().temporary })),
-  /* changeOpen: () =>
-    set(() => ({
-      selectedDayOrder: Object.fromEntries(Object.entries(get().selectedDayOrder)
-        .map(([k, v]) => [k, k === 'stato' ? v === 'aperto' ? 'chiuso' : 'aperto' : v]))
-    })), */
   resetModify: () => {
     set(() => ({
       modifiedItem: []
