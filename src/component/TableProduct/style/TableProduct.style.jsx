@@ -79,7 +79,10 @@ export const Row = styled.div`
 export const ContainerDoubleTable = styled.div`
    width:100%;
    overflow:auto;
-   max-height: 460px;
+   
+   @media screen and (min-width:575px) {
+             max-height: 460px;
+    }
 `
 export const RowTitle = styled.div`
  font-size: 14px;

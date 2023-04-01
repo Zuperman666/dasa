@@ -6,7 +6,7 @@ background-color:transparent;
 position: fixed;
 left:0;
 right:0;
-bottom: -45rem;
+bottom: -50rem;
 z-index: 10;
 display: flex;
 min-width: fit-content;

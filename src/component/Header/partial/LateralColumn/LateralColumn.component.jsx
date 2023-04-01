@@ -55,21 +55,21 @@ export const LateralColumn = (props) => {
       });
     } else if (!temporary) {
       let ordine;
-      if(selectedDayOrder[0].order.length === 0 ){
-        if(dayOrder.length === 0){
+      if (selectedDayOrder[0].order.length === 0) {
+        if (dayOrder.length === 0) {
           ordine = []
-        }else {
+        } else {
           ordine = dayOrder.filter((obj) => obj.day !== selectedDayOrder[0].day);
         }
       } else {
-        if(dayOrder.length === 0){
+        if (dayOrder.length === 0) {
           ordine = [selectedDayOrder[0]]
-        }else {
-          if(dayOrder.filter((obj) => obj?.day === selectedDayOrder[0].day).length === 0){
+        } else {
+          if (dayOrder.filter((obj) => obj?.day === selectedDayOrder[0].day).length === 0) {
             ordine = dayOrder
             ordine.push(selectedDayOrder[0])
-          }else {
-            ordine = dayOrder.map((obj) => obj?.day === selectedDayOrder[0].day ? selectedDayOrder[0] : obj );
+          } else {
+            ordine = dayOrder.map((obj) => obj?.day === selectedDayOrder[0].day ? selectedDayOrder[0] : obj);
           }
         }
       }
@@ -78,21 +78,21 @@ export const LateralColumn = (props) => {
       });
     } else {
       let ordine;
-      if(selectedTempOrder[0].order.length === 0 ){
-        if(tempOrder.length === 0){
+      if (selectedTempOrder[0].order.length === 0) {
+        if (tempOrder.length === 0) {
           ordine = []
-        }else {
+        } else {
           ordine = tempOrder.filter((obj) => obj.day !== selectedTempOrder[0].day);
         }
       } else {
-        if(tempOrder.length === 0){
+        if (tempOrder.length === 0) {
           ordine = [selectedTempOrder[0]]
-        }else {
-          if(tempOrder.filter((obj) => obj?.day === selectedTempOrder[0].day).length === 0){
+        } else {
+          if (tempOrder.filter((obj) => obj?.day === selectedTempOrder[0].day).length === 0) {
             ordine = tempOrder
             ordine.push(selectedTempOrder[0])
-          }else {
-            ordine = tempOrder.map((obj) => obj?.day === selectedTempOrder[0].day ? selectedTempOrder[0] : obj );
+          } else {
+            ordine = tempOrder.map((obj) => obj?.day === selectedTempOrder[0].day ? selectedTempOrder[0] : obj);
           }
         }
       }
@@ -109,8 +109,8 @@ export const LateralColumn = (props) => {
         (obj2) =>
           allUser.filter((obj3) => obj3.id === obj2.id)[0].isActive === true
       );
-      const hasPatchFunc = async()=> {
-        setHasPatch(filterActive.filter((obj)=> obj.tempOrder.length > 0))
+      const hasPatchFunc = async () => {
+        setHasPatch(filterActive.filter((obj) => obj.tempOrder.length > 0))
       }
       hasPatchFunc()
       const handleFiltertemp = (obj2, obj) => {
@@ -297,7 +297,7 @@ export const LateralColumn = (props) => {
       total = test.concat(girinoTotal, totalLavoration);
       setMoney(total);
       setIsModalStamp(true);
-      
+
     });
   };
 
@@ -325,7 +325,7 @@ export const LateralColumn = (props) => {
     item.length === 0 && setItem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
+
   useEffect(() => {
     if (isSending) {
       SendToDbProduct();

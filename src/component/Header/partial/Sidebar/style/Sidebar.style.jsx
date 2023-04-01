@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 
 export const SidebarContainer = styled.div`
-background-color:#96ecfb;
+background-color: white;
 position: fixed;
 top: 0;
 bottom: 0;
-right: -45rem;
+right: -50rem;
 z-index: 10;
 padding: 1.2rem 2rem 5.6rem;
 display: flex;
@@ -36,6 +36,13 @@ justify-content: space-between;
 align-items: center;
 `
 
+
+
+export const PointerDiv = styled.div`
+  cursor: pointer;
+
+`
+
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-flow: column;
@@ -43,6 +50,7 @@ export const ButtonWrapper = styled.div`
 `
 
 export const ButtonSidebarSelect = styled.div`
+    cursor: pointer;
     width: 100%;
     display: flex;
     align-items: center;
@@ -55,7 +63,7 @@ export const ButtonSidebarSelect = styled.div`
     transition: all 0.3s ease-in-out;
     :hover{
       color: #fff;
-      background-color: #6cb9f8;
+      background-color: grey;
       border-top:solid 1px;
       border-radius: solid 1px;
     }

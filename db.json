@@ -44,7 +44,12 @@
     },
     {
       "name": "Gennaro",
-      "modifiche": [],
+      "modifiche": [
+        {
+          "itemId": 1,
+          "price": 0.3
+        }
+      ],
       "id": 2
     }
   ],
