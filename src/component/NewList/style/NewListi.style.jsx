@@ -59,6 +59,7 @@ export const CustomModal = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   margin-left: auto;
+  justify-content: space-evenly;
   margin-right: auto;
 `;
 export const ContainerEditor = styled.div`

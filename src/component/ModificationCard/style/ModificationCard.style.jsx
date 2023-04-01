@@ -9,7 +9,6 @@ export const TextProductCard = styled.div`
   padding-top: 12px;
   padding-bottom: 12px;
   background-color: #465a75a1;
-  margin-bottom: 12px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   border-bottom-left-radius: 2px;
@@ -26,6 +25,9 @@ export const ContainerInputs = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 0 12px;
+  border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-top: 10px;
 `;
 
 export const InputWrapper = styled.div`
@@ -49,8 +51,11 @@ justify-content: space-between;
 align-items: center;
 padding: 12px;
 width: 100%;
-margin-top:15px;
 gap: 10px;
+border-left: 1px solid black;
+border-right: 1px solid black;
+border-bottom: 1px solid black;
+border-radius: 0px 0px 5px 5px; 
 `
 
 export const ControlIcons = styled.div`

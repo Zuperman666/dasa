@@ -44,12 +44,7 @@
     },
     {
       "name": "Gennaro",
-      "modifiche": [
-        {
-          "itemId": 1,
-          "price": 1
-        }
-      ],
+      "modifiche": [],
       "id": 2
     }
   ],

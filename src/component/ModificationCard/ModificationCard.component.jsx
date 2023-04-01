@@ -39,7 +39,7 @@ export const ModificationCard = (props) => {
         ...liste
           .filter((obj) => obj.id === props.id)[0]
           .modifiche.map((mod) =>
-            mod.id === modId ? { id: modId, price: edit.price } : mod
+            mod.itemId === modId ? { itemId: modId, price: edit.price } : mod
           ),
       ],
     });
@@ -53,11 +53,11 @@ export const ModificationCard = (props) => {
     await axios.patch(`http://localhost:3001/liste/${props.id}`, {
       modifiche: ultimoElem
         ? []
-        : [
+        : 
             liste
               .filter((obj) => obj.id === props.id)[0]
-              .modifiche.filter((mod) => mod.id !== modId)[0],
-          ],
+              .modifiche.filter((mod) => mod.itemId !== modId),
+          
     });
     setListe();
   };
@@ -65,7 +65,7 @@ export const ModificationCard = (props) => {
   return (
     <>
       <TextProductCard>
-        {item.find((prod) => prod.id === props.val.id)?.name}
+        {item.find((prod) => prod.id === props.val.itemId)?.name}
       </TextProductCard>
       <ContainerInputs>
         {edit.isEditing ? (
@@ -80,6 +80,7 @@ export const ModificationCard = (props) => {
                 })
               }
               value={edit.price}
+              step=".01"
               placeholder={"Prezzo"}
               type={"number"}
               id="prezzo"
@@ -99,7 +100,7 @@ export const ModificationCard = (props) => {
             </IconWrapper>
           )}
           {edit.isEditing && (
-            <IconWrapper onClick={() => patchToDbItem(props.val.id)}>
+            <IconWrapper onClick={() => patchToDbItem(props.val.itemId)}>
               <SaveIcon />
             </IconWrapper>
           )}
@@ -117,7 +118,7 @@ export const ModificationCard = (props) => {
             </IconWrapper>
           )}
         </ControlIcons>
-        <Button onClick={() => deleteToDbItem(props.val.id)}> Elimina </Button>
+        <Button onClick={() => deleteToDbItem(props.val.itemId)}> Elimina </Button>
       </ButtonContainer>
     </>
   );
