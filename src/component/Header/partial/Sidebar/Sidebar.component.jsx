@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useStore } from 'store/store';
 import { ButtonSidebarSelect, PointerDiv, SHEader, SidebarContainer } from './style/Sidebar.style';
 import { ReactComponent as CloseIcon } from 'images/icons/circled_X.svg';
 import { CustomSelect } from 'style/Select.style';
-import { Overlay } from 'style/Overlay.style';
 import moment from 'moment';
 import { ModalStamp } from '../ModalStamp/ModalStamp.component';
 
@@ -19,13 +18,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   const tipiProdotti = useStore((state) => state.tipiProdotti);
   const setValue = useStore((state) => state.setValue);
   const modifiedItem = useStore((state) => state.modifiedItem);
-  const save = useStore((state) => state.save);
-  const resetModify = useStore((state) => state.resetModify);
   const isAdmin = useStore((state) => state.isAdmin);
   const allUser = useStore((state) => state.allUser);
   const changeday = useStore((state) => state.changeday);
-  const idStore = useStore((state) => state.idStore);
-  const userProduct = useStore((state) => state.userProduct);
   const setUsers = useStore((state) => state.setUsers);
   const setItem = useStore((state) => state.setItem);
   const selectUser = useStore((state) => state.selectUser);
@@ -234,14 +229,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           for (let a = 0; a < Check[i].length; a++) {
             if (
               testResult.find(
-                (obj) => Number(obj[valueObj]) == Number(Check[i][a][valueObj])
+                (obj) => Number(obj[valueObj]) === Number(Check[i][a][valueObj])
               )
             ) {
               const target = testResult.find(
-                (obj) => Number(obj[valueObj]) == Number(Check[i][a][valueObj])
+                (obj) => Number(obj[valueObj]) === Number(Check[i][a][valueObj])
               );
               const targetIndex = testResult.findIndex(
-                (obj) => Number(obj[valueObj]) == Number(Check[i][a][valueObj])
+                (obj) => Number(obj[valueObj]) === Number(Check[i][a][valueObj])
               );
               let newValue;
               if (params === "itemId") {

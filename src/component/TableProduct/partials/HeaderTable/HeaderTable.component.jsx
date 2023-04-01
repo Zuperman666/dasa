@@ -10,7 +10,6 @@ export const HeaderTable = ({ isOpen, setIsOpen }) => {
   const setValue = useStore((state) => state.setValue);
   const selectedDay = useStore((state) => state.selectedDay);
   const modifiedItem = useStore((state) => state.modifiedItem);
-  const changeday = useStore((state) => state.changeday);
 
   const handleClick = (val) => {
     modifiedItem.length === 0 /* && !changeday */

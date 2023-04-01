@@ -21,12 +21,10 @@ export const LateralColumn = (props) => {
   const tipiProdotti = useStore((state) => state.tipiProdotti);
   const setValue = useStore((state) => state.setValue);
   const modifiedItem = useStore((state) => state.modifiedItem);
-  const save = useStore((state) => state.save);
   const resetModify = useStore((state) => state.resetModify);
   const isAdmin = useStore((state) => state.isAdmin);
   const allUser = useStore((state) => state.allUser);
   const changeday = useStore((state) => state.changeday);
-  const userProduct = useStore((state) => state.userProduct);
   const setUsers = useStore((state) => state.setUsers);
   const setItem = useStore((state) => state.setItem);
   const selectUser = useStore((state) => state.selectUser);
@@ -235,14 +233,14 @@ export const LateralColumn = (props) => {
           for (let a = 0; a < Check[i].length; a++) {
             if (
               testResult.find(
-                (obj) => Number(obj[valueObj]) == Number(Check[i][a][valueObj])
+                (obj) => Number(obj[valueObj]) === Number(Check[i][a][valueObj])
               )
             ) {
               const target = testResult.find(
-                (obj) => Number(obj[valueObj]) == Number(Check[i][a][valueObj])
+                (obj) => Number(obj[valueObj]) === Number(Check[i][a][valueObj])
               );
               const targetIndex = testResult.findIndex(
-                (obj) => Number(obj[valueObj]) == Number(Check[i][a][valueObj])
+                (obj) => Number(obj[valueObj]) === Number(Check[i][a][valueObj])
               );
               let newValue;
               if (params === "itemId") {
